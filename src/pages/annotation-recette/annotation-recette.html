@@ -7,7 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button start></button>
+    <button ion-button light>
+      <ion-icon medium name="arrow-dropleft"></ion-icon>
+    </button>
     <ion-title>Annoter la recette</ion-title>
   </ion-navbar>
 
@@ -18,17 +20,15 @@
   <ion-list no-lines>
     <ion-item>
       <ion-label stacked>Rédacteur de l'annotation</ion-label>
-      <ion-input placeholder="Nom Prénom"></ion-input>
+      <ion-input #Pseudo placeholder="Nom Prénom"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select okText="Valider" cancelText="Annuler">
+      <ion-select #Sel okText="Valider" cancelText="Annuler">
         <ion-option value="1">Étape 1</ion-option>
         <ion-option value="2">Étape 2</ion-option>
       </ion-select>
     </ion-item>
-    <button ion-item (click)="poster()">Poster</button>
+    <ion-textarea #Com placeholder="commentaire"></ion-textarea>
+    <button ion-item (click)="poster(Pseudo.value, Sel.value, Com.value)">Poster</button>
   </ion-list>
-  <ion-item>
-    <button ion-button></button>
-  </ion-item>
 </ion-content>

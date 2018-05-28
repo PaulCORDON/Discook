@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Annotation } from '../../metier/annotation';
 
 /**
  * Generated class for the AnnotationRecettePage page.
@@ -22,7 +23,8 @@ export class AnnotationRecettePage {
     console.log('ionViewDidLoad AnnotationRecettePage');
   }
 
-  poster(){
-    console.log("poster");
+  poster(pseudo : string, etape : string, com : string){
+    console.log("poster " + com + " par " + pseudo + " pour l'étape " + etape);
+    new Annotation(pseudo,etape,com);
   }
 }
