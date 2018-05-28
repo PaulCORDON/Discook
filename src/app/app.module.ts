@@ -15,7 +15,7 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
     MyApp,
     HomePage,
     ListeIngredientPage,
-    ParametresPage
+    ParametresPage,
     PresentationBrevePage
   ],
   imports: [
@@ -27,7 +27,7 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
     MyApp,
     HomePage,
     ListeIngredientPage,
-    ParametresPage
+    ParametresPage,
     PresentationBrevePage
   ],
   providers: [
