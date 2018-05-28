@@ -7,11 +7,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PresentationBrevePage } from '../pages/presentation-breve/presentation-breve'
+import { ParametresPage } from '../pages/parametres/parametres';
+import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    ListeIngredientPage,
+    ParametresPage
     PresentationBrevePage
   ],
   imports: [
@@ -22,6 +26,8 @@ import { PresentationBrevePage } from '../pages/presentation-breve/presentation-
   entryComponents: [
     MyApp,
     HomePage,
+    ListeIngredientPage,
+    ParametresPage
     PresentationBrevePage
   ],
   providers: [

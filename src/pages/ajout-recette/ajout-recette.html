@@ -14,5 +14,28 @@
 
 
 <ion-content padding>
-Ajout d'une recette dans la BBD
+
+
+    <h1>Créer une recette</h1>
+    <form>
+      <ion-card>
+        <div >
+          <ion-icon md="md-create"></ion-icon>
+          <input  type="text" name="Titre de la recette" value="Titre de la recette" size="20" />
+        </div>
+        
+        <div >
+          <ion-icon md="md-image"></ion-icon>
+          <div>Photo</div>
+        </div>
+        <button ion-button>
+          <ion-icon md="md-download">Téléverser</ion-icon>
+        </button>
+      </ion-card>
+      <ion-card>
+        <div>Ingrédients</div>
+        <button ion-button><ion-icon  md="md-add"></ion-icon></button>
+        <ion-card><div>Ingrédient 1</div></ion-card>
+      </ion-card>
+    </form>
 </ion-content>
