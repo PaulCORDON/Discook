@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AjoutRecettePage } from '../ajout-recette/ajout-recette';
 
 /**
  * Generated class for the ParametresPage page.
@@ -17,9 +18,15 @@ export class ParametresPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  isListeDefilable:boolean=true;
+  isLectActive:boolean=true;
   ionViewDidLoad() {
     console.log('ionViewDidLoad ParametresPage');
   }
 
+
+  onClickAjouterRecette(){
+    this.navCtrl.push(`AjoutRecettePage`);
+   
+  }
 }

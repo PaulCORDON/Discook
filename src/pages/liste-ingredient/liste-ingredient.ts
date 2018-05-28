@@ -22,4 +22,10 @@ export class ListeIngredientPage {
     console.log('ionViewDidLoad ListeIngredientPage');
   }
 
+
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
+  }
 }
