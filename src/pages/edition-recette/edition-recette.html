@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>editionRecettePage</ion-title>
+    <ion-title>Edition de la recette</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="ouvrirLesParametres()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +20,13 @@
 
 <ion-content padding>
   Edition d'une recette
+
+  <button ion-button (click)="retour()">
+    <ion-icon name="return-left"></ion-icon>
+    Retour
+  </button>
+  <button ion-button (click)="valider()">
+    <ion-icon name="checkmark"></ion-icon>
+    Valider
+  </button>
 </ion-content>
