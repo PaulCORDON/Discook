@@ -22,4 +22,8 @@ export class AjoutRecettePage {
     console.log('ionViewDidLoad AjoutRecettePage');
   }
 
+  AddIngredient(){
+    this.navCtrl.push('page-liste-ingredient');
+  }
+
 }
