@@ -22,4 +22,7 @@ export class AnnotationRecettePage {
     console.log('ionViewDidLoad AnnotationRecettePage');
   }
 
+  poster(){
+    console.log("poster");
+  }
 }

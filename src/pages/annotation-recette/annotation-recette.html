@@ -7,12 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>annotationRecettePage</ion-title>
+    <button ion-button start></button>
+    <ion-title>Annoter la recette</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  Créer une annotation pour la recette
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label stacked>Rédacteur de l'annotation</ion-label>
+      <ion-input placeholder="Nom Prénom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select okText="Valider" cancelText="Annuler">
+        <ion-option value="1">Étape 1</ion-option>
+        <ion-option value="2">Étape 2</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-item (click)="poster()">Poster</button>
+  </ion-list>
+  <ion-item>
+    <button ion-button></button>
+  </ion-item>
 </ion-content>
