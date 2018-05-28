@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PresentationBrevePage } from '../pages/presentation-breve/presentation-breve'
 import { ParametresPage } from '../pages/parametres/parametres';
 import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient';
 
@@ -14,7 +15,8 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
     MyApp,
     HomePage,
     ListeIngredientPage,
-    ParametresPage
+    ParametresPage,
+    PresentationBrevePage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
     MyApp,
     HomePage,
     ListeIngredientPage,
-    ParametresPage
+    ParametresPage,
+    PresentationBrevePage
   ],
   providers: [
     StatusBar,
