@@ -11,4 +11,24 @@ export class HomePage {
 
   }
 
+  private onClickRecette()
+  {
+    console.log("Ouverture de la page de la présentation brève de la recette");
+    this.navCtrl.push("PresentationBrevePage");
+  }
+
+  private onClickAjoutRecette()
+  {
+    console.log("Ouverture de la page de l'ajout d'une recette");
+    this.navCtrl.push("AjoutRecettePage");
+  }
+
+  private  onClickParametre()
+  {
+    console.log("Ouverture de la page des paramètres");
+    this.navCtrl.push("ParametresPage");
+  }
+
+ 
+
 }
