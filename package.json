@@ -53,17 +53,12 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-firebase": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android"
     ]
-  }
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-firebase": {},
-      "cordova-plugin-camera": {}
-    }
   }
 }
