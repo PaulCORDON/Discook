@@ -23,7 +23,7 @@ export class AjoutRecettePage {
   }
 
   AddIngredient(){
-    this.navCtrl.push('page-liste-ingredient');
+    this.navCtrl.push('ListeIngredientPage');
   }
 
 }

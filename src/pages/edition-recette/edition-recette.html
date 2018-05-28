@@ -1,16 +1,10 @@
-<!--
-  Generated template for the EditionRecettePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Edition de la recette</ion-title>
+    <ion-title>{{pageTitle}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="ouvrirLesParametres()">
-        <ion-icon name="cog"></ion-icon>
+        <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -19,12 +13,9 @@
 
 
 <ion-content padding>
+  
   Edition d'une recette
-
-  <button ion-button (click)="retour()">
-    <ion-icon name="return-left"></ion-icon>
-    Retour
-  </button>
+  
   <button ion-button (click)="valider()">
     <ion-icon name="checkmark"></ion-icon>
     Valider

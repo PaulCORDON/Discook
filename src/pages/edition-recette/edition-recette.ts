@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'edition-recette.html',
 })
 export class EditionRecettePage {
+  pageTitle;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -17,10 +18,6 @@ export class EditionRecettePage {
 
   ouvrirLesParametres(){
     this.navCtrl.push(`ParametresPage`);
-  }
-
-  retour(){
-    this.navCtrl.pop();
   }
 
   valider(){
