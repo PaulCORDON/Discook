@@ -13,7 +13,7 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
   declarations: [
     MyApp,
     HomePage,
-    ListeIngredientPage
+    ListeIngredientPage,
     ParametresPage
   ],
   imports: [
@@ -24,6 +24,7 @@ import { ListeIngredientPage } from '../pages/liste-ingredient/liste-ingredient'
   entryComponents: [
     MyApp,
     HomePage,
+    ListeIngredientPage,
     ParametresPage
   ],
   providers: [
