@@ -22,4 +22,12 @@ export class RealisationRecettePage {
     console.log('ionViewDidLoad RealisationRecettePage');
   }
 
+  onClickEtapePrecedente(){
+
+  }
+
+  onClickEtapeSuivante(){
+    
+  }
+
 }
