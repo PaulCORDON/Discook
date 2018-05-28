@@ -5,8 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
+      <ion-icon name= "settings" (click) = "onClickParametre()"></ion-icon>
+
     <ion-title>listeIngredientPage</ion-title>
   </ion-navbar>
 
@@ -15,4 +16,15 @@
 
 <ion-content padding>
   Affichage de la liste des ingrédients après avoir choisit sa recette
+  
+<ion-list>
+  <ion-item > <!--*ng for  = "let ingredient  of list ingredients | async " a rajouter quand la connxion avec la base de donnée sera faite -->
+    <ion-thumbnail item-start>
+    <img src="img"> <!--Mettre l'image correspondant à l'ingredient-->
+    </ion-thumbnail>
+    <h2>nom de l'ingredient </h2> <!--Mettre le vrai nom récuperer dans la base de donnée-->
+    <h3>quantité </h3> 
+    <p> 85 </p> <!--Mettre la quantité recupérer dans la base de donnée-->
+  </ion-item>
+</ion-list>
 </ion-content>
