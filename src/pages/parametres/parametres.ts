@@ -18,13 +18,15 @@ export class ParametresPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  isListeDefilable:boolean=true;
+  isLectActive:boolean=true;
   ionViewDidLoad() {
     console.log('ionViewDidLoad ParametresPage');
   }
 
 
   onClickAjouterRecette(){
-    this.navCtrl.push(AjoutRecettePage)
+    this.navCtrl.push(`AjoutRecettePage`);
+   
   }
 }
