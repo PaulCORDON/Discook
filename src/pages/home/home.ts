@@ -20,7 +20,7 @@ export class HomePage {
   private onClickAjoutRecette()
   {
     console.log("Ouverture de la page de l'ajout d'une recette");
-    this.navCtrl.push("page-ajout-recette");
+    this.navCtrl.push("AjoutRecettePage");
   }
 
   private  onClickParametre()
