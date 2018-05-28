@@ -14,5 +14,40 @@
 
 
 <ion-content padding>
+  
+  <h>Titre de la recette {{}}</h>
 
+  <ion-texte-area>Description de la recette .......................................................................
+    .........................................;
+    ............................................{{description}}
+  </ion-texte-area>
+
+
+  <footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col> <!-- bouton pour acceder à l'edition de la recette-->
+            <button ion-button round clear icon-start round   (click)="Editer()">
+                <ion-icon name="md-create"></ion-icon>
+                Éditer le recette
+            </button>
+        </ion-col>
+
+        <ion-col> <!-- boutton pour acceder à la recette complete-->
+            <button ion-button round clear icon-start round   (click)="Voir()">
+                <ion-icon name="map"></ion-icon>
+                Voir le recette
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </footer>
+
+  <!--FAB pour lancer la recette-->
+  <ion-fab right bottom >
+      <button   (click)="Commencer()" ion-fab ><ion-icon name="md-arrow-dropright-circle"></ion-icon></button>
+    </ion-fab>
+    
 </ion-content>
+
+
