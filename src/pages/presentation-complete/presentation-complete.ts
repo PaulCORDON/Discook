@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AnnotationRecettePage } from '../annotation-recette/annotation-recette';
+import { EditionRecettePage } from '../edition-recette/edition-recette';
 
 /**
  * Generated class for the PresentationCompletePage page.
@@ -20,6 +22,14 @@ export class PresentationCompletePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PresentationCompletePage');
+  }
+
+  versAnnotation(){
+    this.navCtrl.push(AnnotationRecettePage);
+  }
+
+  versEdition(){
+    this.navCtrl.push(EditionRecettePage);
   }
 
 }

@@ -28,4 +28,8 @@ export class ListeIngredientPage {
     this.navCtrl.push('ParametresPage');
   
   }
+  onClickRealisation(){
+    this.navCtrl.push('RealisationRecettePage');
+
+  }
 }

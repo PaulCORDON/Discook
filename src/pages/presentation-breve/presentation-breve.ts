@@ -22,4 +22,19 @@ export class PresentationBrevePage {
     console.log('ionViewDidLoad PresentationBrevePage');
   }
 
+
+
+  Editer(){
+    this.navCtrl.push(`EditionRecettePage`);
+  }
+
+  
+  Voir(){
+    this.navCtrl.push(`PresentationCompletePage`);
+  } 
+  
+  Commencer(){
+    this.navCtrl.push(`ListeIngredientPage`);
+  }
+
 }

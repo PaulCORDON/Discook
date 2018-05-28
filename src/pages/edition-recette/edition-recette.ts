@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the EditionRecettePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-edition-recette',
   templateUrl: 'edition-recette.html',
 })
 export class EditionRecettePage {
+  pageTitle;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -22,4 +16,11 @@ export class EditionRecettePage {
     console.log('ionViewDidLoad EditionRecettePage');
   }
 
+  ouvrirLesParametres(){
+    this.navCtrl.push(`ParametresPage`);
+  }
+
+  valider(){
+    this.navCtrl.pop();
+  }
 }
