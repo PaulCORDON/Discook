@@ -25,16 +25,16 @@ export class PresentationBrevePage {
 
 
   Editer(){
-    this.navCtrl.push("EditionRecettePage");
+    this.navCtrl.push(`EditionRecettePage`);
   }
 
   
   Voir(){
-    this.navCtrl.push("PresentationCompletePage");
+    this.navCtrl.push(`PresentationCompletePage`);
   } 
   
   Commencer(){
-    this.navCtrl.push("ListeIngredientPage");
+    this.navCtrl.push(`ListeIngredientPage`);
   }
 
 }
