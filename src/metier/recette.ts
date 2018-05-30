@@ -10,5 +10,6 @@ export class Recette{
     tpCuisson : number; //nb de min pour la cuisson
     //etapes : Etape[];
     //ingredient : Ingredient[];
+    name : string;
 
 }
