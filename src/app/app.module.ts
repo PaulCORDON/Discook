@@ -23,6 +23,16 @@ import { EditionRecettePage } from '../pages/edition-recette/edition-recette';
 import { PresentationCompletePage } from '../pages/presentation-complete/presentation-complete';
 import { RealisationRecettePage } from '../pages/realisation-recette/realisation-recette';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+var config = {
+  apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
+  authDomain: "discook-70c2b.firebaseapp.com",
+  databaseURL: "https://discook-70c2b.firebaseio.com",
+  projectId: "discook-70c2b",
+  storageBucket: "discook-70c2b.appspot.com",
+  messagingSenderId: "839266197068"
+};
 
 @NgModule({
   declarations: [
@@ -39,7 +49,9 @@ import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
     ParametresPageModule,
     PresentationBrevePageModule,
     PresentationCompletePageModule,
-    RealisationRecettePageModule
+    RealisationRecettePageModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
