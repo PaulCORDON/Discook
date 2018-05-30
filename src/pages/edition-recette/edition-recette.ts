@@ -16,7 +16,7 @@ export class EditionRecettePage {
     console.log('ionViewDidLoad EditionRecettePage');
   }
 
-  ouvrirLesParametres(){
+  onClickParametre(){
     this.navCtrl.push(`ParametresPage`);
   }
 

@@ -45,4 +45,9 @@ export class AjoutRecettePage {
     this.navCtrl.push('ListeIngredientPage');
   }
 
+  onClickParametre()
+  {
+    this.navCtrl.push(`ParametresPage`);
+  }
+
 }

@@ -27,6 +27,11 @@ export class PresentationBrevePage {
   Editer(){
     this.navCtrl.push(`EditionRecettePage`);
   }
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
+  }
 
   
   Voir(){

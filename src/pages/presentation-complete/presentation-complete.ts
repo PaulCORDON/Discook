@@ -32,4 +32,10 @@ export class PresentationCompletePage {
     this.navCtrl.push(EditionRecettePage);
   }
 
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
+  }
+
 }
