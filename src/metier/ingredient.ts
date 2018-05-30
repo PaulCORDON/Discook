@@ -1,5 +1,10 @@
 
 export class Ingredient{
     nom:string;
-    pseudo:string;
+    image:string;
+
+    constructor(nom : string, image : string){
+        this.nom = nom;
+        this.image = image;
+    }
 }
