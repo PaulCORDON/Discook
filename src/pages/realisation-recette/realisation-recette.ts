@@ -30,4 +30,10 @@ export class RealisationRecettePage {
     
   }
 
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
+  }
+
 }

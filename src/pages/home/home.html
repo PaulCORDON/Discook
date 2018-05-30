@@ -1,29 +1,33 @@
 <ion-header>
-  <ion-row>
-    <ion-col col-2 (tap)="onClickParametre()">
+<ion-row class="centrage">
+  <ion-col col-2>
+
+  </ion-col>
+  <ion-col class="title">
+    <ion-title>Discook</ion-title>
+  </ion-col>
+  <ion-col col-2><ion-buttons end>
+      <button ion-button icon-only (click)="onClickParametre()">
         <ion-icon name="settings"></ion-icon>
-    </ion-col>
+      </button>
+    </ion-buttons>
+  </ion-col>
+  
+</ion-row>
+    
 
-    <ion-col>
-      <div>Discook</div>
-    </ion-col>
 
-    <ion-col col-2>
-      </ion-col>
-
-      
-  </ion-row>
-  <ion-row>
       <ion-searchbar
         [(ngModel)]="myInput"
         [showCancelButton]="shouldShowCancel"
         (ionInput)="onInput($event)"
         (ionCancel)="onCancel($event)">
     </ion-searchbar>
-  </ion-row>
+
 </ion-header>
 
-<ion-content>
+<ion-content >
+
 <ion-row>
   
   <ion-col>
@@ -49,6 +53,11 @@
   </ion-col>
 </ion-row>
 
+<<<<<<< HEAD
+<ion-fab right bottom >
+  <button   (tap) = "onClickAjoutRecette()" ion-fab ><ion-icon>+</ion-icon></button>
+</ion-fab>
+=======
 <ion-list *ngFor="let recette of listRecette">
   <ion-item (tap) = "onClickRecette(recette)">
     coucou
@@ -58,4 +67,5 @@
 </ion-list>
 
 <button ion-fab right (tap) = "onClickAjoutRecette()">+</button>
+>>>>>>> master
 </ion-content>

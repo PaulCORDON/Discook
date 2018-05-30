@@ -29,6 +29,11 @@ this.recette = this.navParams.get("recette");
   Editer(){
     this.navCtrl.push(`EditionRecettePage`,{recette : this.recette});
   }
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
+  }
 
   
   Voir(){
