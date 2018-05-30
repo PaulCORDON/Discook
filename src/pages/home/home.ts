@@ -16,10 +16,16 @@ listRecette : Recette [];
     ref.on('value', itemSnapShot => {
       itemSnapShot.forEach(itemSnap=> {
         this.listRecette.push(itemSnap.val());
+        console.log("test recup recette "+ this.listRecette.length);
         return false;
       });
+
+      
+
+
+
     }); 
-    console.log("test recup recette "+ this.listRecette);
+    
 
     
   
