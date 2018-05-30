@@ -8,7 +8,7 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
   templateUrl: 'home.html'
 })
 export class HomePage {
-listRecette : Recette [];
+listRecette:Recette[];
   constructor(public navCtrl: NavController) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
