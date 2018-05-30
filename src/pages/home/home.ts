@@ -1,13 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { Recette } from '../../metier/recette';
+import * as firebase from 'firebase';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+listRecette;
   constructor(public navCtrl: NavController) {
+
+    const ref : firebase.database.Reference = firebase.database().ref("Recette");
+    this.listRecette = [];
+    ref.on('value', itemSnapShot => {
+      itemSnapShot.forEach(itemSnap=> {
+        this.listRecette.push(itemSnap.val());
+        return false;
+      });
+    }); 
+    console.log("test recup recette "+ this.listRecette);
+    
+    
 
   }
 

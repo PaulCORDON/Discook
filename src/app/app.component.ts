@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HomePage } from '../pages/home/home';
 import *as firebase from 'firebase';
 
-import { HomePage } from '../pages/home/home';
-import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 @Component({
   templateUrl: 'app.html'
 })
