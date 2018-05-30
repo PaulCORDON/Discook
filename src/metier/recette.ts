@@ -16,7 +16,8 @@ export class Recette{
     tpCuisson : number; //nb de min pour la cuisson
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
-
+    reference : firebase.database.Reference;
+    
     constructor(keywords : string[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
         this.keywords = keywords;
         this.nom = nom;
@@ -30,9 +31,9 @@ export class Recette{
         this.ingredients = ingredients;
 
         console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes\n    difficulte : " + difficulte + "\n     duree de préparation : " + duree + "\ntemps de cuisson : " + tpCuisson);
-    }*/
+    }
 
-    creerRecette(){
+   creerRecette(){
         this.reference = firebase.database().ref('Recette/');
         this.reference.push().set({
             name: this.nom,
