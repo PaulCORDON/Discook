@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AnnotationRecettePage } from '../annotation-recette/annotation-recette';
 import { EditionRecettePage } from '../edition-recette/edition-recette';
+import { Recette } from '../../metier/recette';
 
 /**
  * Generated class for the PresentationCompletePage page.
@@ -16,8 +17,9 @@ import { EditionRecettePage } from '../edition-recette/edition-recette';
   templateUrl: 'presentation-complete.html',
 })
 export class PresentationCompletePage {
-
+ recette:Recette;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.recette=this.navParams.get("recette");
   }
 
   ionViewDidLoad() {
