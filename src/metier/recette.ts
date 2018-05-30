@@ -1,10 +1,9 @@
-import { Keyword } from "./keyword";
 import { Etape } from "./etape";
 import { Ingredient } from "./ingredient";
 
 export class Recette{
     
-    keywords : Keyword[] = [];
+    keywords : string[] = [];
     nom : string;
     image : string;
     presentation : string;
@@ -14,12 +13,10 @@ export class Recette{
     tpCuisson : number; //nb de min pour la cuisson
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
-    reference : firebase.database.Reference;
     
-    constructor(){
         
 
-    constructor(keywords : Keyword[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
+    constructor(keywords : string[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
         this.keywords = keywords;
         this.nom = nom;
         this.presentation = presentation;

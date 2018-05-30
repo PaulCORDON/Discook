@@ -21,7 +21,7 @@ export class DatabaseProvider {
       let listeRecette = [];
       firebase.database().ref("Recette").on('value', itemSnapShot => {
         itemSnapShot.forEach(itemSnap=> {
-          //let recette = new Recette();
+          //TODO : let recette = new Recette();
           listeRecette.push(itemSnap.val());
           console.log("test recup recette "+ listeRecette.length);
           return false;
