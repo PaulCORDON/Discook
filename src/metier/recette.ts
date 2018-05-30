@@ -1,5 +1,7 @@
 import { Etape } from "./etape";
 import { Ingredient } from "./ingredient";
+import *as firebase from 'firebase';
+
 
 export class Recette{
     categorie : string;
@@ -28,5 +30,14 @@ export class Recette{
         this.ingredients = ingredients;
 
         console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes\n    difficulte : " + difficulte + "\n     duree de préparation : " + duree + "\ntemps de cuisson : " + tpCuisson);
+    }*/
+
+    creerRecette(){
+        this.reference = firebase.database().ref('Recette/');
+        this.reference.push().set({
+            name: this.nom,
+            presentation : this.presentation,
+            image: this.image
+        });
     }
 }
