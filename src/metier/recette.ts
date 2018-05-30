@@ -14,6 +14,10 @@ export class Recette{
     tpCuisson : number; //nb de min pour la cuisson
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
+    reference : firebase.database.Reference;
+    
+    constructor(){
+        
 
     constructor(keywords : Keyword[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
         this.keywords = keywords;
