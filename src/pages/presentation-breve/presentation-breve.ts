@@ -15,7 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PresentationBrevePage {
 
+  recette;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+this.recette = this.navParams.get("recette");
   }
 
   ionViewDidLoad() {
@@ -25,7 +27,7 @@ export class PresentationBrevePage {
 
 
   Editer(){
-    this.navCtrl.push(`EditionRecettePage`);
+    this.navCtrl.push(`EditionRecettePage`,{recette : this.recette});
   }
   onClickParametre(){
 
@@ -35,11 +37,11 @@ export class PresentationBrevePage {
 
   
   Voir(){
-    this.navCtrl.push(`PresentationCompletePage`);
+    this.navCtrl.push(`PresentationCompletePage`,{recette : this.recette});
   } 
   
   Commencer(){
-    this.navCtrl.push(`ListeIngredientPage`);
+    this.navCtrl.push(`ListeIngredientPage`,{recette : this.recette});
   }
 
 }

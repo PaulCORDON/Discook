@@ -3,10 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Annotation } from '../../metier/annotation';
 
 /**
- * Generated class for the AnnotationRecettePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Fait par Antoine
  */
 
 @IonicPage()

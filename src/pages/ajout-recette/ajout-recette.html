@@ -27,14 +27,17 @@
     <ion-card>
       <div>
         <ion-icon md="md-create"></ion-icon>
-        <input type="text" name="Titre de la recette" value="Titre de la recette" size="20" />
+        <input type="text" name="Titre de la recette" value="Titre de la recette" [(ngModel)]="titre" size="20" />
+      </div>
+      <div>
+        <input type="text" name="presentation"  [(ngModel)]="presentation" size="20" />
       </div>
 
       <div>
         <ion-icon md="md-image"></ion-icon>
-        <div>Photo</div>
+        <div><img src="{{imageSrc}}" /></div>
       </div>
-      <button ion-button>
+      <button ion-button (click)='openPhoto()'>
         <ion-icon md="md-download">Téléverser</ion-icon>
       </button>
     </ion-card>
@@ -54,4 +57,7 @@
     <ion-card>détails de l'étape</ion-card>
   </ion-card>
 
+  <ion-fab right bottom>
+    <button ion-fab color="light" (click)='onClickAddRecette(titre,presentation)'><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
