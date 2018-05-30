@@ -20,14 +20,16 @@
 
 
 <ion-content padding>
-  
-      <ion-list-header>Nom de la recette version longue</ion-list-header><br>
-      <label>1. Première étape qui consiste surement à éplucher un truc</label><br>
-      <label>2. Deuxième étape qui consiste surement à mélanger des trucs</label><br>
-      <label>3. Troisième étape qui consiste surement à faire revenir des trucs</label><br>
-      <label>4. Quatrième étape qui consiste surement à incorporer des trucs</label><br>
 
-
+  <ion-list-header>{{recette.nom}}}</ion-list-header>
+  <br>
+  <label *ngFor="let etape of recette.etapes">
+    {{etape.numero}} {{etape.texte}}
+    <br>
+    <label *ngFor="let anotation of etape.anotation">
+      {{anotation.etape}}
+    </label>
+  </label>
   <button ion-button (click)="versAnnotation()">Annoter</button>
   <button ion-button (click)="versEdition()">Éditer</button>
 

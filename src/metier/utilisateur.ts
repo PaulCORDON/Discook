@@ -6,5 +6,7 @@ export class utilisateur{
     constructor(pseudo : string, favoris : string[]){
         this.pseudo = pseudo;
         this.favoris = favoris;
+
+        console.log("/////Création utilisateur : " + pseudo + " (" + favoris + ")");
     }
 }
