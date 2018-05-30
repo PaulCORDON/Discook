@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-// import *as firebase from 'firebase';
+ import *as firebase from 'firebase';
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -19,7 +19,7 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    /*
+    
     // Config firebase
     var config = {
       apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
@@ -31,7 +31,7 @@ export class MyApp {
     };
     firebase.initializeApp(config);
 
-    */
+    
 
   }
 }
