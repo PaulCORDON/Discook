@@ -25,6 +25,7 @@ import { RealisationRecettePage } from '../pages/realisation-recette/realisation
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { DatabaseProvider } from '../providers/database/database';
 var config = {
   apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
   authDomain: "discook-70c2b.firebaseapp.com",
@@ -70,7 +71,8 @@ var config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GlobalVarsProvider
+    GlobalVarsProvider,
+    DatabaseProvider
   ]
 })
 export class AppModule {}
