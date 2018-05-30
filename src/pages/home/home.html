@@ -49,5 +49,13 @@
   </ion-col>
 </ion-row>
 
-<button ion-fab (tap) = "onClickAjoutRecette()">+</button>
+<ion-list *ngFor="let recette of listRecette">
+  <ion-item (tap) = "onClickRecette(recette)">
+    coucou
+    {{recette.name}}
+    
+  </ion-item>
+</ion-list>
+
+<button ion-fab right (tap) = "onClickAjoutRecette()">+</button>
 </ion-content>

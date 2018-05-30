@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-listRecette;
+listRecette : Recette [];
   constructor(public navCtrl: NavController) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
@@ -19,15 +20,33 @@ listRecette;
       });
     }); 
     console.log("test recup recette "+ this.listRecette);
+
+    
+  
+/*
+      let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
+      afList.snapshotChanges()
+         .map ( changes => {
+            return changes.map (c => ({...c.payload.val()}));
+         })
+         .subscribe(recette => {
+            console.log(JSON.stringify(recette));
+            this.listRecette = recette;
+         });
+   */ 
+       
+    
+         
+     
     
     
 
   }
 
-  onClickRecette()
+  onClickRecette(recette)
   {
     console.log("Ouverture de la page de la présentation brève de la recette");
-    this.navCtrl.push("PresentationBrevePage");
+    this.navCtrl.push("PresentationBrevePage",{recette : recette});
   }
 
   onClickAjoutRecette()
