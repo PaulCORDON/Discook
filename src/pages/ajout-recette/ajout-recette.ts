@@ -36,7 +36,7 @@ export class AjoutRecettePage {
         id :1,
         name : "Cookie",
         image : "Image de Cookie",
-        presentation: " Voici la super recette de cookies de ma grand-mère ",
+        presentation: " Voici la super recette de cookies de sa grand-mère la tchouin ",
         difficulte: 2,
         nb_personnes: 4,
         duree_prepa: "15 min",

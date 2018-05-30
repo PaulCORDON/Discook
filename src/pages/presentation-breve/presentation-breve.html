@@ -15,11 +15,9 @@
 
 <ion-content padding>
   
-  Titre de la recette 
+  {{recette.name}}
 
-  Description de la recette .......................................................................
-    .........................................;
-    ............................................
+  {{recette.presentation}}
   
 
   <ion-grid>
@@ -36,13 +34,13 @@
           <ion-grid>
             <ion-row>
             </ion-row>
-             Préparation : __ min
+             Préparation : {{recette.duree_prepa}}
             <ion-row>
             </ion-row>
-             Cuisson : __ min
+             Cuisson : {{recette.duree_cuisson}}
             <ion-row>
             </ion-row>
-             Temps total : __ min
+            <!-- Temps total : {{recette.duree_total}} -->
           </ion-grid>
         </ion-label>
       </ion-col>
@@ -51,10 +49,10 @@
   </ion-grid>
 
 
-  <footer>
+  <ion-footer>
     <ion-grid>
       <ion-row>
-        <ion-col> <!-- bouton pour acceder à l'edition de la recette-->
+        <ion-col> <!-- bouton pour acceder à l'edition de la recette -->
             <button ion-button round clear icon-start round   (click)="Editer()">
                 <ion-icon name="md-create"></ion-icon>
                 Éditer le recette
@@ -69,7 +67,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </footer>
+  </ion-footer>
 
   <!--FAB pour lancer la recette-->
   <ion-fab right bottom >
