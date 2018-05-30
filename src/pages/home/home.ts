@@ -3,12 +3,20 @@ import { NavController } from 'ionic-angular';
 import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { Keyword } from '../../metier/keyword';
+import { Etape } from '../../metier/etape';
+import { Annotation } from '../../metier/annotation';
+import { Ingredient } from '../../metier/ingredient';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-listRecette : Recette [];
+
+listRecette ;
+listObjRecette : Array<Recette> = new Array<Recette>() ;
+longueur : number;
+ifor : number;
   constructor(public navCtrl: NavController) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
@@ -20,32 +28,12 @@ listRecette : Recette [];
         return false;
       });
 
-      
 
 
 
-    }); 
-    
+}); 
 
-    
-  
-/*
-      let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
-      afList.snapshotChanges()
-         .map ( changes => {
-            return changes.map (c => ({...c.payload.val()}));
-         })
-         .subscribe(recette => {
-            console.log(JSON.stringify(recette));
-            this.listRecette = recette;
-         });
-   */ 
-       
-    
-         
-     
-    
-    
+   
 
   }
 
