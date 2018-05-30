@@ -22,6 +22,7 @@ import { AnnotationRecettePage } from '../pages/annotation-recette/annotation-re
 import { EditionRecettePage } from '../pages/edition-recette/edition-recette';
 import { PresentationCompletePage } from '../pages/presentation-complete/presentation-complete';
 import { RealisationRecettePage } from '../pages/realisation-recette/realisation-recette';
+import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { RealisationRecettePage } from '../pages/realisation-recette/realisation
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalVarsProvider
   ]
 })
 export class AppModule {}

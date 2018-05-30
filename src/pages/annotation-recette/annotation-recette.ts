@@ -27,4 +27,8 @@ export class AnnotationRecettePage {
     console.log("poster " + com + " par " + pseudo + " pour l'étape " + etape);
     new Annotation(pseudo,etape,com);
   }
+
+  ouvrirLesParametres(){
+    this.navCtrl.push(`ParametresPage`);
+  }
 }
