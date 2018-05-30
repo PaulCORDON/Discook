@@ -1,10 +1,10 @@
-import { Keyword } from "./keyword";
 import { Etape } from "./etape";
 import { Ingredient } from "./ingredient";
 
 export class Recette{
-    
-    keywords : Keyword[] = [];
+    categorie : string;
+
+    keywords : string[] = [];
     nom : string;
     image : string;
     presentation : string;
@@ -15,7 +15,7 @@ export class Recette{
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
 
-    constructor(keywords : Keyword[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
+    constructor(keywords : string[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
         this.keywords = keywords;
         this.nom = nom;
         this.presentation = presentation;
