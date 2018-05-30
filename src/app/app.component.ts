@@ -6,6 +6,8 @@ import { HomePage } from '../pages/home/home';
 import *as firebase from 'firebase';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 
+
+import { AjoutRecettePage } from '../pages/ajout-recette/ajout-recette';
 @Component({
   templateUrl: 'app.html'
 })
