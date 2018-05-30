@@ -16,7 +16,7 @@ import *as firebase from 'firebase';
 })
 export class AjoutRecettePage {
   reference: firebase.database.Reference;
-
+titre : string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
@@ -33,7 +33,15 @@ export class AjoutRecettePage {
         duree_cuisson: "20 min"
       // Etapes
       // Ingredients
+     
 
+    });
+
+    /* Récupèration des valeurs dans BDD */
+    const item : firebase.database.Reference = firebase.database().ref("Recette/1");
+    item.on('value',PassSnapshot=>{
+      this.titre  = PassSnapshot.val();
+      
     });
   }
 
