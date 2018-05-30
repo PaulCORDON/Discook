@@ -9,5 +9,6 @@ export class Etape{
         this.numero = numero;
         this.texte = texte;
         this.annotations = annotations;
+        console.log("/////Création etape " + this.numero + " : " + this.texte + " (" + this.annotations + ")");
     }
 }

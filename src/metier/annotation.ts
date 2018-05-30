@@ -12,6 +12,6 @@ export class Annotation{
         this.com = commentaire;
         let now = new Date();
         this.date = "" + now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear();
-        console.log(this.pseudo + this.date + this.com);
+        console.log("/////Creation annotation par " + this.pseudo + " le " + this.date + " pour l'etape " + this.etape + " : " + this.com);
     }
 }

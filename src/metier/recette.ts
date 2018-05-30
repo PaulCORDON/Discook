@@ -26,5 +26,7 @@ export class Recette{
         this.tpCuisson = tpCuisson;
         this.etapes = etapes;
         this.ingredients = ingredients;
+
+        console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes\n    difficulte : " + difficulte + "\n     duree de préparation : " + duree + "\ntemps de cuisson : " + tpCuisson);
     }
 }
