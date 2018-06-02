@@ -28,6 +28,7 @@ import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 import { Crop } from '@ionic-native/crop';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { PipesModule } from '../pipes/pipes.module';
 var config = {
   apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
   authDomain: "discook-70c2b.firebaseapp.com",
@@ -54,7 +55,8 @@ var config = {
     PresentationCompletePageModule,
     RealisationRecettePageModule,
     AngularFireModule.initializeApp(config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
