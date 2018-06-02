@@ -3,8 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,10 +23,10 @@ import { EditionRecettePage } from '../pages/edition-recette/edition-recette';
 import { PresentationCompletePage } from '../pages/presentation-complete/presentation-complete';
 import { RealisationRecettePage } from '../pages/realisation-recette/realisation-recette';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
-import { Crop } from '@ionic-native/crop';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { PipesModule } from '../pipes/pipes.module';
+import { DatabaseProvider } from '../providers/database/database';
 var config = {
   apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
   authDomain: "discook-70c2b.firebaseapp.com",
@@ -75,10 +73,8 @@ var config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera,
-    Crop,
-    Base64,
-    GlobalVarsProvider
+    GlobalVarsProvider,
+    DatabaseProvider
   ]
 })
 export class AppModule {}
