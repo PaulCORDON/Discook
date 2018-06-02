@@ -29,7 +29,7 @@
 
       <div>
         <ion-icon md="md-image"></ion-icon>
-        <div><img src="{{imageSrc}}" /></div>
+        <div><img [src]="imageSrc | safe: 'url'" /></div>
       </div>
       <button ion-button (click)='openPhoto()'>
         <ion-icon md="md-download">Téléverser</ion-icon>
