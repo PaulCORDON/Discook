@@ -20,7 +20,7 @@
     <ion-item >
       
       <ion-label icon-start > <ion-icon ios="ios-list-box"></ion-icon> Liste des ingredients défilable</ion-label>
-      <ion-toggle [(ngModel)]="isListeDefilable"></ion-toggle>
+      <ion-toggle [color]="title" [(ngModel)]="isListeDefilable"></ion-toggle>
     </ion-item>
   </ion-row>
   
@@ -28,7 +28,7 @@
   <ion-row>    
     <ion-item >         
       <ion-label icon-start> <ion-icon ios="ios-volume-up"></ion-icon> Activer la lecture des recettes</ion-label>
-      <ion-toggle [(ngModel)]="isLectActive" ></ion-toggle>
+      <ion-toggle [color]="title" [(ngModel)]="isLectActive" ></ion-toggle>
     </ion-item>
   </ion-row>
   
