@@ -6,6 +6,7 @@ import { Etape } from '../../metier/etape';
 import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
 import { ThenableReference } from '@firebase/database-types';
+import { forEach } from '@firebase/util';
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -25,7 +26,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     let listeIngredient = [];
     firebase.database().ref("Ingredient").on('value', itemSnapShot => {
       itemSnapShot.forEach(item=> {
-        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null);
+        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null,item.key);
         listeIngredient.push(ingredient);
         })
     });
@@ -51,6 +52,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
+
                 ); 
                 listeRecette.push(recette);
               })
@@ -59,11 +61,10 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           return false;
         });
       });
+
       resolve (listeRecette);
     });
   }
-
-  
 
 
   AddRecette(recette : Recette){
@@ -80,7 +81,23 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       mots_cles:"",
       name:recette.nom,
       presentation:recette.presentation
-    })
+    });
+
+    recette.ingredients.forEach(elem => {
+      recetteRef.child("ingredients").push().set({
+        quantite:elem.quantite,
+        ref:elem.id,
+        unite:elem.unite
+      })
+    });
+
+    recette.etapes.forEach(elem => {
+      let id = this.PutEtape(elem);
+      recetteRef.child("etapes").push().set({
+        ref:id
+      });
+    });
+    
   }
 
   GetIngredients(ref : firebase.database.Reference){
@@ -91,7 +108,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           let quantite = recetteIngredient.child('quantite').val();
           let unite = recetteIngredient.child('unite').val();
           firebase.database().ref("Ingredient/" + recetteIngredient.child('ref').val()).on('value', ingredient => {
-            listIngredients.push(new Ingredient(ingredient.child('nom').val(),ingredient.child('image').val(), +quantite, unite))
+            listIngredients.push(new Ingredient(ingredient.child('nom').val(),ingredient.child('image').val(), +quantite, unite,recetteIngredient.key))
           })
           return false;
         })

@@ -15,12 +15,13 @@
 
 <ion-content padding>
   <ion-card  *ngFor="let ing of listeIngredients">
-    <ion-card-header>
+    <ion-card-header (click)='onClickIngredients(ing)'>
       {{ing.nom}}      
     </ion-card-header>
   
     <ion-card-content>
-      
+        <!--<img [src]="{{ing.image}}" />-->
     </ion-card-content>  
   </ion-card>
+  <button ion-button (click)='onClickValider()'>Valider</button>
 </ion-content>
