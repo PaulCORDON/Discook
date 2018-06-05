@@ -37,14 +37,17 @@ export class DatabaseProvider {
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
+
                 ); 
                 listeRecette.push(item.val());
+                
               })
             })
           })
           return false;
         });
       });
+
       resolve (listeRecette);
     });
   }

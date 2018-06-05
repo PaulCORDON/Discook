@@ -13,7 +13,7 @@ listRecette : Recette [];
 listRecherche : Recette []; // utilisé pour recupérer les recettes de la recherche
    constructor(public navCtrl: NavController, public base : DatabaseProvider) {
 
-    const ref : firebase.database.Reference = firebase.database().ref("Recette");
+    /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
     ref.on('value', itemSnapShot => {
       itemSnapShot.forEach(itemSnap=> {
@@ -22,6 +22,8 @@ listRecherche : Recette []; // utilisé pour recupérer les recettes de la reche
       });
     }); 
     console.log("test recup recette "+ this.listRecette.length);
+    console.log("mots clef " + this.listRecette[0]);*/
+    
 
     
   
@@ -36,11 +38,14 @@ listRecherche : Recette []; // utilisé pour recupérer les recettes de la reche
             this.listRecette = recette;
          });
    */ 
+  
        
 
+  this.base.GetRecettes().then(result => {
+    this.listRecette = result;
+  })  
     
-    
-
+  console.log("mots clef " + this.listRecette.length);
   }
       
   onSearch(ev : any ){
@@ -52,7 +57,7 @@ listRecherche : Recette []; // utilisé pour recupérer les recettes de la reche
       for (var i = 0 ; i < this.listRecette.length ; i++){
           for (var j = 0 ; j <  this.listRecette[i].motsCles.length ; j ++){
           console.log("taille de la liste recette : "+ this.listRecette.length);
-          console.log("taille de la liste de mots clef : "+ this.listRecette[i].motsCles.length);
+          console.log("taille de la liste de mots clef : "+ this.listRecette[i]);
 
               console.log("mots clef " + this.listRecette[i].motsCles[j]);
               
