@@ -81,8 +81,9 @@ export class AjoutRecettePage {
   }
 
   // Ajouter une recette à la BDD
-  onClickAddRecette(titre:string, presentation: string){
-    this.recette=new Recette(null,titre,presentation,this.imgUrl,0,"0","0",0,null,null);
+  onClickAddRecette(){
+    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,null,null);
+    this.base.AddRecette(this.recette);
   }
 
   ionViewDidLoad() {

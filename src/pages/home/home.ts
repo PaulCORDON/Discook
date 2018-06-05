@@ -4,6 +4,12 @@ import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { DatabaseProvider } from '../../providers/database/database';
+import { Ingredient } from '../../metier/ingredient';
+import { Etape } from '../../metier/etape';
+import { Annotation } from '../../metier/annotation';
+
+
+
 import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 @Component({
   selector: 'page-home',
@@ -12,8 +18,10 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 export class HomePage {
 listRecette : Recette [];
   constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+etape : Etape;
+anno : Annotation;
 
-    const ref : firebase.database.Reference = firebase.database().ref("Recette");
+    /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
     ref.on('value', itemSnapShot => {
       itemSnapShot.forEach(itemSnap=> {
@@ -21,9 +29,12 @@ listRecette : Recette [];
         return false;
       });
     }); 
-    console.log("test recup recette "+ this.listRecette);
-
+    console.log("test recup recette "+ this.listRecette.length);
+    console.log("mots clef " + this.listRecette[0]);*/
     
+
+
+ 
   
 /*
       let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
@@ -36,14 +47,42 @@ listRecette : Recette [];
             this.listRecette = recette;
          });
    */ 
+  
        
-    
-         
-     
-    
-    
 
+  this.base.GetRecettes().then(result => {
+    this.listRecette = result;
+  })  
+    
+  console.log("mots clef " + this.listRecette.length);
   }
+      
+  onSearch(ev : any ){
+
+    let val = ev.target.value;
+    console.log("valeur recuperer dans la search bar " + val );
+    console.log("taille de la liste recette : "+ this.listRecette.length);
+
+      for (var i = 0 ; i < this.listRecette.length ; i++){
+          for (var j = 0 ; j <  this.listRecette[i].motsCles.length ; j ++){
+          console.log("taille de la liste recette : "+ this.listRecette.length);
+          console.log("taille de la liste de mots clef : "+ this.listRecette[i]);
+
+              console.log("mots clef " + this.listRecette[i].motsCles[j]);
+              
+
+              console.log(i + j);
+              
+              
+
+
+          }
+
+      }
+
+    
+      }
+         
 
   onClickRecette(recette)
   {
