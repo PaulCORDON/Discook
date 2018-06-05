@@ -26,10 +26,10 @@
 
       <div>
         <ion-icon md="md-image"></ion-icon>
-        <div>Photo</div>
+        <div><img [src]="imgUrl | safe: 'url'" /></div>
       </div>
       <button ion-button>
-        <ion-icon md="md-download">Téléverser</ion-icon>
+        <ion-icon md="md-download" (click)="openPhoto()">Téléverser</ion-icon>
       </button>
     </ion-card>
   </form>

@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -23,8 +25,10 @@ import { EditionRecettePage } from '../pages/edition-recette/edition-recette';
 import { PresentationCompletePage } from '../pages/presentation-complete/presentation-complete';
 import { RealisationRecettePage } from '../pages/realisation-recette/realisation-recette';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
+import { Crop } from '@ionic-native/crop';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { PipesModule } from '../pipes/pipes.module';
 import { DatabaseProvider } from '../providers/database/database';
 import { HttpClientModule } from '@angular/common/http';
 var config = {
@@ -54,6 +58,7 @@ var config = {
     RealisationRecettePageModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
+    PipesModule
     HttpClientModule
   ],
   bootstrap: [IonicApp],
@@ -73,8 +78,10 @@ var config = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GlobalVarsProvider,
-    DatabaseProvider
+    Camera,
+    Crop,
+    Base64,
+    GlobalVarsProvider
   ]
 })
 export class AppModule {}
