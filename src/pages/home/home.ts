@@ -17,9 +17,10 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 })
 export class HomePage {
 listRecette : Recette [];
-  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 etape : Etape;
 anno : Annotation;
+  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+
 
     /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
@@ -54,7 +55,6 @@ anno : Annotation;
     this.listRecette = result;
   })  
     
-  console.log("mots clef " + this.listRecette.length);
   }
       
   onSearch(ev : any ){
@@ -94,7 +94,7 @@ anno : Annotation;
   {
     console.log("Ouverture de la page de l'ajout d'une recette");
     this.navCtrl.push("AjoutRecettePage");
-    this.varGlob.setListeIngredientsSelectionner([]);
+    //this.varGlob.setListeIngredientsSelectionner([]);
   }
 
   onClickParametre()
