@@ -19,6 +19,19 @@ export class DatabaseProvider {
     console.log('Hello DatabaseProvider Provider');
   }
 
+GetAllIngredients(): Promise<Array<Ingredient>>{
+  return new Promise<Array<Ingredient>>((resolve, reject) => {
+    let listeIngredient = [];
+    firebase.database().ref("Ingredient").on('value', itemSnapShot => {
+      itemSnapShot.forEach(item=> {
+        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null);
+        listeIngredient.push(ingredient);
+        })
+    });
+    resolve (listeIngredient);
+  });
+}
+
   GetRecettes() : Promise<Array<Recette>>{
     return new Promise<Array<Recette>>((resolve, reject) => {
       let listeRecette = [];
@@ -38,7 +51,7 @@ export class DatabaseProvider {
                   etapes,
                   ingredients
                 ); 
-                listeRecette.push(item.val());
+                listeRecette.push(recette);
               })
             })
           })
@@ -49,20 +62,33 @@ export class DatabaseProvider {
     });
   }
 
+  AddAnnotation(anno: Annotation){
+
+  }
+
+  AddEtape(etape : Etape){
+
+  }
+
+  AddIngredient(ingredient : Ingredient){
+
+  }
+
   AddRecette(recette : Recette){
     let reference = firebase.database().ref('Recette/');
-    reference.push().set({
-      id :1,
-      name : "Cookie",
-      image : "Image de Cookie",
-      presentation: " Voici la super recette de cookies de ma grand-mère ",
-      difficulte: 2,
-      nb_personnes: 4,
-      duree_prepa: "15 min",
-      duree_cuisson: "20 min"
-    // Etapes
-    // Ingredients
-    });
+    let recetteRef = reference.push()
+    recetteRef.set({
+      difficulte:recette.difficulte,
+      duree_cuisson:recette.tpCuisson,
+      duree_prepa:recette.duree,
+      nb_personnes:recette.nbPers,
+      etapes:"",
+      image:recette.image,
+      ingredients:"",
+      mots_cles:"",
+      name:recette.nom,
+      presentation:recette.presentation
+    })
   }
 
   GetIngredients(ref : firebase.database.Reference){

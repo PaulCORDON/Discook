@@ -85,5 +85,5 @@
     <plugin name="cordova-plugin-firebase" spec="^1.0.5" />
     <plugin name="cordova-plugin-crop" spec="^0.4.0" />
     <plugin name="com-badrit-base64" spec="^0.2.0" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="7.0.0" />
 </widget>

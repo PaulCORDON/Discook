@@ -40,25 +40,28 @@
     </ion-card>
   </ion-col>
 
-  <ion-col>
-      <ion-card (tap) = "onClickRecette()">
-          <ion-row>
-            <img src ="assets/imgs/placeholder.jpg">
-          </ion-row>
-          <ion-row>
-            Titre
-          </ion-row>
+    <ion-col>
+      <ion-card (tap)="onClickRecette()">
+        <ion-row>
+          <img src="assets/imgs/placeholder.jpg">
+        </ion-row>
+        <ion-row>
+          Titre
+        </ion-row>
       </ion-card>
-  </ion-col>
-</ion-row>
+    </ion-col>
 
-<ion-list *ngFor="let recette of listRecette">
-  <ion-item (tap) = "onClickRecette(recette)">
-    coucou
-    {{recette.name}}
-    
-  </ion-item>
-</ion-list>
+    <ion-col>
+      <ion-card (tap)="onClickRecette()">
+        <ion-row>
+          <img src="assets/imgs/placeholder.jpg">
+        </ion-row>
+        <ion-row>
+          Titre
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
 <ion-fab right bottom > 
   <button   (tap) = "onClickAjoutRecette()" ion-fab ><ion-icon>+</ion-icon></button> 
