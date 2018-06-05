@@ -16,11 +16,11 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  listRecette : Recette [];
-
-  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+  listRecette : Recette [] = [];
   etape : Etape;
   anno : Annotation;
+
+  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 
     /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
