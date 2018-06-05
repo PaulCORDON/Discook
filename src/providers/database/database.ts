@@ -6,6 +6,7 @@ import { Etape } from '../../metier/etape';
 import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
 import { ThenableReference } from '@firebase/database-types';
+import { forEach } from '@firebase/util';
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -51,6 +52,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
+
                 ); 
                 listeRecette.push(recette);
               })
@@ -59,6 +61,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           return false;
         });
       });
+
       resolve (listeRecette);
     });
   }
