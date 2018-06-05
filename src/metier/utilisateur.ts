@@ -7,6 +7,6 @@ export class utilisateur{
         this.pseudo = pseudo;
         this.favoris = favoris;
 
-        console.log("/////Création utilisateur : " + pseudo + " (" + favoris + ")");
+        //console.log("/////Création utilisateur : " + pseudo + " (" + favoris + ")");
     }
 }

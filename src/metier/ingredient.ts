@@ -14,6 +14,6 @@ export class Ingredient{
         this.id = id;
 
 
-        console.log("/////Création Ingredient " + nom + " (visuel : " + image + ") pour " + quantite + unite);
+        //console.log("/////Création Ingredient " + nom + " (visuel : " + image + ") pour " + quantite + unite);
     }
 }

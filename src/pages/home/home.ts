@@ -22,34 +22,12 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 
-    /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
-    this.listRecette = [];
-    ref.on('value', itemSnapShot => {
-      itemSnapShot.forEach(itemSnap=> {
-        this.listRecette.push(itemSnap.val());
-        return false;
-      });
-    }); 
-    console.log("test recup recette "+ this.listRecette.length);
-    console.log("mots clef " + this.listRecette[0]);*/
-    
-    /*
-    let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
-    afList.snapshotChanges()
-        .map ( changes => {
-          return changes.map (c => ({...c.payload.val()}));
-        })
-        .subscribe(recette => {
-          console.log(JSON.stringify(recette));
-          this.listRecette = recette;
-        });
-    */ 
-
+  
     this.base.GetRecettes().then(result => {
       this.listRecette = result;
-    })  
-      
-    console.log("mots clef " + this.listRecette.length);
+      console.log(this.listRecette);
+    })
+    
   }
   
       
