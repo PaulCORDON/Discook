@@ -5,6 +5,7 @@ import { Recette } from '../../metier/recette';
 import { Etape } from '../../metier/etape';
 import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
+import { ThenableReference } from '@firebase/database-types';
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -129,5 +130,48 @@ export class DatabaseProvider {
       })
       resolve(listMots);
     })
+  }
+/*Ajout d'un nouvel ingredient dans la base de donnée, cette fonction renvoie la référence dans la base de donnée du nouvel ingredient */
+  PutNewIngredient(ingredient : Ingredient){
+    let reference = firebase.database().ref('Ingredient/');
+    let ref = reference.push();
+    ref.set({
+      nom :ingredient.nom,
+      image : ingredient.image
+    });
+    console.log("la reference du nouvelle ingredient : " + ref.key);
+    return (ref.key);
+  }
+
+  PutEtape(etape : Etape){
+    let reference = firebase.database().ref('Etape');
+    let ref = reference.push();
+    ref.set({
+      numero : etape.numero,
+      // image : etape.image;
+      texte : etape.texte
+
+    });
+
+    etape.annotations.forEach(item =>{
+      let reference = firebase.database().ref('Etape/'+ ref.key+ '/annotations');
+      let refAnno = reference.push();
+      refAnno.set({
+        reference : refAnno.key
+      });
+      this.PutAnnotation(refAnno,item);
+    }  
+    )
+    return(ref.key);
+  }
+
+  PutAnnotation(ref : ThenableReference, annotation : Annotation){
+    let reference = firebase.database().ref('Annotation/'+ref.key);
+    reference.set({
+      commentaire : annotation.com,
+      date : annotation.date,
+      pseudo : annotation.pseudo
+    });
+    return (ref.key);
   }
 }
