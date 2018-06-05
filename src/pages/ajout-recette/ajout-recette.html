@@ -7,26 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ajoutRecettePage</ion-title>
+    <ion-title>Ajouter une recette</ion-title>
+
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
 
   <h1>Créer une recette</h1>
   <form>
     <ion-card>
-      <div>
-        <ion-icon md="md-create"></ion-icon>
-        <input type="text" name="Titre de la recette" value="Titre de la recette" size="20" />
-      </div>
+      <ion-icon md="md-create"></ion-icon>
+      <ion-item>
+
+        <ion-label floating>Titre</ion-label>
+        <ion-input type="text" name="Titre de la recette"></ion-input>
+      </ion-item>
 
       <div>
         <ion-icon md="md-image"></ion-icon>
-        <div><img [src]="imgUrl | safe: 'url'" /></div>
+        <div>
+          <img [src]="imgUrl | safe: 'url'" />
+        </div>
       </div>
       <button ion-button>
         <ion-icon md="md-download" (click)="openPhoto()">Téléverser</ion-icon>
@@ -35,7 +40,7 @@
   </form>
   <ion-card>
     <div>Ingrédients</div>
-    <button ion-button (click)='AddIngredient()'>
+    <button ion-button (click)='OnClickAddIngredient()'>
       <ion-icon md="md-add"></ion-icon>
     </button>
     <ion-card>
@@ -47,5 +52,7 @@
     <div>Etape 1</div>
     <ion-card>détails de l'étape</ion-card>
   </ion-card>
+
+  <button ion-button (click)="onClickAddRecette()">test</button>
 
 </ion-content>

@@ -6,4 +6,29 @@ page-home{
     
     }
 
+    .textCard{
+        margin-bottom:4px;
+        margin-top: 4px;
+        border-width: 3px;
+        text-align: center;
+        
+        border-color: black;
+        border-style:solid;
+        background-color: white;
+        color: black;
+        padding: 3px 5px;
+        
+    }
+
+    .imageCard{
+
+    }
+
+    .card-md{
+        background: none;
+        -webkit-box-shadow: none;
+	    -moz-box-shadow: none;
+	    box-shadow: none;
+    }
+
 }

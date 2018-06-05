@@ -1,61 +1,60 @@
 <ion-header>
-  <ion-row>
-    <ion-col col-2 (tap)="onClickParametre()">
-        <ion-icon name="settings"></ion-icon>
-    </ion-col>
-
-    <ion-col>
-      <div>Discook</div>
-    </ion-col>
-
+  <ion-row class="centrage">
     <ion-col col-2>
-      </ion-col>
-
+   
+    </ion-col>
+    <ion-col class="title">
+      <ion-title>Discook</ion-title>
+    </ion-col>
+    <ion-col col-2><ion-buttons end>
+        <button ion-button icon-only (click)="onClickParametre()">
+          <ion-icon name="settings"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-col>
+    
+  </ion-row>
       
-  </ion-row>
-  <ion-row>
-      <ion-searchbar
-        [(ngModel)]="myInput"
-        [showCancelButton]="shouldShowCancel"
-        (ionInput)="onInput($event)"
-        (ionCancel)="onCancel($event)">
-    </ion-searchbar>
-  </ion-row>
-</ion-header>
+   
+   
+        <ion-searchbar
+          [(ngModel)]="myInput"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="onInput($event)"
+          (ionCancel)="onCancel($event)">
+      </ion-searchbar>
+   
+  </ion-header>
 
 <ion-content>
 <ion-row>
   
   <ion-col>
     <ion-card (tap) = "onClickRecette()">
-      <ion-row>
+      <ion-row class="imageCard">
         <img src ="assets/imgs/placeholder.jpg">
       </ion-row>
-      <ion-row>
+      <ion-row class="textCard">
         Titre
       </ion-row>
     </ion-card>
   </ion-col>
 
-  <ion-col>
-      <ion-card (tap) = "onClickRecette()">
-          <ion-row>
-            <img src ="assets/imgs/placeholder.jpg">
-          </ion-row>
-          <ion-row>
-            Titre
-          </ion-row>
+    <ion-col>
+      <ion-card (tap)="onClickRecette()">
+        <ion-row>
+          <img src="assets/imgs/placeholder.jpg">
+        </ion-row>
+        <ion-row>
+          Titre
+        </ion-row>
       </ion-card>
-  </ion-col>
-</ion-row>
+    </ion-col>
 
-<ion-list *ngFor="let recette of listRecette">
-  <ion-item (tap) = "onClickRecette(recette)">
-    coucou
-    {{recette.name}}
-    
-  </ion-item>
-</ion-list>
+   
+  </ion-row>
 
-<button ion-fab right (tap) = "onClickAjoutRecette()">+</button>
+<ion-fab right bottom > 
+  <button   (tap) = "onClickAjoutRecette()" ion-fab ><ion-icon>+</ion-icon></button> 
+</ion-fab> 
 </ion-content>
