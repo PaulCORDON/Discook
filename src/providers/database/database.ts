@@ -5,6 +5,7 @@ import { Recette } from '../../metier/recette';
 import { Etape } from '../../metier/etape';
 import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
+import { forEach } from '@firebase/util';
 
 /*
   Generated class for the DatabaseProvider provider.
