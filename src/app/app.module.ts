@@ -81,7 +81,8 @@ var config = {
     Camera,
     Crop,
     Base64,
-    GlobalVarsProvider
+    GlobalVarsProvider,
+    DatabaseProvider
   ]
 })
 export class AppModule {}
