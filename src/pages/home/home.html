@@ -27,7 +27,18 @@
   </ion-header>
 
 <ion-content>
-  <ion-row>
+<ion-row>
+  
+  <ion-col>
+    <ion-card (tap) = "onClickRecette()">
+      <ion-row class="imageCard">
+        <img src ="assets/imgs/placeholder.jpg">
+      </ion-row>
+      <ion-row class="textCard">
+        Titre
+      </ion-row>
+    </ion-card>
+  </ion-col>
 
     <ion-col>
       <ion-card (tap)="onClickRecette()">
@@ -40,16 +51,7 @@
       </ion-card>
     </ion-col>
 
-    <ion-col>
-      <ion-card (tap)="onClickRecette()">
-        <ion-row>
-          <img src="assets/imgs/placeholder.jpg">
-        </ion-row>
-        <ion-row>
-          Titre
-        </ion-row>
-      </ion-card>
-    </ion-col>
+   
   </ion-row>
 
 <ion-fab right bottom > 

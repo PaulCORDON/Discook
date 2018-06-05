@@ -4,12 +4,22 @@ import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { DatabaseProvider } from '../../providers/database/database';
+import { Ingredient } from '../../metier/ingredient';
+import { Etape } from '../../metier/etape';
+import { Annotation } from '../../metier/annotation';
+
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 listRecette : Recette [];
+
+etape : Etape;
+anno : Annotation;
+
   constructor(public navCtrl: NavController, public base : DatabaseProvider) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
@@ -22,7 +32,8 @@ listRecette : Recette [];
     }); 
     console.log("test recup recette "+ this.listRecette);
 
-    
+
+ 
   
 /*
       let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
@@ -36,7 +47,10 @@ listRecette : Recette [];
          });
    */ 
        
-    
+    this.anno = new Annotation("c est moi","1","cette étape est la plus importante","5/06");
+    this.etape = new Etape(1,"manger le chocolat",[this.anno]);
+
+    base.PutEtape(this.etape);
          
      
     
