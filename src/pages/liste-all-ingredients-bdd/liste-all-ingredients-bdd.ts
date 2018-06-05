@@ -26,7 +26,7 @@ export class ListeAllIngredientsBddPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListeAllIngredientsBddPage');
     this.base.GetAllIngredients().then((rep) => {
-      this.listeIngredients=rep;
+      this.listeIngredients=rep.sort();
       console.log(`getParamEm2 ok`);  
     })
   }

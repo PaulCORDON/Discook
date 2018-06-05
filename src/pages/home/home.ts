@@ -16,11 +16,11 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
   templateUrl: 'home.html'
 })
 export class HomePage {
-listRecette : Recette [];
-etape : Etape;
-anno : Annotation;
-  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+  listRecette : Recette [] = [];
+  etape : Etape;
+  anno : Annotation;
 
+  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 
     /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
@@ -33,30 +33,25 @@ anno : Annotation;
     console.log("test recup recette "+ this.listRecette.length);
     console.log("mots clef " + this.listRecette[0]);*/
     
+    /*
+    let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
+    afList.snapshotChanges()
+        .map ( changes => {
+          return changes.map (c => ({...c.payload.val()}));
+        })
+        .subscribe(recette => {
+          console.log(JSON.stringify(recette));
+          this.listRecette = recette;
+        });
+    */ 
 
-
- 
-  
-/*
-      let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
-      afList.snapshotChanges()
-         .map ( changes => {
-            return changes.map (c => ({...c.payload.val()}));
-         })
-         .subscribe(recette => {
-            console.log(JSON.stringify(recette));
-            this.listRecette = recette;
-         });
-   */ 
-  
-       
-
-  this.base.GetRecettes().then(result => {
-    this.listRecette = result;
-  })  
-    
-  console.log("mots clef " + this.listRecette);
+    this.base.GetRecettes().then(result => {
+      this.listRecette = result;
+    })  
+      
+    console.log("mots clef " + this.listRecette.length);
   }
+  
       
   onSearch(ev : any ){
 
@@ -64,21 +59,17 @@ anno : Annotation;
     console.log("valeur recuperer dans la search bar " + val );
     console.log("taille de la liste recette : "+ this.listRecette.length);
 
-      for (var i = 0 ; i < this.listRecette.length ; i++){
-          for (var j = 0 ; j <  this.listRecette[i].motsCles.length ; j ++){
+    for (var i = 0 ; i < this.listRecette.length ; i++){
+        for (var j = 0 ; j <  this.listRecette[i].motsCles.length ; j ++){
           console.log("taille de la liste recette : "+ this.listRecette.length);
           console.log("taille de la liste de mots clef : "+ this.listRecette[i]);
 
-              console.log("mots clef " + this.listRecette[i].motsCles[j]);
-              
-
-              console.log(i + j);     
-             }
-
-      }
-
-    
-      }
+          console.log("mots clef " + this.listRecette[i].motsCles[j]);
+          
+          console.log(i + j);
+        }
+    }
+  }
          
 
   onClickRecette(recette)
