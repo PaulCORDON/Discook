@@ -63,17 +63,8 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     });
   }
 
-  AddAnnotation(anno: Annotation){
+  
 
-  }
-
-  AddEtape(etape : Etape){
-
-  }
-
-  AddIngredient(ingredient : Ingredient){
-
-  }
 
   AddRecette(recette : Recette){
     let reference = firebase.database().ref('Recette/');
