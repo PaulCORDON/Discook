@@ -39,14 +39,17 @@
   </form>
   <ion-card>
     <div class="titra">Sélection des ingrédients</div>
+    <ion-card  *ngFor="let ing of varGlob.getListeIngredientsSelectionner()">
+      <ion-card-header (click)='onClickIngredients(ing)'>
+        {{ing.nom}}      
+      </ion-card-header>
     
-    <ion-card>
-      <div>Poulet</div>
+      <ion-card-content>
+      </ion-card-content>  
+    
     </ion-card>
 
-    <ion-card>
-        <div>Farine</div>
-      </ion-card>
+    
 
       <button ion-button (click)='OnClickAddIngredient()'>
           <ion-icon md="md-add"></ion-icon>

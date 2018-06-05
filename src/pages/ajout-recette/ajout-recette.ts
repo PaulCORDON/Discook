@@ -6,6 +6,7 @@ import { Camera } from '@ionic-native/camera';
 import { Recette } from '../../metier/recette';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
+import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 /**
  * Generated class for the AjoutRecettePage page.
  *
@@ -26,7 +27,7 @@ export class AjoutRecettePage {
   recette : Recette;
   // listIngredients: Ingredient[];
 
-  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64 ) {
+  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
 
 
 
@@ -81,7 +82,7 @@ export class AjoutRecettePage {
 
   // Ajouter une recette à la BDD
   onClickAddRecette(){
-    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,null,null);
+    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,[],[]);
     this.base.AddRecette(this.recette);
   }
 

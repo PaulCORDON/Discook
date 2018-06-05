@@ -78,9 +78,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       duree_cuisson:recette.tpCuisson,
       duree_prepa:recette.duree,
       nb_personnes:recette.nbPers,
-      etapes:"",
       image:recette.image,
-      ingredients:"",
       mots_cles:"",
       name:recette.nom,
       presentation:recette.presentation
