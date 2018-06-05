@@ -14,8 +14,8 @@
 
 
 <ion-content padding>
-  <ion-card  *ngFor="let ing of listeIngredients">
-    <ion-card-header (click)='onClickIngredients(ing)'>
+  <ion-card  *ngFor="let ing of listeIngredients" (click)='onClickIngredients(ing)'>
+    <ion-card-header >
       {{ing.nom}}      
     </ion-card-header>
   
