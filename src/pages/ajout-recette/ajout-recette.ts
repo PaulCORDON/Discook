@@ -26,9 +26,9 @@ export class AjoutRecettePage {
   recette : Recette;
   // listIngredients: Ingredient[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64 ) {
+  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64 ) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
+
 
     /* REQUETE TEST AJOUT BDD */
     this.reference = firebase.database().ref('Rsecette/'+ 1);
