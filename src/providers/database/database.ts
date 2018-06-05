@@ -52,6 +52,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
+
                 ); 
                 listeRecette.push(recette);
               })
@@ -60,6 +61,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           return false;
         });
       });
+
       resolve (listeRecette);
     });
   }
