@@ -19,6 +19,19 @@ export class DatabaseProvider {
     console.log('Hello DatabaseProvider Provider');
   }
 
+GetAllIngredients(): Promise<Array<Ingredient>>{
+  return new Promise<Array<Ingredient>>((resolve, reject) => {
+    let listeIngredient = [];
+    firebase.database().ref("Ingredient").on('value', itemSnapShot => {
+      itemSnapShot.forEach(item=> {
+        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null);
+        listeIngredient.push(ingredient);
+        })
+    });
+    resolve (listeIngredient);
+  });
+}
+
   GetRecettes() : Promise<Array<Recette>>{
     return new Promise<Array<Recette>>((resolve, reject) => {
       let listeRecette = [];

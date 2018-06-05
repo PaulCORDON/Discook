@@ -88,7 +88,7 @@ export class AjoutRecettePage {
     console.log('ionViewDidLoad AjoutRecettePage');
   }
 
-  AddIngredient(){
-    this.navCtrl.push('ListeIngredientPage');
+  OnClickAddIngredient(){
+    this.navCtrl.push(`ListeAllIngredientsBddPage`);
   }
 }
