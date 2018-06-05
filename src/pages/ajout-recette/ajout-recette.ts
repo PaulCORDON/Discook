@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseProvider } from '../../providers/database/database';
 import *as firebase from 'firebase';
 import { Camera } from '@ionic-native/camera';
 import { Recette } from '../../metier/recette';
@@ -26,6 +27,8 @@ export class AjoutRecettePage {
   // listIngredients: Ingredient[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64 ) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
 
     /* REQUETE TEST AJOUT BDD */
     this.reference = firebase.database().ref('Rsecette/'+ 1);

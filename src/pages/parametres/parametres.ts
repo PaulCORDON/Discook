@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AjoutRecettePage } from '../ajout-recette/ajout-recette';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the ParametresPage page.
@@ -16,7 +17,7 @@ import { AjoutRecettePage } from '../ajout-recette/ajout-recette';
 })
 export class ParametresPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
   }
   isListeDefilable:boolean=true;
   isLectActive:boolean=true;

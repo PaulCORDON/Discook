@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AnnotationRecettePage } from '../annotation-recette/annotation-recette';
 import { EditionRecettePage } from '../edition-recette/edition-recette';
 import { Recette } from '../../metier/recette';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the PresentationCompletePage page.
@@ -18,7 +19,7 @@ import { Recette } from '../../metier/recette';
 })
 export class PresentationCompletePage {
  recette:Recette;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
     this.recette=this.navParams.get("recette");
   }
 
