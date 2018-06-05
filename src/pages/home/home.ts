@@ -22,7 +22,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 
-  constructor(public navCtrl: NavController, public base : DatabaseProvider) {
   
     this.base.GetRecettes().then(result => {
       this.listRecette = result;
