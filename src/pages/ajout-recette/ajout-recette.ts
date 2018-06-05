@@ -82,7 +82,7 @@ export class AjoutRecettePage {
 
   // Ajouter une recette à la BDD
   onClickAddRecette(){
-    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,null,null);
+    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,[],[]);
     this.base.AddRecette(this.recette);
   }
 
