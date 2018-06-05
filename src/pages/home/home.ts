@@ -17,9 +17,10 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 })
 export class HomePage {
 listRecette : Recette [];
-  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 etape : Etape;
 anno : Annotation;
+  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+
 
     /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
@@ -54,7 +55,7 @@ anno : Annotation;
     this.listRecette = result;
   })  
     
-  console.log("mots clef " + this.listRecette.length);
+  console.log("mots clef " + this.listRecette);
   }
       
   onSearch(ev : any ){
@@ -71,12 +72,8 @@ anno : Annotation;
               console.log("mots clef " + this.listRecette[i].motsCles[j]);
               
 
-              console.log(i + j);
-              
-              
-
-
-          }
+              console.log(i + j);     
+             }
 
       }
 
