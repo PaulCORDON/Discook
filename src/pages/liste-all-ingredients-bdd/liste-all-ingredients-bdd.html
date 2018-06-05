@@ -14,10 +14,19 @@
 
 
 <ion-content padding>
+<<<<<<< HEAD
   <ion-card  *ngFor="let ing of listeIngredients">
 
     <ion-row>
     <ion-col col-4>
+=======
+  <ion-card  *ngFor="let ing of listeIngredients" (click)='onClickIngredients(ing)'>
+    <ion-card-header >
+      {{ing.nom}}      
+    </ion-card-header>
+  
+    <ion-card-content>
+>>>>>>> master
         <img src="{{ing.image}}">
     </ion-col>
     <ion-col (click)='onClickIngredients(ing)'>

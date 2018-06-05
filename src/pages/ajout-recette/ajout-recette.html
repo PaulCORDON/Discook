@@ -38,7 +38,7 @@
     </ion-card>
   </form>
   <ion-card>
-    
+    <div class="titra">Sélection des ingrédients</div>
     <ion-card  *ngFor="let ing of varGlob.getListeIngredientsSelectionner()">
       <ion-card-header (click)='onClickIngredients(ing)'>
         {{ing.nom}}      
@@ -46,7 +46,7 @@
     
       <ion-card-content>
       </ion-card-content>  
-    <div class="titra">Sélection des ingrédients</div>
+    
     </ion-card>
 
     

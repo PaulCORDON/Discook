@@ -36,5 +36,6 @@ export class ListeAllIngredientsBddPage {
   onClickValider(){
     console.log(JSON.stringify(this.listeIngredientsSelectionner));
     this.varGlob.setListeIngredientsSelectionner(this.listeIngredientsSelectionner);
+    this.navCtrl.pop();
   }
 }
