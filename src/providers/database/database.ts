@@ -5,6 +5,7 @@ import { Recette } from '../../metier/recette';
 import { Etape } from '../../metier/etape';
 import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
+import { ThenableReference } from '@firebase/database-types';
 import { forEach } from '@firebase/util';
 
 /*
@@ -25,7 +26,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     let listeIngredient = [];
     firebase.database().ref("Ingredient").on('value', itemSnapShot => {
       itemSnapShot.forEach(item=> {
-        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null);
+        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null,item.key);
         listeIngredient.push(ingredient);
         })
     });
@@ -63,17 +64,6 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     });
   }
 
-  AddAnnotation(anno: Annotation){
-
-  }
-
-  AddEtape(etape : Etape){
-
-  }
-
-  AddIngredient(ingredient : Ingredient){
-
-  }
 
   AddRecette(recette : Recette){
     let reference = firebase.database().ref('Recette/');
@@ -89,7 +79,23 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       mots_cles:"",
       name:recette.nom,
       presentation:recette.presentation
-    })
+    });
+
+    recette.ingredients.forEach(elem => {
+      recetteRef.child("ingredients").push().set({
+        quantite:elem.quantite,
+        ref:elem.id,
+        unite:elem.unite
+      })
+    });
+
+    recette.etapes.forEach(elem => {
+      let id = PutEtape(elem);
+      recetteRef.child("etapes").push().set({
+        ref:id
+      });
+    });
+    
   }
 
   GetIngredients(ref : firebase.database.Reference){
@@ -100,7 +106,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           let quantite = recetteIngredient.child('quantite').val();
           let unite = recetteIngredient.child('unite').val();
           firebase.database().ref("Ingredient/" + recetteIngredient.child('ref').val()).on('value', ingredient => {
-            listIngredients.push(new Ingredient(ingredient.child('nom').val(),ingredient.child('image').val(), +quantite, unite))
+            listIngredients.push(new Ingredient(ingredient.child('nom').val(),ingredient.child('image').val(), +quantite, unite,recetteIngredient.key))
           })
           return false;
         })
@@ -156,5 +162,48 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       })
       resolve(listMots);
     })
+  }
+/*Ajout d'un nouvel ingredient dans la base de donnée, cette fonction renvoie la référence dans la base de donnée du nouvel ingredient */
+  PutNewIngredient(ingredient : Ingredient){
+    let reference = firebase.database().ref('Ingredient/');
+    let ref = reference.push();
+    ref.set({
+      nom :ingredient.nom,
+      image : ingredient.image
+    });
+    console.log("la reference du nouvelle ingredient : " + ref.key);
+    return (ref.key);
+  }
+
+  PutEtape(etape : Etape){
+    let reference = firebase.database().ref('Etape');
+    let ref = reference.push();
+    ref.set({
+      numero : etape.numero,
+      // image : etape.image;
+      texte : etape.texte
+
+    });
+
+    etape.annotations.forEach(item =>{
+      let reference = firebase.database().ref('Etape/'+ ref.key+ '/annotations');
+      let refAnno = reference.push();
+      refAnno.set({
+        reference : refAnno.key
+      });
+      this.PutAnnotation(refAnno,item);
+    }  
+    )
+    return(ref.key);
+  }
+
+  PutAnnotation(ref : ThenableReference, annotation : Annotation){
+    let reference = firebase.database().ref('Annotation/'+ref.key);
+    reference.set({
+      commentaire : annotation.com,
+      date : annotation.date,
+      pseudo : annotation.pseudo
+    });
+    return (ref.key);
   }
 }
