@@ -3,13 +3,14 @@ import { NavController } from 'ionic-angular';
 import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { DatabaseProvider } from '../../providers/database/database';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 listRecette : Recette [];
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public base : DatabaseProvider) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];

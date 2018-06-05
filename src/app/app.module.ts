@@ -26,6 +26,7 @@ import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { DatabaseProvider } from '../providers/database/database';
+import { HttpClientModule } from '@angular/common/http';
 var config = {
   apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
   authDomain: "discook-70c2b.firebaseapp.com",
@@ -52,7 +53,8 @@ var config = {
     PresentationCompletePageModule,
     RealisationRecettePageModule,
     AngularFireModule.initializeApp(config),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

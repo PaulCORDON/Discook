@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class EditionRecettePage {
   pageTitle;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
   }
 
   ionViewDidLoad() {

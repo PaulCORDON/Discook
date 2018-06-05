@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Annotation } from '../../metier/annotation';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Fait par Antoine
@@ -13,7 +14,7 @@ import { Annotation } from '../../metier/annotation';
 })
 export class AnnotationRecettePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
   }
 
   ionViewDidLoad() {
@@ -22,7 +23,7 @@ export class AnnotationRecettePage {
 
   poster(pseudo : string, etape : string, com : string){
     console.log("poster " + com + " par " + pseudo + " pour l'étape " + etape);
-    new Annotation(pseudo,etape,com);
+    new Annotation(pseudo,etape,com, null);
   }
 
   ouvrirLesParametres(){

@@ -3,21 +3,21 @@ import { Ingredient } from "./ingredient";
 
 export class Recette{
     
-    keywords : string[] = [];
+    motsCles : string[] = [];
     nom : string;
     image : string;
     presentation : string;
     difficulte : number;    //entier sur 5 ou 10
     nbPers : number;    
-    duree : number;     //nb de min pour la durée
-    tpCuisson : number; //nb de min pour la cuisson
+    duree : string;
+    tpCuisson : string;
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
     
         
 
-    constructor(keywords : string[], nom : string, presentation : string, image : string, difficulte : number, duree : number, tpCuisson : number, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
-        this.keywords = keywords;
+    constructor(motsCles : string[], nom : string, presentation : string, image : string, difficulte : number, duree : string, tpCuisson : string, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
+        this.motsCles = motsCles;
         this.nom = nom;
         this.presentation = presentation;
         this.image = image;
@@ -28,6 +28,6 @@ export class Recette{
         this.etapes = etapes;
         this.ingredients = ingredients;
 
-        console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes\n    difficulte : " + difficulte + "\n     duree de préparation : " + duree + "\ntemps de cuisson : " + tpCuisson);
+        console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes, difficulte : " + difficulte + ", duree de préparation : " + duree + ", temps de cuisson : " + tpCuisson);
     }
 }

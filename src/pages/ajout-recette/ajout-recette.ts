@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
+import { DatabaseProvider } from '../../providers/database/database';
 
 /**
  * Generated class for the AjoutRecettePage page.
@@ -18,7 +19,7 @@ export class AjoutRecettePage {
   reference: firebase.database.Reference;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
 
     /* REQUETE TEST AJOUT BDD */
     this.reference = firebase.database().ref('Recette/'+ 1);
