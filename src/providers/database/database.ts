@@ -38,6 +38,8 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     return new Promise<Array<Recette>>((resolve, reject) => {
       let listeRecette = [];
       firebase.database().ref("Recette").on('value', itemSnapShot => {
+        let num = itemSnapShot.numChildren();
+        console.log(num)
         itemSnapShot.forEach(item=> {
           this.GetEtapes(item.ref).then(etapes => {
             this.GetIngredients(item.ref).then(ingredients => {
@@ -52,17 +54,18 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
-
-                ); 
+                );
                 listeRecette.push(recette);
+                console.log("trouvé : " + listeRecette.length);
+                if(listeRecette.length == num){
+                  resolve (listeRecette);
+                }
               })
             })
           })
           return false;
         });
       });
-
-      resolve (listeRecette);
     });
   }
 
@@ -125,7 +128,6 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       ref.child('annotations').on('value', res => {
         res.forEach(refAnno => {
           firebase.database().ref("Annotation/"+ refAnno.val()).on('value', anno => {
-            console.log(anno.val());
             listAnnos.push(new Annotation(anno.child('pseudo').val(),currentEtape,anno.child('commentaire').val(),anno.child('date').val()));
           })
           return false;

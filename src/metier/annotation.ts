@@ -14,7 +14,7 @@ export class Annotation{
         if(date == null){
             this.date = this.GetNow();
         }
-        console.log("/////Creation annotation par " + this.pseudo + " le " + this.date + " pour l'etape " + this.etape + " : " + this.com);
+        //console.log("/////Creation annotation par " + this.pseudo + " le " + this.date + " pour l'etape " + this.etape + " : " + this.com);
     }
 
     GetNow() : string{
