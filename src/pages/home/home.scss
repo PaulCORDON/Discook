@@ -6,12 +6,17 @@ page-home{
     
     }
 
+    ion-card{
+        display:inline;
+    }
+
     .textCard{
         margin-bottom:4px;
         margin-top: 4px;
-        border-width: 3px;
+        
         text-align: center;
         
+        border-width: 2px;
         border-color: black;
         border-style:solid;
         background-color: white;
@@ -21,6 +26,12 @@ page-home{
     }
 
     .imageCard{
+        border-width: 3px;
+        border-color: black;
+        border-style:solid;
+        background-color: white;
+
+        padding:3px;
 
     }
 
