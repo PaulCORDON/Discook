@@ -72,9 +72,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       duree_cuisson:recette.tpCuisson,
       duree_prepa:recette.duree,
       nb_personnes:recette.nbPers,
-      etapes:"",
       image:recette.image,
-      ingredients:"",
       mots_cles:"",
       name:recette.nom,
       presentation:recette.presentation
@@ -89,7 +87,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     });
 
     recette.etapes.forEach(elem => {
-      let id = PutEtape(elem);
+      let id = this.PutEtape(elem);
       recetteRef.child("etapes").push().set({
         ref:id
       });

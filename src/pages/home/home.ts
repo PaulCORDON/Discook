@@ -47,14 +47,6 @@ anno : Annotation;
          });
    */ 
        
-    this.anno = new Annotation("c est moi","1","cette étape est la plus importante","5/06");
-    this.etape = new Etape(1,"manger le chocolat",[this.anno]);
-
-    base.PutEtape(this.etape);
-         
-     
-    
-    
 
   }
 
