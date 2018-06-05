@@ -6,6 +6,7 @@ import { Camera } from '@ionic-native/camera';
 import { Recette } from '../../metier/recette';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
+import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 /**
  * Generated class for the AjoutRecettePage page.
  *
@@ -26,7 +27,7 @@ export class AjoutRecettePage {
   recette : Recette;
   // listIngredients: Ingredient[];
 
-  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64 ) {
+  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
 
 
 

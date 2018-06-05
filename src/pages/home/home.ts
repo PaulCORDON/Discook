@@ -4,13 +4,14 @@ import { Recette } from '../../metier/recette';
 import * as firebase from 'firebase';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { DatabaseProvider } from '../../providers/database/database';
+import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 listRecette : Recette [];
-  constructor(public navCtrl: NavController, public base : DatabaseProvider) {
+  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
 
     const ref : firebase.database.Reference = firebase.database().ref("Recette");
     this.listRecette = [];
@@ -54,6 +55,7 @@ listRecette : Recette [];
   {
     console.log("Ouverture de la page de l'ajout d'une recette");
     this.navCtrl.push("AjoutRecettePage");
+    this.varGlob.setListeIngredientsSelectionner([]);
   }
 
   onClickParametre()

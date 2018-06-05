@@ -38,8 +38,13 @@
     <button ion-button (click)='OnClickAddIngredient()'>
       <ion-icon md="md-add"></ion-icon>
     </button>
-    <ion-card>
-      <div>Ingrédient 1</div>
+    <ion-card  *ngFor="let ing of varGlob.getListeIngredientsSelectionner()">
+      <ion-card-header (click)='onClickIngredients(ing)'>
+        {{ing.nom}}      
+      </ion-card-header>
+    
+      <ion-card-content>
+      </ion-card-content>  
     </ion-card>
   </ion-card>
 
