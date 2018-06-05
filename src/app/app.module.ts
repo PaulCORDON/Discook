@@ -58,7 +58,7 @@ var config = {
     RealisationRecettePageModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    PipesModule,
+    PipesModule, 
     HttpClientModule
   ],
   bootstrap: [IonicApp],
