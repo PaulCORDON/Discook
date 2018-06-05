@@ -92,7 +92,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     });
 
     recette.etapes.forEach(elem => {
-      let id = PutEtape(elem);
+      let id = this.PutEtape(elem);
       recetteRef.child("etapes").push().set({
         ref:id
       });
