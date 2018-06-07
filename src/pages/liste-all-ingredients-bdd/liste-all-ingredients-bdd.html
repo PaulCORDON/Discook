@@ -7,21 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>listeAllIngredientsBDD</ion-title>
+    <ion-title>Ingrédients</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-card  *ngFor="let ing of listeIngredients">
-    <ion-card-header (click)='onClickIngredients(ing)'>
-      {{ing.nom}}      
-    </ion-card-header>
-  
-    <ion-card-content>
+  <ion-card  *ngFor="let ing of listeIngredients" (tap)="onClickIngredients(ing)">
+
+    <ion-row>
+    <ion-col col-4>
         <img src="{{ing.image}}">
-    </ion-card-content>  
+    </ion-col>
+    <ion-col>
+      <div class="ingredient">{{ing.nom}}</div>   
+    </ion-col>
+  </ion-row>
+
   </ion-card>
   <button ion-button (click)='onClickValider()'>Valider</button>
 </ion-content>

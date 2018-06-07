@@ -28,6 +28,6 @@ export class Recette{
         this.etapes = etapes;
         this.ingredients = ingredients;
 
-        console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes, difficulte : " + difficulte + ", duree de préparation : " + duree + ", temps de cuisson : " + tpCuisson);
+        //console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes, difficulte : " + difficulte + ", duree de préparation : " + duree + ", temps de cuisson : " + tpCuisson);
     }
 }

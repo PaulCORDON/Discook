@@ -37,17 +37,31 @@
       </button>
     </ion-card>
   </form>
+
+
   <ion-card>
-    
-    <ion-card  *ngFor="let ing of varGlob.getListeIngredientsSelectionner()">
-      <ion-card-header (click)='onClickIngredients(ing)'>
-        {{ing.nom}}      
-      </ion-card-header>
-    
-      <ion-card-content>
-      </ion-card-content>  
     <div class="titra">Sélection des ingrédients</div>
-    </ion-card>
+
+
+
+
+   
+
+    <ion-card  *ngFor="let ing of varGlob.getListeIngredientsSelectionner()">
+
+        <ion-row>
+        <ion-col col-3>
+            <img src="{{ing.image}}">
+        </ion-col>
+        <ion-col>
+          <div class="ingredient">{{ing.nom}}</div>   
+        </ion-col>
+      </ion-row>
+    
+      </ion-card>
+
+
+    
 
     
 
