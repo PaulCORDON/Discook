@@ -30,23 +30,6 @@ export class AjoutRecettePage {
   constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
 
 
-
-    /* REQUETE TEST AJOUT BDD */
-    this.reference = firebase.database().ref('Rsecette/'+ 1);
-    this.reference.set({
-        id :1,
-        name : "Cookie",
-        image : "Image de Cookie",
-        presentation: " Voici la super recette de cookies de sa grand-mère la tchouin ",
-        difficulte: 2,
-        nb_personnes: 4,
-        duree_prepa: "15 min",
-        duree_cuisson: "20 min"
-      // Etapes
-      // Ingredients   
-
-    });
-
     /* Récupèration des valeurs dans BDD */
     const item : firebase.database.Reference = firebase.database().ref("Recette/1");
     item.on('value',PassSnapshot=>{

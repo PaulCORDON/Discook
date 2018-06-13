@@ -41,11 +41,10 @@ export class ListeAllIngredientsBddPage {
   onClickValider(){
     this.listeIngredients.forEach(ing => {
       if(ing.isSelected){
-        this.listeIngredientsSelectionner.push(ing);
+        this.varGlob.getListeIngredientsSelectionner().push(ing);
       }
     });
     console.log(JSON.stringify(this.listeIngredientsSelectionner));
-    this.varGlob.setListeIngredientsSelectionner(this.listeIngredientsSelectionner);
     this.navCtrl.pop();
   }
 }
