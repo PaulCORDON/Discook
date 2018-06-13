@@ -20,6 +20,8 @@ import { EditionRecettePageModule } from '../pages/edition-recette/edition-recet
 import { PresentationCompletePageModule } from '../pages/presentation-complete/presentation-complete.module';
 import { RealisationRecettePageModule } from '../pages/realisation-recette/realisation-recette.module';
 import { AjoutRecettePage } from '../pages/ajout-recette/ajout-recette';
+import { CreditPageModule } from '../pages/credit/credit.module';
+import { CreditPage } from '../pages/credit/credit';
 import { AnnotationRecettePage } from '../pages/annotation-recette/annotation-recette';
 import { EditionRecettePage } from '../pages/edition-recette/edition-recette';
 import { PresentationCompletePage } from '../pages/presentation-complete/presentation-complete';
@@ -56,6 +58,7 @@ var config = {
     PresentationBrevePageModule,
     PresentationCompletePageModule,
     RealisationRecettePageModule,
+    CreditPageModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     PipesModule, 
@@ -72,7 +75,8 @@ var config = {
     ParametresPage,
     PresentationBrevePage,
     PresentationCompletePage,
-    RealisationRecettePage
+    RealisationRecettePage,
+    CreditPage
   ],
   providers: [
     StatusBar,
