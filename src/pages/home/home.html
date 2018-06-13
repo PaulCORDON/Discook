@@ -31,29 +31,6 @@
 
 <ion-content>
  
-<!--
-    <ion-col>
-      <ion-card (tap)="onClickRecette()">
-        <ion-row class="imageCard">
-          <img src="assets/imgs/placeholder.jpg">
-        </ion-row>
-        <ion-row class="textCard">
-          Titre
-        </ion-row>
-      </ion-card>
-    </ion-col>
-
-    <ion-col>
-      <ion-card (tap)="onClickRecette()">
-        <ion-row>
-          <img src="assets/imgs/placeholder.jpg">
-        </ion-row>
-        <ion-row>
-          Titre
-        </ion-row>
-      </ion-card>
-    </ion-col>
--->
 
     <div *ngFor="let item of listRecette; let i = index; let even = even;">
       <span *ngIf="even">       
@@ -62,7 +39,7 @@
             <ion-col>
                 <ion-card (tap)="onClickRecette(listRecette[i])">
                     <ion-row class="imageCard">
-                      <img src="assets/imgs/placeholder.jpg">
+                      <img src="{{listRecette[i].image}}">
                     </ion-row>
                     <ion-row class="textCard">
                         {{ listRecette[i].nom }}
@@ -73,7 +50,7 @@
             <ion-col>
                 <ion-card (tap)="onClickRecette(listRecette[i+1])">
                     <ion-row class="imageCard">
-                      <img src="assets/imgs/placeholder.jpg">
+                      <img src="{{listRecette[i+1].image}}">
                     </ion-row>
                     <ion-row class="textCard">
                         {{ listRecette[i+1].nom }}
