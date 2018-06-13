@@ -5,7 +5,7 @@ export class Ingredient{
     quantite : number;
     unite : string;
     id: any;
-
+    isSelected:boolean=false;
     constructor(nom : string, image : string , quantite : number, unite : string, id:any){
         this.nom = nom;
         this.image = image;
