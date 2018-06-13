@@ -45,6 +45,16 @@
           </button>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-label >Quantité</ion-label>
+            <ion-input type="number" name="quantite" [(ngModel)]="ing.quantite"></ion-input>
+        </ion-col>
+        <ion-col>
+            <ion-label >Unité</ion-label>
+            <ion-input type="text" name="unite" [(ngModel)]="ing.unite"></ion-input>
+        </ion-col>
+      </ion-row>
     </ion-card>
 
     <button ion-button (click)='OnClickAddIngredient()'>
@@ -54,6 +64,41 @@
 
   <ion-card>
     <div class="titra">Conception de la recette</div>
+    <ion-card>
+      <ion-item>
+        <ion-label >Nombre de persone</ion-label>
+        <ion-input type="number" name="Nombre de personne" [(ngModel)]="recette.nbPers"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label >Difficulté</ion-label>
+        <ion-input type="number" name="Difficulté" [(ngModel)]="recette.difficulte"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label >Temps de Préparation</ion-label>
+        <ion-input type="number" name="Temps de Préparation" [(ngModel)]="recette.duree"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label >Temps de Cuisson</ion-label>
+        <ion-input type="number" name="Temps de Cuisson" [(ngModel)]="recette.tpCuisson"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label >Présentation</ion-label>
+        <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
+      </ion-item>
+    </ion-card>
+
     <ion-card *ngFor="let etape of recette.etapes">
       <ion-row>
         <ion-col>
@@ -70,7 +115,6 @@
           </button>
         </ion-col>
       </ion-row>
-      
     </ion-card>
 
     <button ion-button (click)='OnClickAddEtape()'>

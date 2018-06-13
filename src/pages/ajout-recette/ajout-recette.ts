@@ -8,12 +8,6 @@ import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 import { Etape } from '../../metier/etape';
-/**
- * Generated class for the AjoutRecettePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -36,7 +30,6 @@ export class AjoutRecettePage {
     const item : firebase.database.Reference = firebase.database().ref("Recette/1");
     item.on('value',PassSnapshot=>{
       this.titre  = PassSnapshot.val();
-      
     });
   }
 
@@ -97,5 +90,9 @@ export class AjoutRecettePage {
 
   supprEtape(etape){
     this.recette.etapes.splice(this.recette.etapes.indexOf(etape),1);
+
+    for(let i=0;i<this.recette.etapes.length;i++){
+      this.recette.etapes[i].numero=i+1;
+    }
   }
 }
