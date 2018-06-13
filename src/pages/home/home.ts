@@ -16,10 +16,12 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
   templateUrl: 'home.html'
 })
 export class HomePage {
-listRecette : Recette [];
-etape : Etape;
-anno : Annotation;
-  constructor(public navCtrl: NavController, public base : DatabaseProvider,public varGlob:GlobalVarsProvider) {
+  listRecette: Recette[];
+  listRecetteRecherche: Recette[]=[];
+  etape: Etape;
+  anno: Annotation;
+  recherche:boolean=false;  //boolean qui sert a savoir si une recherche a ete faite pour gerer l'affichage
+  constructor(public navCtrl: NavController, public base: DatabaseProvider, public varGlob: GlobalVarsProvider) {
 
 
     /*const ref : firebase.database.Reference = firebase.database().ref("Recette");
@@ -32,77 +34,69 @@ anno : Annotation;
     }); 
     console.log("test recup recette "+ this.listRecette.length);
     console.log("mots clef " + this.listRecette[0]);*/
-    
 
 
- 
-  
-/*
-      let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
-      afList.snapshotChanges()
-         .map ( changes => {
-            return changes.map (c => ({...c.payload.val()}));
-         })
-         .subscribe(recette => {
-            console.log(JSON.stringify(recette));
-            this.listRecette = recette;
-         });
-   */ 
-  
-       
 
-  this.base.GetRecettes().then(result => {
-    this.listRecette = result;
-  })  
-    
+
+
+    /*
+          let afList:AngularFireList<Recette> = this.afd.list<Recette>('/Recette');
+          afList.snapshotChanges()
+             .map ( changes => {
+                return changes.map (c => ({...c.payload.val()}));
+             })
+             .subscribe(recette => {
+                console.log(JSON.stringify(recette));
+                this.listRecette = recette;
+             });
+       */
+
+
+
+    this.base.GetRecettes().then(result => {
+      this.listRecette = result;
+    })
+
   }
-      
-  onSearch(ev : any ){
+
+  onSearch(ev: any) {
 
     let val = ev.target.value;
-    console.log("valeur recuperer dans la search bar " + val );
-    console.log("taille de la liste recette : "+ this.listRecette.length);
+    console.log("valeur recuperer dans la search bar " + val);
+    console.log("taille de la liste recette : " + this.listRecette.length);
 
-      for (var i = 0 ; i < this.listRecette.length ; i++){
-          for (var j = 0 ; j <  this.listRecette[i].motsCles.length ; j ++){
-          console.log("taille de la liste recette : "+ this.listRecette.length);
-          console.log("taille de la liste de mots clef : "+ this.listRecette[i]);
+    for (var i = 0; i < this.listRecette.length; i++) {
+      for (var j = 0; j < this.listRecette[i].motsCles.length; j++) {
 
-              console.log("mots clef " + this.listRecette[i].motsCles[j]);
-              
-
-              console.log(i + j);
-              
-              
-
-
-          }
+        if (val == this.listRecette[i].motsCles[j]) {
+          console.log("mots clef test!" + this.listRecette[i].motsCles[j]);
+          this.listRecetteRecherche.push(this.listRecette[i]);
+          this.recherche=true;
+        }
 
       }
 
-    
-      }
-         
+    }
 
-  onClickRecette(recette)
-  {
-    console.log("Ouverture de la page de la présentation brève de la recette");
-    this.navCtrl.push("PresentationBrevePage",{recette : recette});
   }
 
-  onClickAjoutRecette()
-  {
+
+  onClickRecette(recette) {
+    console.log("Ouverture de la page de la présentation brève de la recette");
+    this.navCtrl.push("PresentationBrevePage", { recette: recette });
+  }
+
+  onClickAjoutRecette() {
     console.log("Ouverture de la page de l'ajout d'une recette");
     this.navCtrl.push("AjoutRecettePage");
     //this.varGlob.setListeIngredientsSelectionner([]);
   }
 
-  onClickParametre()
-  {
+  onClickParametre() {
     console.log("Ouverture de la page des paramètres");
     this.navCtrl.push("ParametresPage");
   }
 
- 
+
 
 }
