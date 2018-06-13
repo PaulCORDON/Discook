@@ -20,7 +20,6 @@ export class HomePage {
   listRecetteRecherche: Recette[]=[];
   etape: Etape;
   anno: Annotation;
-  recherche:boolean=false;  //boolean qui sert a savoir si une recherche a ete faite pour gerer l'affichage
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public varGlob: GlobalVarsProvider) {
 
 
@@ -71,13 +70,16 @@ export class HomePage {
         if (val == this.listRecette[i].motsCles[j]) {
           console.log("mots clef test!" + this.listRecette[i].motsCles[j]);
           this.listRecetteRecherche.push(this.listRecette[i]);
-          this.recherche=true;
+         // this.listRecette=this.listRecetteRecherche;
+         console.log("test sa mere! ::"+this.listRecetteRecherche[i].motsCles);
+         
         }
 
       }
 
+      
     }
-
+    
   }
 
 
