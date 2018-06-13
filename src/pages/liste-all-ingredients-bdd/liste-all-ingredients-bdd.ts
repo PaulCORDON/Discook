@@ -27,13 +27,23 @@ export class ListeAllIngredientsBddPage {
     console.log('ionViewDidLoad ListeAllIngredientsBddPage');
     this.base.GetAllIngredients().then((rep) => {
       this.listeIngredients=rep.sort();
-      console.log(`getParamEm2 ok`);  
+      console.log(`getListeIngredients ok`+JSON.stringify(this.listeIngredients));  
     })
   }
   onClickIngredients(ing:Ingredient){
-    this.listeIngredientsSelectionner.push(ing);
+    if(ing.isSelected){
+      ing.isSelected=false;
+    }
+    else{
+      ing.isSelected=true;
+    }
   }
   onClickValider(){
+    this.listeIngredients.forEach(ing => {
+      if(ing.isSelected){
+        this.listeIngredientsSelectionner.push(ing);
+      }
+    });
     console.log(JSON.stringify(this.listeIngredientsSelectionner));
     this.varGlob.setListeIngredientsSelectionner(this.listeIngredientsSelectionner);
     this.navCtrl.pop();
