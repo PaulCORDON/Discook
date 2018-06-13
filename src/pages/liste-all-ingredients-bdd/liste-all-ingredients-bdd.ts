@@ -17,35 +17,38 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
   templateUrl: 'liste-all-ingredients-bdd.html',
 })
 export class ListeAllIngredientsBddPage {
-  listeIngredientsSelectionner: Array<Ingredient>=[];
-  listeIngredients:Array<Ingredient>;
+  listeIngredientsSelectionner: Array<Ingredient> = [];
+  listeIngredients: Array<Ingredient>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public base : DatabaseProvider, public varGlob : GlobalVarsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base: DatabaseProvider, public varGlob: GlobalVarsProvider) {
+    this.listeIngredients=this.navParams.get("listeIng")
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListeAllIngredientsBddPage');
-    this.base.GetAllIngredients().then((rep) => {
-      this.listeIngredients=rep.sort();
-      console.log(`getListeIngredients ok`+JSON.stringify(this.listeIngredients));  
-    })
+    
   }
-  onClickIngredients(ing:Ingredient){
-    if(ing.isSelected){
-      ing.isSelected=false;
+  onClickIngredients(ing: Ingredient) {
+    if (ing.isSelected) {
+      ing.isSelected = false;
     }
-    else{
-      ing.isSelected=true;
+    else {
+      ing.isSelected = true;
     }
   }
-  onClickValider(){
+  onClickValider() {
     this.listeIngredients.forEach(ing => {
-      if(ing.isSelected){
-        this.listeIngredientsSelectionner.push(ing);
+      if (ing.isSelected) {
+        this.varGlob.getListeIngredientsSelectionner().push(ing);
       }
     });
     console.log(JSON.stringify(this.listeIngredientsSelectionner));
-    this.varGlob.setListeIngredientsSelectionner(this.listeIngredientsSelectionner);
     this.navCtrl.pop();
   }
+
+
 }
+
+
+
+

@@ -8,12 +8,7 @@ import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 import { Etape } from '../../metier/etape';
-/**
- * Generated class for the AjoutRecettePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Ingredient } from '../../metier/ingredient';
 
 @IonicPage()
 @Component({
@@ -21,12 +16,13 @@ import { Etape } from '../../metier/etape';
   templateUrl: 'ajout-recette.html',
 })
 export class AjoutRecettePage {
+  listeIngredients: Ingredient[];
   imgUrl: any;
   readonly TAG:String ='Ajout_Recette';
   reference: firebase.database.Reference;
   titre : string;
   recette : Recette;
-  // listIngredients: Ingredient[];
+  
 
   constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
     
@@ -36,7 +32,6 @@ export class AjoutRecettePage {
     const item : firebase.database.Reference = firebase.database().ref("Recette/1");
     item.on('value',PassSnapshot=>{
       this.titre  = PassSnapshot.val();
-      
     });
   }
 
@@ -79,8 +74,13 @@ export class AjoutRecettePage {
     this.recette.ingredients = this.varGlob.getListeIngredientsSelectionner();
   }
 
-  OnClickAddIngredient(){
-    this.navCtrl.push(`ListeAllIngredientsBddPage`);
+  OnClickAddIngredient(){   
+    let listeComplete:Ingredient[]=this.varGlob.getListeIngredientsSelectionner();
+    let listeIngSelect:Ingredient[]=this.recette.ingredients;
+    listeIngSelect.forEach(ing => {
+      listeComplete.splice(listeComplete.indexOf(ing),1);
+    });
+    this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
   }
 
   OnClickAddEtape(){
@@ -97,5 +97,9 @@ export class AjoutRecettePage {
 
   supprEtape(etape){
     this.recette.etapes.splice(this.recette.etapes.indexOf(etape),1);
+
+    for(let i=0;i<this.recette.etapes.length;i++){
+      this.recette.etapes[i].numero=i+1;
+    }
   }
 }
