@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the AuthentificationPage page.
@@ -22,4 +23,11 @@ export class AuthentificationPage {
     console.log('ionViewDidLoad AuthentificationPage');
   }
 
+
+  connexion(){
+
+    this.navCtrl.setRoot(HomePage);
+
+
+  }
 }
