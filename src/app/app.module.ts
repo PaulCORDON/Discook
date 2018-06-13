@@ -33,6 +33,7 @@ import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { PipesModule } from '../pipes/pipes.module';
 import { DatabaseProvider } from '../providers/database/database';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthentificationPage } from '../pages/authentification/authentification';
 var config = {
   apiKey: "AIzaSyCGIo2gpPLN9kmteqFJ6IO-2drDFfiH4R4",
   authDomain: "discook-70c2b.firebaseapp.com",
@@ -45,7 +46,8 @@ var config = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AuthentificationPage
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ var config = {
     ParametresPage,
     PresentationBrevePage,
     PresentationCompletePage,
+    AuthentificationPage 
     RealisationRecettePage,
     CreditPage
   ],

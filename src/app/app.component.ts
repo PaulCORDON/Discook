@@ -5,12 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import *as firebase from 'firebase';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
-
+import {PresentationCompletePage} from '../pages/presentation-complete/presentation-complete'
+import { AuthentificationPage } from '../pages/authentification/authentification';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = AuthentificationPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public globalVars: GlobalVarsProvider) {
     platform.ready().then(() => {

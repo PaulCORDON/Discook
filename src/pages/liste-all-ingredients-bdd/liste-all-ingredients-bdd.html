@@ -41,6 +41,9 @@
   </ion-list>
 
 
-
-  <button ion-button (click)='onClickValider()'>Valider</button>
+  <ion-fab right bottom>
+      <button (tap)="onClickValider()" ion-fab>
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-fab>
 </ion-content>
