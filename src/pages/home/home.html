@@ -22,48 +22,68 @@
   </ion-searchbar>
 
 
-
-
-
-
-
 </ion-header>
 
 <ion-content>
- 
 
+
+  <div *ngIf="recherche==false">
     <div *ngFor="let item of listRecette; let i = index; let even = even;">
-      <span *ngIf="even">       
+      <span *ngIf="even">
         <ion-grid>
           <ion-row>
             <ion-col>
-                <ion-card (tap)="onClickRecette(listRecette[i])">
-                    <ion-row class="imageCard">
-                      <img src="{{listRecette[i].image}}">
-                    </ion-row>
-                    <ion-row class="textCard">
-                        {{ listRecette[i].nom }}
-                    </ion-row>
-                  </ion-card>
-              
+              <ion-card (tap)="onClickRecette(listRecette[i])">
+                <ion-row class="imageCard">
+                  <img src="{{listRecette[i].image}}">
+                </ion-row>
+                <ion-row class="textCard">
+                  {{ listRecette[i].nom }}
+                </ion-row>
+              </ion-card>
+
             </ion-col>
             <ion-col>
-                <ion-card (tap)="onClickRecette(listRecette[i+1])">
-                    <ion-row class="imageCard">
-                      <img src="{{listRecette[i+1].image}}">
-                    </ion-row>
-                    <ion-row class="textCard">
-                        {{ listRecette[i+1].nom }}
-                    </ion-row>
-                  </ion-card>
+              <ion-card (tap)="onClickRecette(listRecette[i+1])">
+                <ion-row class="imageCard">
+                  <img src="{{listRecette[i+1].image}}">
+                </ion-row>
+                <ion-row class="textCard">
+                  {{ listRecette[i+1].nom }}
+                </ion-row>
+              </ion-card>
             </ion-col>
           </ion-row>
         </ion-grid>
-        
-        </span>
+
+      </span>
     </div>
+  </div>
 
 
+
+  <div *ngIf="recherche==true">
+    <div *ngFor="let item of listRecetteRecherche; let i = index; let even = even;">
+      <span *ngIf="even">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card (tap)="onClickRecette(listRecetteRecherche[i])">
+                <ion-row class="imageCard">
+                  <img src="{{listRecetteRecherche[i].image}}">
+                </ion-row>
+                <ion-row class="textCard">
+                  {{ listRecetteRecherche[i].nom }}
+                </ion-row>
+              </ion-card>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </span>
+    </div>
+  </div>
 
   <ion-fab right bottom>
     <button (tap)="onClickAjoutRecette()" ion-fab>
