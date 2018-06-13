@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import *as firebase from 'firebase';
 import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
-
+import {PresentationCompletePage} from '../pages/presentation-complete/presentation-complete'
 @Component({
   templateUrl: 'app.html'
 })
