@@ -7,6 +7,7 @@ import { Recette } from '../../metier/recette';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
+import { Etape } from '../../metier/etape';
 import { Ingredient } from '../../metier/ingredient';
 /**
  * Generated class for the AjoutRecettePage page.
@@ -30,7 +31,8 @@ export class AjoutRecettePage {
   
 
   constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
-
+    
+    this.recette=new Recette([],"","","",0,"","",0,[],[]);
 
     /* Récupèration des valeurs dans BDD */
     const item : firebase.database.Reference = firebase.database().ref("Recette/1");
@@ -56,7 +58,7 @@ export class AjoutRecettePage {
         }, err => { } ).then(path => { 
           let tempo : any = path;
             this.base64.encodeFile(tempo).then((base64File: string) => {
-              this.imgUrl = base64File;
+              this.recette.image = base64File;
               console.log(base64File);
             }, (err) => {
               console.log(err);
@@ -67,12 +69,16 @@ export class AjoutRecettePage {
 
   // Ajouter une recette à la BDD
   onClickAddRecette(){
-    this.recette=new Recette(null,"titretest","Présentation",this.imgUrl,0,"0","0",0,[],[]);
-    this.base.AddRecette(this.recette);
+    console.log(JSON.stringify(this.recette));
+    //this.base.AddRecette(this.recette);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
+  }
+
+  ionViewWillEnter(){
+    this.recette.ingredients = this.varGlob.getListeIngredientsSelectionner();
   }
 
   OnClickAddIngredient(){
@@ -88,5 +94,21 @@ export class AjoutRecettePage {
       console.log(`getListeIngredients ok` + JSON.stringify(this.listeIngredients));
       this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
     })
+  }
+
+  OnClickAddEtape(){
+    this.recette.etapes.push(new Etape(this.recette.etapes.length+1,"",[]));
+  }
+
+  supprIngredient(ing){
+    console.log("supprIngredient : " + ing.nom);
+    let index = this.recette.ingredients.indexOf(ing);
+    this.recette.ingredients.splice(index,1);
+    
+    this.varGlob.setListeIngredientsSelectionner(this.recette.ingredients);
+  }
+
+  supprEtape(etape){
+    this.recette.etapes.splice(this.recette.etapes.indexOf(etape),1);
   }
 }
