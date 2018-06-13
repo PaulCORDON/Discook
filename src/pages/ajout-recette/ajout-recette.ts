@@ -81,19 +81,13 @@ export class AjoutRecettePage {
     this.recette.ingredients = this.varGlob.getListeIngredientsSelectionner();
   }
 
-  OnClickAddIngredient(){
-    
-    this.base.GetAllIngredients().then((rep) => {
-      let liste = this.recette.ingredients;
-      let ing:any;
-      for(ing in liste){
-        console.log('suppression de ou du : ' + ing.nom);
-        rep.splice(rep.indexOf(ing), 1);
-      };
-      this.listeIngredients = rep.sort((one:Ingredient, two:Ingredient) => (one.nom > two.nom ? 1 : -1));
-      console.log(`getListeIngredients ok` + JSON.stringify(this.listeIngredients));
-      this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
-    })
+  OnClickAddIngredient(){   
+    let listeComplete:Ingredient[]=this.varGlob.getListeIngredientsSelectionner();
+    let listeIngSelect:Ingredient[]=this.recette.ingredients;
+    listeIngSelect.forEach(ing => {
+      listeComplete.splice(listeComplete.indexOf(ing),1);
+    });
+    this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
   }
 
   OnClickAddEtape(){
