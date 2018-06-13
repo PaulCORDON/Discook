@@ -7,6 +7,7 @@ import { Recette } from '../../metier/recette';
 import { Crop } from '@ionic-native/crop';
 import { Base64 } from '@ionic-native/base64';
 import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
+import { Ingredient } from '../../metier/ingredient';
 /**
  * Generated class for the AjoutRecettePage page.
  *
@@ -20,12 +21,13 @@ import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
   templateUrl: 'ajout-recette.html',
 })
 export class AjoutRecettePage {
+  listeIngredients: Ingredient[];
   imgUrl: any;
   readonly TAG:String ='Ajout_Recette';
   reference: firebase.database.Reference;
   titre : string;
   recette : Recette;
-  // listIngredients: Ingredient[];
+  
 
   constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
 
@@ -74,6 +76,17 @@ export class AjoutRecettePage {
   }
 
   OnClickAddIngredient(){
-    this.navCtrl.push(`ListeAllIngredientsBddPage`);
+    
+    this.base.GetAllIngredients().then((rep) => {
+      let liste = this.recette.ingredients;
+      let ing:any;
+      for(ing in liste){
+        console.log('suppression de ou du : ' + ing.nom);
+        rep.splice(rep.indexOf(ing), 1);
+      };
+      this.listeIngredients = rep.sort((one:Ingredient, two:Ingredient) => (one.nom > two.nom ? 1 : -1));
+      console.log(`getListeIngredients ok` + JSON.stringify(this.listeIngredients));
+      this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
+    })
   }
 }
