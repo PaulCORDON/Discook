@@ -24,6 +24,7 @@ export class ListeIngredientPage {
     this.listIngredients = this.recette.ingredients;
     console.log("ingredient :  " + this.listIngredients[0].nom);
     console.log("texte de la premiere étapes" + this.recette.etapes[1].texte);
+    console.log(this.recette.presentation);
     
     
     
