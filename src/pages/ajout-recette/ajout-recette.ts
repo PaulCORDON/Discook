@@ -62,7 +62,7 @@ export class AjoutRecettePage {
   // Ajouter une recette à la BDD
   onClickAddRecette(){
     console.log(JSON.stringify(this.recette));
-    //this.base.AddRecette(this.recette);
+    this.base.AddRecette(this.recette);
   }
 
   ionViewDidLoad() {
