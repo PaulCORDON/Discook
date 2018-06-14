@@ -63,9 +63,8 @@ export class DatabaseProvider {
           })
           return false;
         });
+        resolve(listeRecette);
       });
-
-      resolve(listeRecette);
     });
   }
 
@@ -155,7 +154,6 @@ export class DatabaseProvider {
           })
           return false;
         })
-        console.log("RESOLVE")
         resolve(listEtapes);
       })
       
