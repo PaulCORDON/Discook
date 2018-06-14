@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Nom recette</ion-title>
+    <ion-title>Présentation</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -24,9 +24,23 @@
       {{anotation.etape}}
     </label>
   </label>
-  <div class="centre">
-      <button ion-button (click)="versAnnotation()">Annoter</button>
-      <button ion-button (click)="versEdition()">Éditer</button>
-  </div>
+
+  <ion-row class="centre">
+    <ion-col>
+       
+        <button ion-button round block clear icon-start round (click)="versAnnotation()">
+            <ion-icon name="chatbubbles"></ion-icon>
+            Annoter
+        </button>
+          </ion-col>  
+          <ion-col>
+              <button ion-button round block clear icon-start round (click)="versEdition()">
+                  <ion-icon name="md-create"></ion-icon>
+                  Éditer
+              </button>
+     
+    </ion-col>
+  </ion-row>
+ 
  
 </ion-content>
