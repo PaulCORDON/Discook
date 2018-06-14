@@ -56,6 +56,7 @@ console.log("temps total : " + this.tempsTot)
     
     if(this.fav == false){
       this.global.getCompte().addFavoris(this.recette.id);
+      this.base.PutUtilisateur(this.global.getCompte());
       console.log("iddddddd" + this.recette.id)
       this.fav = true;
     }
