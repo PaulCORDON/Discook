@@ -24,6 +24,7 @@ export class ListeIngredientPage {
     this.listIngredients = this.recette.ingredients;
     console.log("ingredient :  " + this.listIngredients[0].nom);
     
+    
   
     console.log("longueur de la liste des ingédients de la recette " +this.recette.ingredients.length);
    
