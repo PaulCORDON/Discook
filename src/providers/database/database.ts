@@ -21,20 +21,20 @@ export class DatabaseProvider {
     console.log('Hello DatabaseProvider Provider');
   }
 
-GetAllIngredients(): Promise<Array<Ingredient>>{
-  return new Promise<Array<Ingredient>>((resolve, reject) => {
-    let listeIngredient = [];
-    firebase.database().ref("Ingredient").on('value', itemSnapShot => {
-      itemSnapShot.forEach(item=> {
-        let ingredient = new Ingredient(item.child("nom").val(),item.child("image").val(),null,null,item.key);
-        listeIngredient.push(ingredient);
+  GetAllIngredients(): Promise<Array<Ingredient>> {
+    return new Promise<Array<Ingredient>>((resolve, reject) => {
+      let listeIngredient = [];
+      firebase.database().ref("Ingredient").on('value', itemSnapShot => {
+        itemSnapShot.forEach(item => {
+          let ingredient = new Ingredient(item.child("nom").val(), item.child("image").val(), null, null, item.key);
+          listeIngredient.push(ingredient);
         })
+      });
+      resolve(listeIngredient.sort((one:Ingredient, two:Ingredient) => (one.nom > two.nom ? 1 : -1)));
     });
-    resolve (listeIngredient);
-  });
-}
+  }
 
-  GetRecettes() : Promise<Array<Recette>>{
+  GetRecettes(): Promise<Array<Recette>> {
     return new Promise<Array<Recette>>((resolve, reject) => {
       let listeRecette = [];
       firebase.database().ref("Recette").on('value', itemSnapShot => {
@@ -52,9 +52,9 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
                   item.child('nb_personnes').val(),
                   etapes,
                   ingredients
-                ); 
+                );
                 listeRecette.push(recette);
-                
+
               })
             })
           })
@@ -62,43 +62,43 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
         });
       });
 
-      resolve (listeRecette);
+      resolve(listeRecette);
     });
   }
 
 
-  AddRecette(recette : Recette){
+  AddRecette(recette: Recette) {
     let reference = firebase.database().ref('Recette/');
     let recetteRef = reference.push()
     recetteRef.set({
-      difficulte:recette.difficulte,
-      duree_cuisson:recette.tpCuisson,
-      duree_prepa:recette.duree,
-      nb_personnes:recette.nbPers,
-      image:recette.image,
-      mots_cles:"",
-      name:recette.nom,
-      presentation:recette.presentation
+      difficulte: recette.difficulte,
+      duree_cuisson: recette.tpCuisson,
+      duree_prepa: recette.duree,
+      nb_personnes: recette.nbPers,
+      image: recette.image,
+      mots_cles: "",
+      name: recette.nom,
+      presentation: recette.presentation
     });
 
     recette.ingredients.forEach(elem => {
       recetteRef.child("ingredients").push().set({
-        quantite:elem.quantite,
-        ref:elem.id,
-        unite:elem.unite
+        quantite: elem.quantite,
+        ref: elem.id,
+        unite: elem.unite
       })
     });
 
     recette.etapes.forEach(elem => {
       let id = this.PutEtape(elem);
       recetteRef.child("etapes").push().set({
-        ref:id
+        ref: id
       });
     });
-    
+
   }
 
-  GetIngredients(ref : firebase.database.Reference){
+  GetIngredients(ref: firebase.database.Reference) {
     return new Promise<Array<Ingredient>>((resolve, reject) => {
       let listIngredients = [];
       ref.child('ingredients').on('value', res => {
@@ -106,7 +106,7 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
           let quantite = recetteIngredient.child('quantite').val();
           let unite = recetteIngredient.child('unite').val();
           firebase.database().ref("Ingredient/" + recetteIngredient.child('ref').val()).on('value', ingredient => {
-            listIngredients.push(new Ingredient(ingredient.child('nom').val(),ingredient.child('image').val(), +quantite, unite,recetteIngredient.key))
+            listIngredients.push(new Ingredient(ingredient.child('nom').val(), ingredient.child('image').val(), +quantite, unite, recetteIngredient.key))
           })
           return false;
         })
@@ -115,16 +115,16 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     })
   }
 
-  GetAnnos(ref : firebase.database.Reference) : Promise<Array<Annotation>>{
+  GetAnnos(ref: firebase.database.Reference): Promise<Array<Annotation>> {
     return new Promise<Array<Annotation>>((resolve, reject) => {
       let listAnnos = [];
       let currentEtape;
-      ref.child('numero').on('value', res => {currentEtape = res.val()})
+      ref.child('numero').on('value', res => { currentEtape = res.val() })
       ref.child('annotations').on('value', res => {
         res.forEach(refAnno => {
-          firebase.database().ref("Annotation/"+ refAnno.val()).on('value', anno => {
+          firebase.database().ref("Annotation/" + refAnno.val()).on('value', anno => {
             console.log(anno.val());
-            listAnnos.push(new Annotation(anno.child('pseudo').val(),currentEtape,anno.child('commentaire').val(),anno.child('date').val()));
+            listAnnos.push(new Annotation(anno.child('pseudo').val(), currentEtape, anno.child('commentaire').val(), anno.child('date').val()));
           })
           return false;
         })
@@ -133,14 +133,14 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     })
   }
 
-  GetEtapes(ref : firebase.database.Reference ) : Promise<Array<Etape>>{
+  GetEtapes(ref: firebase.database.Reference): Promise<Array<Etape>> {
     return new Promise<Array<Etape>>((resolve, reject) => {
       let listEtapes = [];
       ref.child('etapes').on('value', res => {
         res.forEach(item => {
-          firebase.database().ref("Etape/" + item.val()).on('value', eta =>{
+          firebase.database().ref("Etape/" + item.val()).on('value', eta => {
             this.GetAnnos(eta.ref).then(result => {
-              let etape = new Etape(eta.child('numero').val(),eta.child('texte').val(), result);
+              let etape = new Etape(eta.child('numero').val(), eta.child('texte').val(), result);
               listEtapes.push(etape);
             });
           })
@@ -151,8 +151,8 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
     })
   }
 
-  GetMotsCles(ref : firebase.database.Reference) : Promise<Array<string>>{
-    return new Promise<Array<string>>((resolve,reject) => {
+  GetMotsCles(ref: firebase.database.Reference): Promise<Array<string>> {
+    return new Promise<Array<string>>((resolve, reject) => {
       let listMots = [];
       ref.child('mots_cles').on('value', res => {
         res.forEach(item => {
@@ -163,46 +163,46 @@ GetAllIngredients(): Promise<Array<Ingredient>>{
       resolve(listMots);
     })
   }
-/*Ajout d'un nouvel ingredient dans la base de donnée, cette fonction renvoie la référence dans la base de donnée du nouvel ingredient */
-  PutNewIngredient(ingredient : Ingredient){
+  /*Ajout d'un nouvel ingredient dans la base de donnée, cette fonction renvoie la référence dans la base de donnée du nouvel ingredient */
+  PutNewIngredient(ingredient: Ingredient) {
     let reference = firebase.database().ref('Ingredient/');
     let ref = reference.push();
     ref.set({
-      nom :ingredient.nom,
-      image : ingredient.image
+      nom: ingredient.nom,
+      image: ingredient.image
     });
     console.log("la reference du nouvelle ingredient : " + ref.key);
     return (ref.key);
   }
 
-  PutEtape(etape : Etape){
+  PutEtape(etape: Etape) {
     let reference = firebase.database().ref('Etape');
     let ref = reference.push();
     ref.set({
-      numero : etape.numero,
+      numero: etape.numero,
       // image : etape.image;
-      texte : etape.texte
+      texte: etape.texte
 
     });
 
-    etape.annotations.forEach(item =>{
-      let reference = firebase.database().ref('Etape/'+ ref.key+ '/annotations');
+    etape.annotations.forEach(item => {
+      let reference = firebase.database().ref('Etape/' + ref.key + '/annotations');
       let refAnno = reference.push();
       refAnno.set({
-        reference : refAnno.key
+        reference: refAnno.key
       });
-      this.PutAnnotation(refAnno,item);
-    }  
+      this.PutAnnotation(refAnno, item);
+    }
     )
-    return(ref.key);
+    return (ref.key);
   }
 
-  PutAnnotation(ref : ThenableReference, annotation : Annotation){
-    let reference = firebase.database().ref('Annotation/'+ref.key);
+  PutAnnotation(ref: ThenableReference, annotation: Annotation) {
+    let reference = firebase.database().ref('Annotation/' + ref.key);
     reference.set({
-      commentaire : annotation.com,
-      date : annotation.date,
-      pseudo : annotation.pseudo
+      commentaire: annotation.com,
+      date: annotation.date,
+      pseudo: annotation.pseudo
     });
     return (ref.key);
   }
