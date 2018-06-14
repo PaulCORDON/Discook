@@ -14,20 +14,25 @@
 
     <ion-card>
         
-        <ion-card-header>
-            Inscription
-        </ion-card-header>
+        <ion-row class="centre" >
+            <ion-col >
+                <div>
+                        Inscription
+                </div>
+            </ion-col>
+        </ion-row>
+       
 
         <ion-card-content>
             <ion-list no-lines>
                     <ion-item>
                             <ion-label floating>Nom d'utilisateur</ion-label>
-                            <ion-input [(ngModel)]="nom" type="text"></ion-input>
+                            <ion-input [(ngModel)]="pseudo" type="text"></ion-input>
                         </ion-item>
                     
                         <ion-item>
                             <ion-label floating>Mot de passe</ion-label>
-                            <ion-input [(ngModel)]="prenom" type="password"></ion-input>
+                            <ion-input [(ngModel)]="motDePasse" type="password"></ion-input>
                         </ion-item>
                     
                       
