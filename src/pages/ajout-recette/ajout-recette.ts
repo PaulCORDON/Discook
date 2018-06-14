@@ -22,6 +22,10 @@ export class AjoutRecettePage {
   titre: string;
   recette: Recette;
 
+  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
+    this.recette=this.navParams.get('recette');
+    
+    if(this.recette==undefined) this.recette=new Recette([],"","","",0,"","",0,[],[]);
 
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
 
@@ -58,6 +62,28 @@ export class AjoutRecettePage {
       }, err => { }
       );
   }
+
+  private openGallery(){
+    let cameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+     destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,     
+      saveToPhotoAlbum: true,
+      targetWidth: 1000,
+      targetHeight: 1000,
+      correctOrientation: true
+    }
+  
+    this.camera.getPicture(cameraOptions)
+      .then(file_uri =>  this.recette.image = 'data:image/jpeg;base64,' + file_uri, 
+      err => console.log(err));
+
+      console.log(`${this.TAG} openGallery() FIN `);
+  }
+
+
 
   // Ajouter une recette à la BDD
   onClickAddRecette() {
