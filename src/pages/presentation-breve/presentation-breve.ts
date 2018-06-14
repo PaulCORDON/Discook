@@ -29,7 +29,7 @@ this.recette = this.navParams.get("recette");
 
 
   Editer(){
-    this.navCtrl.push(`EditionRecettePage`,{recette : this.recette});
+    this.navCtrl.push(`AjoutRecettePage`,{recette : this.recette});
   }
 
   

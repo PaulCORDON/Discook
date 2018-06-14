@@ -56,7 +56,6 @@ export class DatabaseProvider {
                   ingredients
                 );
                 listeRecette.push(recette);
-
               })
             })
           })
