@@ -18,7 +18,7 @@ import { Etape } from '../../metier/etape';
 export class RealisationRecettePage {
   recette : Recette;
   etape : Etape [];
-  i : number;
+  i : number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
@@ -33,11 +33,22 @@ export class RealisationRecettePage {
   }
 
   onClickEtapePrecedente(){
+    if (this.i > 0 ){
+      this.i = this.i-1;
+
+    }
 
   }
 
   onClickEtapeSuivante(){
     
+
+    if (this.i < this.etape.length - 1 ){
+      this.i = this.i+1;
+      
+
+    }
+
   }
 
 }
