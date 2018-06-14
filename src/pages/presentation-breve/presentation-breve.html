@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{recette.name}}</ion-title>
+    <ion-title>{{recette.nom}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,10 +17,19 @@
    
 <ion-card>
   <ion-grid>
+      <ion-row>
+          <ion-col class="centrer">
+            <ion-label class="titre">
+                {{recette.nom}}
+            </ion-label>
+          </ion-col>
+      </ion-row>
     <ion-row>
-        <ion-label>
-        {{recette.presentation}}
-        </ion-label>
+        <ion-col>
+          <ion-label>
+          {{recette.presentation}}
+          </ion-label>
+        </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
@@ -30,15 +39,19 @@
       </ion-col>
       <ion-col>
         <ion-label icon-end>
-          Durée
-          <ion-icon name="md-time"></ion-icon>
           <ion-grid>
             <ion-row>
+              Durée
+              <ion-icon name="md-time"></ion-icon>
             </ion-row>
-             Préparation : {{recette.duree}}
             <ion-row>
+                Préparation : {{recette.duree}} min
             </ion-row>
-             Cuisson : {{recette.tpCuisson}}
+             
+            <ion-row>
+                 Cuisson : {{recette.tpCuisson}} min
+            </ion-row>
+            
             <ion-row>
               <img class="imageRecette" [src]="recette.image | safe:'url'"/>
             </ion-row>
