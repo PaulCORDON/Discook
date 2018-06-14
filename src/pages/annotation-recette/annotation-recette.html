@@ -24,7 +24,7 @@
         <ion-option value="2">Étape 2</ion-option>
       </ion-select>
     </ion-item>
-    <ion-textarea #Com placeholder="commentaire"></ion-textarea>
-    <button ion-item (click)="poster(Sel.value, Com.value)">Poster</button>
+    <ion-card><ion-textarea #Com placeholder="commentaire"></ion-textarea></ion-card>
+    <button ion-button round block clear (click)="poster(Sel.value, Com.value)">Poster</button>
   </ion-list>
 </ion-content>
