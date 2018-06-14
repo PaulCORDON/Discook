@@ -22,10 +22,7 @@ export class AjoutRecettePage {
   titre: string;
   recette: Recette;
 
-  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
-    this.recette=this.navParams.get('recette');
-    
-    if(this.recette==undefined) this.recette=new Recette([],"","","",0,"","",0,[],[]);
+  
 
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
 
