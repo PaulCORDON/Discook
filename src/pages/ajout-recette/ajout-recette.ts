@@ -16,6 +16,7 @@ import { Ingredient } from '../../metier/ingredient';
   templateUrl: 'ajout-recette.html',
 })
 export class AjoutRecettePage {
+  nbPers: number;
   imgUrl: any;
   readonly TAG: String = 'Ajout_Recette';
   reference: firebase.database.Reference;
@@ -91,7 +92,8 @@ export class AjoutRecettePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
     this.tpCuis=0;
-    
+    this.duree=0;
+    this.nbPers=0;
   }
 
   ionViewWillEnter() {
@@ -142,4 +144,26 @@ export class AjoutRecettePage {
     }
     
   }
+  onClickAddDuree(n: number){
+    if(n==-1){
+      if(this.duree>=1){
+        this.duree=this.duree+n;
+      }
+    }
+    else{
+      if(this.duree<=499){
+        this.duree=this.duree+n;
+      }
+    }
+    
+  }
+
+  onClickAddPers(n: number){
+    if(n==-1){
+      if(this.nbPers>=1){
+        this.nbPers=this.nbPers+n;
+      }
+    }    
+  }
+
 }
