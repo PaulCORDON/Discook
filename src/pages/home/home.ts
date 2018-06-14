@@ -37,7 +37,7 @@ export class HomePage {
 
     let val = ev.target.value;
     let motcle: string;
-    let verif:boolean=false;  //boolean qui permet de savoir si la recette a ete ajoutée pour eviter de lajouter plusieurs fois
+    let verif: boolean = false;  //boolean qui permet de savoir si la recette a ete ajoutée pour eviter de lajouter plusieurs fois
 
     if (val == "") {
       this.recherche = false;
@@ -48,10 +48,10 @@ export class HomePage {
       console.log("taille de la liste recette : " + this.listRecette.length);
 
       for (var i = 0; i < this.listRecette.length; i++) {
-        verif=false;
+        verif = false;
 
-        if (this.listRecette[i].nom==val && verif==false) {
-          verif=true;
+        if (this.listRecette[i].nom.lastIndexOf(val) != -1 && verif == false) {
+          verif = true;
           this.listRecetteRecherche.push(this.listRecette[i]);
           this.recherche = true;
         }
@@ -59,11 +59,11 @@ export class HomePage {
         for (var j = 0; j < this.listRecette[i].motsCles.length; j++) {
 
           //ici on regarde si la valeur recherchee se trouve dans les mots clés de la base
-          if (this.listRecette[i].motsCles[j].toLowerCase().lastIndexOf(val.toLowerCase()) != -1 && verif==false) {
+          if (this.listRecette[i].motsCles[j].toLowerCase().lastIndexOf(val.toLowerCase()) != -1 && verif == false) {
             console.log("mots clef test!" + this.listRecette[i].motsCles[j]);
             this.listRecetteRecherche.push(this.listRecette[i]);
             this.recherche = true;
-            verif=true;
+            verif = true;
           }
         }
       }
