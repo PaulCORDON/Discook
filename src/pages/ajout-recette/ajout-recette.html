@@ -12,9 +12,10 @@
 
 
 <ion-content>
-  <h1>Créer une recette</h1>
+  
 
   <ion-card>
+      <div class="titra">Titre</div>
     <ion-item>
       <ion-label>Titre</ion-label>
       <ion-input type="text" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
@@ -31,12 +32,12 @@
   <ion-row class="centrer">
     <ion-col col-6>
       <button ion-button>
-        <ion-icon name="aperture" block (click)="openPhoto()"> Prendre une photo</ion-icon>
+        <ion-icon name="aperture" block (click)="openPhoto()"></ion-icon> Prendre une photo
       </button>
     </ion-col>
     <ion-col col-6>
       <button ion-button>
-        <ion-icon md="md-download" (click)="openGallery()"> Importer une photo</ion-icon>
+        <ion-icon md="md-download" (click)="openGallery()"></ion-icon> Importer une photo
       </button>
     </ion-col>
 
@@ -77,54 +78,67 @@
   </ion-card>
 
   <ion-card>
-    <div class="titra">Conception de la recette</div>
-    <ion-card>
-      <ion-item>
-        <ion-label>Nombre de personne</ion-label>
-        <ion-input type="number" name="Nombre de personne" min=0 [(ngModel)]="recette.nbPers"></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Nombre de personnes</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddPers(-1)">-</button>
+          <ion-input type="tel" name="Nombre de personnes" min=0 [(ngModel)]="nbPers"></ion-input>
+          <button class="but" round ion-button  (click)="onClickAddPers(1)">+</button>
+        </ion-row>
+      </ion-grid>
     </ion-card>
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="coloration" col-3>
+
+          <div>Difficulté</div>
+
+        </ion-col>
+        <ion-col>
+          <ion-icon *ngIf="recette.difficulte >=1" class="selectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte >=2" class="selectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte >=3" class="selectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte >=4" class="selectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte >=5" class="selectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
+
+          <ion-icon *ngIf="recette.difficulte <=0" class="notselectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte <=1" class="notselectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte <=2" class="notselectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte <=3" class="notselectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
+          <ion-icon *ngIf="recette.difficulte <=4" class="notselectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+  <ion-card>
+      <ion-grid>
+        <ion-row>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Temps de préparation</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddTempsCuisson(-1)">-</button>
+          <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
+          <button class="but" round ion-button  (click)="onClickAddTempsCuisson(1)">+</button>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
 
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col class="coloration" col-3>
-
-          <div >Difficulté</div>
-
-          </ion-col>
-          <ion-col>
-            <ion-icon *ngIf="recette.difficulte >=1" class="selectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte >=2" class="selectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte >=3" class="selectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte >=4" class="selectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte >=5" class="selectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
-
-            <ion-icon *ngIf="recette.difficulte <=0" class="notselectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte <=1" class="notselectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte <=2" class="notselectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte <=3" class="notselectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
-            <ion-icon *ngIf="recette.difficulte <=4" class="notselectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
-
-
-          </ion-col>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Temps de cuisson</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddDuree(-1)">-</button>
+          <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="duree"></ion-input>
+          <button class="but" round ion-button  (click)="onClickAddDuree(1)">+</button>
         </ion-row>
       </ion-grid>
-
-    </ion-card>
-
-    <ion-card>
-      <ion-item>
-        <ion-label>Temps de préparation (min)</ion-label>
-        <ion-input type="number" name="Temps de Préparation" min=0 max=500 [(ngModel)]="recette.duree"></ion-input>
-      </ion-item>
-    </ion-card>
-
-    <ion-card>
-      <ion-item>
-        <ion-label>Temps de cuisson</ion-label>
-        <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="recette.tpCuisson"></ion-input>
-      </ion-item>
     </ion-card>
 
     <ion-card>
@@ -133,14 +147,10 @@
         <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
       </ion-item>
     </ion-card>
-  </ion-card>
 
 
 
-
-
-
-
+ 
   <ion-card>
     <div class="titra">Liste des étapes</div>
     <button ion-button (click)='OnClickAddEtape()'>
@@ -164,8 +174,6 @@
       </ion-row>
     </ion-card>
   </ion-card>
-
-
 
   <button ion-button (click)="onClickAddRecette()">Ajouter la recette</button>
 

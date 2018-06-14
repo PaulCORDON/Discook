@@ -33,6 +33,20 @@
   
 
   <ion-grid>
+      <ion-row>
+          <ion-col class="centrer">
+            <ion-label class="titre">
+                {{recette.nom}}
+            </ion-label>
+          </ion-col>
+      </ion-row>
+    <ion-row>
+        <ion-col>
+          <ion-label>
+          {{recette.presentation}}
+          </ion-label>
+        </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
           <ion-label>
@@ -92,9 +106,12 @@
         </ion-label>
           <ion-grid>
             <ion-row>
+              Durée
+              <ion-icon name="md-time"></ion-icon>
             </ion-row>
              Préparation : {{recette.duree}} min
             <ion-row>
+                Préparation : {{recette.duree}} min
             </ion-row>
              Cuisson : {{recette.tpCuisson}} min
             <ion-row>
@@ -107,7 +124,7 @@
     </ion-row>
     
   </ion-grid>
-
+</ion-card>
   
 
 
