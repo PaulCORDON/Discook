@@ -15,32 +15,41 @@
 
 <ion-content padding>
 
-  <ion-list-header>{{recette.nom}}}</ion-list-header>
-  <br>
-  <label *ngFor="let etape of recette.etapes">
-    {{etape.numero}} {{etape.texte}}
-    <br>
-    <label *ngFor="let anotation of etape.anotation">
-      {{anotation.etape}}
-    </label>
-  </label>
+  <h5>{{recette.nom}}</h5>
+
+  <ion-grid>
+    <div *ngFor="let etape of recette.etapes">
+      <ion-row>
+        <ion-col col-1>
+          {{etape.numero}}.
+        </ion-col>
+        <ion-col>
+          {{etape.texte}}
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+  <div *ngFor="let etape of recette.etapes">
+    <ion-list>
+      <ion-item *ngFor="let annotation of etape.annotations">
+          {{anotation.com}}
+      </ion-item>
+    </ion-list>
+  </div>
 
   <ion-row class="centre">
     <ion-col>
-       
-        <button ion-button round block clear icon-start round (click)="versAnnotation()">
-            <ion-icon name="chatbubbles"></ion-icon>
-            Annoter
-        </button>
-          </ion-col>  
-          <ion-col>
-              <button ion-button round block clear icon-start round (click)="versEdition()">
-                  <ion-icon name="md-create"></ion-icon>
-                  Éditer
-              </button>
-     
+      <button ion-button round block clear icon-start round (click)="versAnnotation()">
+        <ion-icon name="chatbubbles"></ion-icon>
+        Annoter
+      </button>
+    </ion-col>  
+    <ion-col>
+      <button ion-button round block clear icon-start round (click)="versEdition()">
+        <ion-icon name="md-create"></ion-icon>
+        Éditer
+      </button>
     </ion-col>
   </ion-row>
- 
- 
 </ion-content>
