@@ -112,8 +112,9 @@ export class DatabaseProvider {
           })
           return false;
         })
+        resolve(listIngredients);
       })
-      resolve(listIngredients);
+      
     })
   }
 
@@ -130,8 +131,9 @@ export class DatabaseProvider {
           })
           return false;
         })
+        resolve(listAnnos);
       })
-      resolve(listAnnos);
+      
     })
   }
 
@@ -140,20 +142,22 @@ export class DatabaseProvider {
       let listEtapes = [];
       ref.child('etapes').on('value', res => {
         res.forEach(item => {
-
+          console.log(item.child('ref').val())
           firebase.database().ref("Etape/" + item.child('ref').val()).on('value', eta => {
-            console.log(eta.val())
             this.GetAnnos(eta.ref).then(result => {
-              console.log(result)
               let etape = new Etape(eta.child('numero').val(), eta.child('texte').val(), result);
-              console.log(etape)
+              console.log(item.numChildren())
               listEtapes.push(etape);
+              
+              
             });
           })
           return false;
         })
+        console.log("RESOLVE")
+        resolve(listEtapes);
       })
-      resolve(listEtapes);
+      
     })
   }
 

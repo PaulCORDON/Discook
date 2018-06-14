@@ -17,8 +17,8 @@
   <ion-card>
       <div class="titra">Titre</div>
     <ion-item>
-      <ion-label>Titre</ion-label>
-      <ion-input type="text" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
+      
+      <ion-input type="text" placeholder="Ajouter un titre" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
     </ion-item>
   </ion-card>
 
@@ -55,7 +55,7 @@
           <div class="ingredient">{{ing.nom}}</div>
         </ion-col>
         <ion-col col-2>
-          <button ion-button icon-only (click)="supprIngredient(ing)">
+          <button ion-button round icon-only (click)="supprIngredient(ing)">
             <ion-icon name='ios-trash-outline'></ion-icon>
           </button>
         </ion-col>
@@ -72,7 +72,7 @@
       </ion-row>
     </ion-card>
 
-    <button ion-button (click)='OnClickAddIngredient()'>
+    <button ion-button round (click)='OnClickAddIngredient()'>
       <ion-icon md="md-add"></ion-icon>
     </button>
   </ion-card>
@@ -120,7 +120,7 @@
       <ion-grid>
         <ion-row>
         
-          <ion-col class="coloration" col-6><div class="pose"> Temps de préparation</div></ion-col>
+          <ion-col class="coloration" col-6><div class="pose1">Temps de <br>préparation (min)</div></ion-col>
           <button round class="but" ion-button (click)="onClickAddTempsCuisson(-1)">-</button>
           <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
           <button class="but" round ion-button  (click)="onClickAddTempsCuisson(1)">+</button>
@@ -133,7 +133,7 @@
       <ion-grid>
         <ion-row>
         
-          <ion-col class="coloration" col-6><div class="pose"> Temps de cuisson</div></ion-col>
+          <ion-col class="coloration" col-6><div class="pose">Temps de cuisson (min)</div></ion-col>
           <button round class="but" ion-button (click)="onClickAddDuree(-1)">-</button>
           <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="duree"></ion-input>
           <button class="but" round ion-button  (click)="onClickAddDuree(1)">+</button>
@@ -144,7 +144,7 @@
     <ion-card>
       <ion-item>
         <ion-label>Présentation</ion-label>
-        <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
+        <ion-input  type="text" placeholder="Saisir" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
       </ion-item>
     </ion-card>
 
