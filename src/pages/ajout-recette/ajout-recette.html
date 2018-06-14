@@ -98,29 +98,37 @@
         <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
       </ion-item>
     </ion-card>
+</ion-card>
 
-    <ion-card *ngFor="let etape of recette.etapes">
-      <ion-row>
-        <ion-col>
-          <div class="Etape">
-              Etape {{etape.numero}}
-          </div>
-          <ion-item>
-            <ion-input type="text" name="Description de l'étape" [(ngModel)]="etape.texte"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col col-2>
-          <button ion-button icon-only (click)="supprEtape(etape)">
-            <ion-icon name='ios-trash-outline'></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+<ion-card>
+    <div class="titra">Ajouter une étape de conception</div>
+  
 
-    <button ion-button (click)='OnClickAddEtape()'>
-      <ion-icon md="md-add"></ion-icon>
-    </button>
-  </ion-card>
+
+<ion-card *ngFor="let etape of recette.etapes">
+  <ion-row>
+    <ion-col>
+      <div class="Etape">
+          Etape {{etape.numero}}
+      </div>
+      <ion-item>
+        <ion-input type="text" name="Description de l'étape" [(ngModel)]="etape.texte"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-2>
+      <button ion-button icon-only (click)="supprEtape(etape)">
+        <ion-icon name='ios-trash-outline'></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-card>
+
+<button ion-button (click)='OnClickAddEtape()'>
+    <ion-icon md="md-add"></ion-icon>
+  </button>
+</ion-card>
+
+    
 
   <button ion-button (click)="onClickAddRecette()">Ajouter la recette</button>
 

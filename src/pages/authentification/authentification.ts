@@ -30,4 +30,11 @@ export class AuthentificationPage {
 
 
   }
+
+  inscription(){
+
+    this.navCtrl.push("InscriptionPage");
+
+
+  }
 }
