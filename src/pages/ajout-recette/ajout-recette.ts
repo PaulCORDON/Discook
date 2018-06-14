@@ -85,7 +85,6 @@ export class AjoutRecettePage {
   onClickAddRecette(){
     console.log(JSON.stringify(this.recette));
     this.base.AddRecette(this.recette);
-    this.navCtrl.push('HomePage');
   }
 
   ionViewDidLoad() {
