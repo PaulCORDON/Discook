@@ -8,6 +8,7 @@ import { GlobalVarsProvider } from '../providers/global-vars/global-vars';
 import {PresentationCompletePage} from '../pages/presentation-complete/presentation-complete'
 import { AuthentificationPage } from '../pages/authentification/authentification';
 import { DatabaseProvider } from '../providers/database/database';
+import { Ingredient } from '../metier/ingredient';
 @Component({
   templateUrl: 'app.html'
 })
@@ -17,7 +18,8 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public globalVars: GlobalVarsProvider,public base:DatabaseProvider) {
     platform.ready().then(() => {
       this.base.GetAllIngredients().then((rep) => {
-        this.globalVars.setListeIngredientsSelectionner(rep);
+        this.globalVars.setListeIngredientsComplete(rep);
+        console.log('listeCompleteIngredient')
       });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

@@ -23,14 +23,16 @@ export class DatabaseProvider {
 
   GetAllIngredients(): Promise<Array<Ingredient>> {
     return new Promise<Array<Ingredient>>((resolve, reject) => {
-      let listeIngredient = [];
+      let listeIngredient:Array<Ingredient> = [];
+      
       firebase.database().ref("Ingredient").on('value', itemSnapShot => {
         itemSnapShot.forEach(item => {
           let ingredient = new Ingredient(item.child("nom").val(), item.child("image").val(), null, null, item.key);
           listeIngredient.push(ingredient);
+          listeIngredient.sort((one:Ingredient, two:Ingredient) => (one.nom > two.nom ? 1 : -1));
         })
       });
-      resolve(listeIngredient.sort((one:Ingredient, two:Ingredient) => (one.nom > two.nom ? 1 : -1)));
+      resolve(listeIngredient);
     });
   }
 

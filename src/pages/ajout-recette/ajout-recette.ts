@@ -16,7 +16,6 @@ import { Ingredient } from '../../metier/ingredient';
   templateUrl: 'ajout-recette.html',
 })
 export class AjoutRecettePage {
-  listeIngredients: Ingredient[];
   imgUrl: any;
   readonly TAG:String ='Ajout_Recette';
   reference: firebase.database.Reference;
@@ -75,12 +74,12 @@ export class AjoutRecettePage {
   }
 
   OnClickAddIngredient(){   
-    let listeComplete:Ingredient[]=this.varGlob.getListeIngredientsSelectionner();
+    let listeComplete:Ingredient[]=this.varGlob.getListeIngredientsComplete();
     let listeIngSelect:Ingredient[]=this.recette.ingredients;
     listeIngSelect.forEach(ing => {
       listeComplete.splice(listeComplete.indexOf(ing),1);
     });
-    this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:this.listeIngredients});
+    this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:listeComplete});
   }
 
   OnClickAddEtape(){
