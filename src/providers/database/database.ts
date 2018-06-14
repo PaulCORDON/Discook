@@ -40,6 +40,7 @@ export class DatabaseProvider {
   GetRecettes(): Promise<Array<Recette>> {
     return new Promise<Array<Recette>>((resolve, reject) => {
       let listeRecette = [];
+      let count = 0
       firebase.database().ref("Recette").on('value', itemSnapShot => {
         itemSnapShot.forEach(item => {
           this.GetEtapes(item.ref).then(etapes => {
@@ -58,6 +59,9 @@ export class DatabaseProvider {
                   item.key
                 );
                 listeRecette.push(recette);
+                if(++count == itemSnapShot.numChildren()){
+                  resolve(listeRecette);
+                }
               })
             })
           })
@@ -103,24 +107,28 @@ export class DatabaseProvider {
   GetIngredients(ref: firebase.database.Reference) {
     return new Promise<Array<Ingredient>>((resolve, reject) => {
       let listIngredients = [];
+      let count = 0
       ref.child('ingredients').on('value', res => {
         res.forEach(recetteIngredient => {
           let quantite = recetteIngredient.child('quantite').val();
           let unite = recetteIngredient.child('unite').val();
           firebase.database().ref("Ingredient/" + recetteIngredient.child('ref').val()).on('value', ingredient => {
             listIngredients.push(new Ingredient(ingredient.child('nom').val(), ingredient.child('image').val(), +quantite, unite, recetteIngredient.key))
+            if(++count == res.numChildren()){
+              resolve(listIngredients);
+            }
           })
           return false;
         })
         resolve(listIngredients);
       })
-      
     })
   }
 
   GetAnnos(ref: firebase.database.Reference): Promise<Array<Annotation>> {
     return new Promise<Array<Annotation>>((resolve, reject) => {
       let listAnnos = [];
+      let count = 0
       let currentEtape;
       ref.child('numero').on('value', res => { currentEtape = res.val() })
       ref.child('annotations').on('value', res => {
@@ -128,6 +136,9 @@ export class DatabaseProvider {
           firebase.database().ref("Annotation/" + refAnno.val()).on('value', anno => {
             console.log(anno.val());
             listAnnos.push(new Annotation(anno.child('pseudo').val(), currentEtape, anno.child('commentaire').val(), anno.child('date').val()));
+            if(++count == res.numChildren()){
+              resolve(listAnnos);
+            }
           })
           return false;
         })
@@ -140,7 +151,9 @@ export class DatabaseProvider {
   GetEtapes(ref: firebase.database.Reference): Promise<Array<Etape>> {
     return new Promise<Array<Etape>>((resolve, reject) => {
       let listEtapes = [];
+      let count = 0
       ref.child('etapes').on('value', res => {
+        console.log("numChildren" + res.numChildren())
         res.forEach(item => {
           console.log(item.child('ref').val())
           firebase.database().ref("Etape/" + item.child('ref').val()).on('value', eta => {
@@ -148,28 +161,32 @@ export class DatabaseProvider {
               let etape = new Etape(eta.child('numero').val(), eta.child('texte').val(), result);
               console.log(item.numChildren())
               listEtapes.push(etape);
-              
-              
+              if(++count == res.numChildren()){
+                resolve(listEtapes);
+              }
             });
           })
+          resolve(listEtapes);
           return false;
         })
-        resolve(listEtapes);
       })
-      
     })
   }
 
   GetMotsCles(ref: firebase.database.Reference): Promise<Array<string>> {
     return new Promise<Array<string>>((resolve, reject) => {
       let listMots = [];
+      let count = 0
       ref.child('mots_cles').on('value', res => {
         res.forEach(item => {
           listMots.push(item.val());
+          if(++count == res.numChildren()){
+            resolve(listMots);
+          }
           return false;
         })
+        resolve(listMots);
       })
-      resolve(listMots);
     })
   }
   /*Ajout d'un nouvel ingredient dans la base de donnée, cette fonction renvoie la référence dans la base de donnée du nouvel ingredient */
@@ -230,6 +247,8 @@ export class DatabaseProvider {
         fav:item
       })
     })
+    console.log(ref.key)
+    user.id = ref.key
   }
 
   GetUtilisateur(pseudo : string, motDePasse : string) : Promise<utilisateur>{
@@ -239,11 +258,10 @@ export class DatabaseProvider {
         res.forEach(item => {
           if(item.child('pseudo').val()==pseudo && item.child('motDePasse').val()==motDePasse){
             console.log("trouvé")
-            let user = new utilisateur(item.child('pseudo').val(), item.child('motDePasse').val() ,list)
+            let user = new utilisateur(item.child('pseudo').val(), item.child('motDePasse').val() ,list, item.key)
             resolve(user)
           }
         })
-        reject("not found")
       })
     })
   }
