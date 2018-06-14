@@ -77,7 +77,7 @@ var config = {
     ParametresPage,
     PresentationBrevePage,
     PresentationCompletePage,
-    AuthentificationPage 
+    AuthentificationPage, 
     RealisationRecettePage,
     CreditPage
   ],
