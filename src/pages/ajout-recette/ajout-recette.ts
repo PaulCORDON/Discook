@@ -16,13 +16,14 @@ import { Ingredient } from '../../metier/ingredient';
   templateUrl: 'ajout-recette.html',
 })
 export class AjoutRecettePage {
+  nbPers: number;
   imgUrl: any;
   readonly TAG: String = 'Ajout_Recette';
   reference: firebase.database.Reference;
   titre: string;
   recette: Recette;
-
-  
+  duree:number;
+  tpCuis:number;
 
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
 
@@ -84,13 +85,18 @@ export class AjoutRecettePage {
 
   // Ajouter une recette à la BDD
   onClickAddRecette() {
+    this.recette.nbPers=this.nbPers;
+    this.recette.tpCuisson=this.tpCuis+"";
+    this.recette.duree=this.duree+"";
     console.log(JSON.stringify(this.recette));
     this.base.AddRecette(this.recette);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
-    this.recette.difficulte = 1;
+    this.tpCuis=0;
+    this.duree=0;
+    this.nbPers=0;
   }
 
   ionViewWillEnter() {
@@ -127,6 +133,43 @@ export class AjoutRecettePage {
   }
   onClickStar(n: number) {
     this.recette.difficulte = n;
+  }
+  onClickAddTempsCuisson(n: number){
+    if(n==-1){
+      if(this.tpCuis>=1){
+        this.tpCuis=this.tpCuis+n;
+      }
+    }
+    else{
+      if(this.tpCuis<=499){
+        this.tpCuis=this.tpCuis+n;
+      }
+    }
+    
+  }
+  onClickAddDuree(n: number){
+    if(n==-1){
+      if(this.duree>=1){
+        this.duree=this.duree+n;
+      }
+    }
+    else{
+      if(this.duree<=499){
+        this.duree=this.duree+n;
+      }
+    }
+    
+  }
+
+  onClickAddPers(n: number){
+    if(n==-1){
+      if(this.nbPers>=1){
+        this.nbPers=this.nbPers+n;
+      }
+    }  
+    else{
+      this.nbPers=this.nbPers+n;
+    }  
   }
 
 }

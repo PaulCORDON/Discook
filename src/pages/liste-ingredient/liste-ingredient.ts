@@ -23,6 +23,9 @@ export class ListeIngredientPage {
     this.recette = this.navParams.get("recette");
     this.listIngredients = this.recette.ingredients;
     console.log("ingredient :  " + this.listIngredients[0].nom);
+    console.log("texte de la premiere étapes" + this.recette.etapes.length);
+    
+    
     
   
     console.log("longueur de la liste des ingédients de la recette " +this.recette.ingredients.length);
@@ -40,7 +43,7 @@ export class ListeIngredientPage {
   
   }
   onClickRealisation(){
-    this.navCtrl.push('RealisationRecettePage');
+    this.navCtrl.push('RealisationRecettePage',{recette : this.recette});
 
   }
 }
