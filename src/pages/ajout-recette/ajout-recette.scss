@@ -37,4 +37,15 @@ page-ajout-recette {
         display: inline-block;
         font-size: 1.0em;
     }
+
+    .coloration
+    {
+        color:#999;
+        font-size: inherit;
+        font-size: inherit;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
 }
