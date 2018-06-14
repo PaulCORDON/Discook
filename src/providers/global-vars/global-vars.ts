@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../../metier/ingredient';
+import { utilisateur } from '../../metier/utilisateur';
 
 @Injectable()
 export class GlobalVarsProvider {
@@ -8,6 +9,7 @@ export class GlobalVarsProvider {
   private lectureAudio:boolean;
   private listeIngredientsSelectionner: Array<Ingredient>=[];
   private listeIngredientsComplete: Array<Ingredient>=[];
+  private compte;
 
   constructor() {
     console.log('Hello GlobalVarsProvider Provider');
@@ -42,5 +44,13 @@ export class GlobalVarsProvider {
 
   public setLectureAudio(mode:boolean){
     this.lectureAudio = mode;
+  }
+
+  public getCompte() : utilisateur{
+    return this.compte;
+  }
+
+  public setCompte(compte : utilisateur){
+    this.compte = compte;
   }
 }

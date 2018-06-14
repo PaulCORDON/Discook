@@ -33,7 +33,6 @@
               </ion-row>
             </ion-card>
           </ion-col>
-
           <ion-col *ngIf="listRecette.indexOf(item)+1<listRecette.length">
             <ion-card (tap)="onClickRecette(listRecette[listRecette.indexOf(item)+1])">
               <ion-row class="imageCard">
