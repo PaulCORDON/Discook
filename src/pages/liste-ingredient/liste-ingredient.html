@@ -23,7 +23,7 @@
 <ion-content padding>
   
 <ion-list *ngFor  = "let ingredient  of listIngredients  " >
-  <ion-item   > 
+  <ion-item > 
     <ion-thumbnail item-start>
     <img  class="imageCard" [src]="ingredient.image | safe:'url'"  > 
     </ion-thumbnail>

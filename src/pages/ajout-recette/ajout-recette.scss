@@ -72,8 +72,19 @@ page-ajout-recette {
         top:30%;
     }
 
+    .pose1
+    {
+        position: absolute;
+        top:10%;
+    }
+
     .but{
         margin-top: 0.2rem;
         margin-bottom: 0.2rem;
+    }
+
+    .button-round-md {
+        border-radius: 64px;
+        padding: 0 2rem;
     }
 }
