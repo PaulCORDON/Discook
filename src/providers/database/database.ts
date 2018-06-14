@@ -7,6 +7,7 @@ import { Annotation } from '../../metier/annotation';
 import { Ingredient } from '../../metier/ingredient';
 import { ThenableReference } from '@firebase/database-types';
 import { forEach } from '@firebase/util';
+import { utilisateur } from '../../metier/utilisateur';
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -206,5 +207,37 @@ export class DatabaseProvider {
       pseudo: annotation.pseudo
     });
     return (ref.key);
+  }
+
+  PutUtilisateur(user : utilisateur){
+    let reference = firebase.database().ref('Client')
+    let ref = reference.push()
+    console.log(user.pseudo + " " + user.motDePasse)
+    ref.set({
+      motDePasse : user.motDePasse,
+      pseudo : user.pseudo
+    })
+    user.favoris.forEach(item => {
+      let itemref = ref.child('favoris').push()
+      itemref.set({
+        fav:item
+      })
+    })
+  }
+
+  GetUtilisateur(pseudo : string, motDePasse : string) : Promise<utilisateur>{
+    return new Promise<utilisateur>((resolve, reject) => {
+      let reference = firebase.database().ref('Client').orderByChild('pseudo').once('value').then(res => {
+        let list = []
+        res.forEach(item => {
+          if(item.child('pseudo').val()==pseudo && item.child('motDePasse').val()==motDePasse){
+            console.log("trouvé")
+            let user = new utilisateur(item.child('pseudo').val(), item.child('motDePasse').val() ,list)
+            resolve(user)
+          }
+        })
+        
+      })
+    })
   }
 }
