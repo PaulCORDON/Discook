@@ -49,12 +49,21 @@ console.log("temps total : " + this.tempsTot)
   } 
   
   Commencer(){
-    this.navCtrl.push(`ListeIngredientPage`,{recette : this.recette});
+    this.navCtrl.push(`RealisationRecettePage`,{recette : this.recette});
   }
 
   addFav(){
-    this.fav = ! this.fav;
-    //this.global.getCompte().addFavoris(this.recette.id);
+    
+    if(this.fav == false){
+      this.global.getCompte().addFavoris(this.recette.id);
+      this.base.PutUtilisateur(this.global.getCompte());
+      console.log("iddddddd" + this.recette.id)
+      this.fav = true;
+    }
+    else{
+      this.fav = false;
+    }
+    
   }
 
 }
