@@ -49,7 +49,8 @@ console.log("temps total : " + this.tempsTot)
   } 
   
   Commencer(){
-    this.navCtrl.push(`RealisationRecettePage`,{recette : this.recette});
+    if(this.recette.etapes.length==0) this.navCtrl.pop();
+    else this.navCtrl.push(`ListeIngredientPage`,{recette : this.recette});
   }
 
   addFav(){
