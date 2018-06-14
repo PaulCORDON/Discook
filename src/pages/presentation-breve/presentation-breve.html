@@ -15,7 +15,7 @@
 
 <ion-content padding>
   
-  <img class="imageCard"   src={{recette.image}}/>
+  <img class="imageCard"   [src]="recette.image | safe:'url'"/>
 
   <h1>
     {{recette.nom}}
@@ -85,12 +85,12 @@
         </ion-label>
           <ion-grid>
             <ion-row>
-            Préparation : {{recette.duree}} min
+                Préparation : {{recette.duree}} min
             </ion-row>
              Cuisson : {{recette.tpCuisson}} min
             <ion-row>
             </ion-row>
-            Temps total : {{tempsTot}} min
+             Temps total : {{tempsTot}} min
           </ion-grid>
         
       </ion-col>
@@ -101,7 +101,7 @@
   
 
 
-
+  <ion-footer>
     <ion-grid>
       
       <ion-row>
@@ -125,7 +125,10 @@
            
       </ion-row>
     </ion-grid>
+  </ion-footer>
 
+  <!--FAB pour lancer la recette-->
+  
     
 </ion-content>
 
