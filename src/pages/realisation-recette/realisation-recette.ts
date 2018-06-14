@@ -18,6 +18,7 @@ import { Etape } from '../../metier/etape';
 export class RealisationRecettePage {
   recette : Recette;
   etape : Etape [];
+  i : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 
