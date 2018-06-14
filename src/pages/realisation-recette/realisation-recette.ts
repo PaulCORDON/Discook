@@ -45,7 +45,6 @@ export class RealisationRecettePage {
 
     if (this.i < this.etape.length - 1 ){
       this.i = this.i+1;
-      
 
     }
 
