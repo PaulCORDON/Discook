@@ -15,12 +15,14 @@
 
 <ion-content padding>
 
-
+    <p>
+        {{etape[i].numero}}
+      </p>
 
     <p>
-      {{etape[0].texte}}
+      {{etape[i].texte}}
     </p>
-
+    
     <ion-fab left bottom>
         <button (click)="onClickEtapePrecedente()" ion-fab color="dark"><ion-icon name="arrow-dropleft"></ion-icon></button>       
       </ion-fab>
