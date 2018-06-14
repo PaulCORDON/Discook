@@ -18,8 +18,16 @@ import { Recette } from '../../metier/recette';
 export class PresentationBrevePage {
 
   recette : Recette;
+  tempsTot;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
 this.recette = this.navParams.get("recette");
+var x = this.recette.duree;
+var y = +x;
+var q = this.recette.tpCuisson;
+var w = +q;
+this.tempsTot = y+w;
+console.log("temps total : " + this.tempsTot)
 }
 
   ionViewDidLoad() {
