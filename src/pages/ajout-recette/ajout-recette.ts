@@ -22,7 +22,7 @@ export class AjoutRecettePage {
   titre: string;
   recette: Recette;
   duree:number;
-  
+  tpCuis:number;
 
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
 
@@ -90,7 +90,7 @@ export class AjoutRecettePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
-    this.recette.difficulte = 1;
+    this.tpCuis=0;
     
   }
 
@@ -130,6 +130,16 @@ export class AjoutRecettePage {
     this.recette.difficulte = n;
   }
   onClickAddTempsCuisson(n: number){
-    this.recette.tpCuisson=this.recette.tpCuisson+n;
+    if(n==-1){
+      if(this.tpCuis>=1){
+        this.tpCuis=this.tpCuis+n;
+      }
+    }
+    else{
+      if(this.tpCuis<=499){
+        this.tpCuis=this.tpCuis+n;
+      }
+    }
+    
   }
 }

@@ -10,6 +10,7 @@ export class Recette{
     difficulte : number;    //entier sur 5 ou 10
     nbPers : number;    
     duree : string;
+    
     tpCuisson : string;
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
