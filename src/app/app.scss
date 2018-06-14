@@ -17,9 +17,14 @@
 
 
 
-ion-navbar
+ion-header
 {
     background-color: #39393B;
+    
+}
+.bar-button-default-md
+{
+    color: #F59821;
 }
 
 .toolbar-title-md
@@ -51,4 +56,9 @@ ion-navbar
 
     width: 150%;
     height: 150%;
+}
+
+.toolbar-background-md {
+    border-color: #b2b2b2;
+    background: #39393B;
 }
