@@ -26,7 +26,10 @@ export class AnnotationRecettePage {
     new Annotation(pseudo,etape,com, null);
   }
 
-  ouvrirLesParametres(){
-    this.navCtrl.push(`ParametresPage`);
+
+  onClickParametre(){
+
+    this.navCtrl.push('ParametresPage');
+  
   }
 }
