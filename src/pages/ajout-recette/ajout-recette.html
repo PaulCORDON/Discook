@@ -16,7 +16,7 @@
 
   <ion-card>
     <ion-item>
-      <ion-label >Titre</ion-label>
+      <ion-label>Titre</ion-label>
       <ion-input type="text" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
     </ion-item>
   </ion-card>
@@ -31,13 +31,13 @@
   <ion-card>
     <div class="titra">Sélection des ingrédients</div>
 
-    <ion-card  *ngFor="let ing of recette.ingredients">
+    <ion-card *ngFor="let ing of recette.ingredients">
       <ion-row>
         <ion-col col-3>
           <img src="{{ing.image}}">
         </ion-col>
         <ion-col>
-          <div class="ingredient">{{ing.nom}}</div>   
+          <div class="ingredient">{{ing.nom}}</div>
         </ion-col>
         <ion-col col-2>
           <button ion-button icon-only (click)="supprIngredient(ing)">
@@ -47,12 +47,12 @@
       </ion-row>
       <ion-row>
         <ion-col>
-            <ion-label >Quantité</ion-label>
-            <ion-input type="number" name="quantite" [(ngModel)]="ing.quantite"></ion-input>
+          <ion-label>Quantité</ion-label>
+          <ion-input type="number" name="quantite" [(ngModel)]="ing.quantite"></ion-input>
         </ion-col>
         <ion-col>
-            <ion-label >Unité</ion-label>
-            <ion-input type="text" name="unite" [(ngModel)]="ing.unite"></ion-input>
+          <ion-label>Unité</ion-label>
+          <ion-input type="text" name="unite" [(ngModel)]="ing.unite"></ion-input>
         </ion-col>
       </ion-row>
     </ion-card>
@@ -66,35 +66,56 @@
     <div class="titra">Conception de la recette</div>
     <ion-card>
       <ion-item>
-        <ion-label >Nombre de persone</ion-label>
+        <ion-label>Nombre de persone</ion-label>
         <ion-input type="number" name="Nombre de personne" [(ngModel)]="recette.nbPers"></ion-input>
       </ion-item>
     </ion-card>
 
     <ion-card>
-      <ion-item>
-        <ion-label >Difficulté</ion-label>
-        <ion-input type="number" name="Difficulté" [(ngModel)]="recette.difficulte"></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+           
+              Difficulté
+            
+          </ion-col>
+          <ion-col>
+            <ion-icon *ngIf="recette.difficulte >=1" class="selectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte >=2" class="selectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte >=3" class="selectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte >=4" class="selectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte >=5" class="selectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
+
+            <ion-icon *ngIf="recette.difficulte <=0" class="notselectedStar" md="ios-star" (click)="onClickStar(1)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte <=1" class="notselectedStar" md="ios-star" (click)="onClickStar(2)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte <=2" class="notselectedStar" md="ios-star" (click)="onClickStar(3)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte <=3" class="notselectedStar" md="ios-star" (click)="onClickStar(4)"></ion-icon>
+            <ion-icon *ngIf="recette.difficulte <=4" class="notselectedStar" md="ios-star" (click)="onClickStar(5)"></ion-icon>
+
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
     </ion-card>
 
     <ion-card>
       <ion-item>
-        <ion-label >Temps de Préparation</ion-label>
+        <ion-label>Temps de Préparation</ion-label>
         <ion-input type="number" name="Temps de Préparation" [(ngModel)]="recette.duree"></ion-input>
       </ion-item>
     </ion-card>
 
     <ion-card>
       <ion-item>
-        <ion-label >Temps de Cuisson</ion-label>
+        <ion-label>Temps de Cuisson</ion-label>
         <ion-input type="number" name="Temps de Cuisson" [(ngModel)]="recette.tpCuisson"></ion-input>
       </ion-item>
     </ion-card>
 
     <ion-card>
       <ion-item>
-        <ion-label >Présentation</ion-label>
+        <ion-label>Présentation</ion-label>
         <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
       </ion-item>
     </ion-card>
@@ -103,7 +124,7 @@
       <ion-row>
         <ion-col>
           <div class="Etape">
-              Etape {{etape.numero}}
+            Etape {{etape.numero}}
           </div>
           <ion-item>
             <ion-input type="text" name="Description de l'étape" [(ngModel)]="etape.texte"></ion-input>
