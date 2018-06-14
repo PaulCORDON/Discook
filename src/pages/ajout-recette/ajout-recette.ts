@@ -21,7 +21,7 @@ export class AjoutRecettePage {
   reference: firebase.database.Reference;
   titre: string;
   recette: Recette;
-
+  duree:number;
   
 
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
@@ -91,6 +91,7 @@ export class AjoutRecettePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
     this.recette.difficulte = 1;
+    
   }
 
   ionViewWillEnter() {
@@ -128,5 +129,7 @@ export class AjoutRecettePage {
   onClickStar(n: number) {
     this.recette.difficulte = n;
   }
-
+  onClickAddTempsCuisson(n: number){
+    this.recette.tpCuisson=this.recette.tpCuisson+n;
+  }
 }
