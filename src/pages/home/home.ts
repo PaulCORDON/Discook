@@ -49,11 +49,11 @@ export class HomePage {
 
       for (var i = 0; i < this.listRecette.length; i++) {
         verif = false;
-
+        this.recherche = true;
         if (this.listRecette[i].nom.lastIndexOf(val) != -1 && verif == false) {
           verif = true;
           this.listRecetteRecherche.push(this.listRecette[i]);
-          this.recherche = true;
+          
         }
 
         for (var j = 0; j < this.listRecette[i].motsCles.length; j++) {
@@ -62,7 +62,7 @@ export class HomePage {
           if (this.listRecette[i].motsCles[j].toLowerCase().lastIndexOf(val.toLowerCase()) != -1 && verif == false) {
             console.log("mots clef test!" + this.listRecette[i].motsCles[j]);
             this.listRecetteRecherche.push(this.listRecette[i]);
-            this.recherche = true;
+            
             verif = true;
           }
         }
