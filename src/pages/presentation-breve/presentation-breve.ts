@@ -53,8 +53,16 @@ console.log("temps total : " + this.tempsTot)
   }
 
   addFav(){
-    this.fav = ! this.fav;
-    //this.global.getCompte().addFavoris(this.recette.id);
+    
+    if(this.fav == false){
+      this.global.getCompte().addFavoris(this.recette.id);
+      console.log("iddddddd" + this.recette.id)
+      this.fav = true;
+    }
+    else{
+      this.fav = false;
+    }
+    
   }
 
 }
