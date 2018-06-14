@@ -17,26 +17,26 @@ import { Ingredient } from '../../metier/ingredient';
 })
 export class AjoutRecettePage {
   imgUrl: any;
-  readonly TAG:String ='Ajout_Recette';
+  readonly TAG: String = 'Ajout_Recette';
   reference: firebase.database.Reference;
-  titre : string;
-  recette : Recette;
+  titre: string;
+  recette: Recette;
+
   
 
-  constructor(public navCtrl: NavController, public base : DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop:Crop, private base64:Base64,public varGlob:GlobalVarsProvider ) {
-    this.recette=this.navParams.get('recette');
-    
-    if(this.recette==undefined) this.recette=new Recette([],"","","",0,"","",0,[],[]);
+  constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
+
+    this.recette = new Recette([], "", "", "", 0, "", "", 0, [], []);
 
     /* Récupèration des valeurs dans BDD */
-    const item : firebase.database.Reference = firebase.database().ref("Recette/1");
-    item.on('value',PassSnapshot=>{
-      this.titre  = PassSnapshot.val();
+    const item: firebase.database.Reference = firebase.database().ref("Recette/1");
+    item.on('value', PassSnapshot => {
+      this.titre = PassSnapshot.val();
     });
   }
 
-  private openPhoto(){
-     return this.camera.getPicture(
+  private openPhoto() {
+    return this.camera.getPicture(
       {
         destinationType: this.camera.DestinationType.FILE_URI,
         mediaType: this.camera.MediaType.ALLMEDIA,
@@ -45,19 +45,19 @@ export class AjoutRecettePage {
         correctOrientation: true
       }
     ).then(
-        fileUri => {
-          
-          return this.crop.crop(fileUri, {quality:100});
-        }, err => { } ).then(path => { 
-          let tempo : any = path;
-            this.base64.encodeFile(tempo).then((base64File: string) => {
-              this.recette.image = base64File;
-              console.log(base64File);
-            }, (err) => {
-              console.log(err);
-            });
-          }, err => { }          
-      );      
+      fileUri => {
+
+        return this.crop.crop(fileUri, { quality: 100 });
+      }, err => { }).then(path => {
+        let tempo: any = path;
+        this.base64.encodeFile(tempo).then((base64File: string) => {
+          this.recette.image = base64File;
+          console.log(base64File);
+        }, (err) => {
+          console.log(err);
+        });
+      }, err => { }
+      );
   }
 
   private openGallery(){
@@ -83,45 +83,50 @@ export class AjoutRecettePage {
 
 
   // Ajouter une recette à la BDD
-  onClickAddRecette(){
+  onClickAddRecette() {
     console.log(JSON.stringify(this.recette));
     this.base.AddRecette(this.recette);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AjoutRecettePage');
+    this.recette.difficulte = 1;
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.recette.ingredients = this.varGlob.getListeIngredientsSelectionner();
   }
 
-  OnClickAddIngredient(){   
-    let listeComplete:Ingredient[]=this.varGlob.getListeIngredientsComplete();
-    let listeIngSelect:Ingredient[]=this.recette.ingredients;
+  OnClickAddIngredient() {
+    let listeComplete: Ingredient[] = this.varGlob.getListeIngredientsComplete();
+    let listeIngSelect: Ingredient[] = this.recette.ingredients;
     listeIngSelect.forEach(ing => {
-      listeComplete.splice(listeComplete.indexOf(ing),1);
+      listeComplete.splice(listeComplete.indexOf(ing), 1);
     });
-    this.navCtrl.push(`ListeAllIngredientsBddPage`,{listeIng:listeComplete});
+    this.navCtrl.push(`ListeAllIngredientsBddPage`, { listeIng: listeComplete });
   }
 
-  OnClickAddEtape(){
-    this.recette.etapes.push(new Etape(this.recette.etapes.length+1,"",[]));
+  OnClickAddEtape() {
+    this.recette.etapes.push(new Etape(this.recette.etapes.length + 1, "", []));
   }
 
-  supprIngredient(ing){
+  supprIngredient(ing) {
     console.log("supprIngredient : " + ing.nom);
     let index = this.recette.ingredients.indexOf(ing);
-    this.recette.ingredients.splice(index,1);
-    
+    this.recette.ingredients.splice(index, 1);
+
     this.varGlob.setListeIngredientsSelectionner(this.recette.ingredients);
   }
 
-  supprEtape(etape){
-    this.recette.etapes.splice(this.recette.etapes.indexOf(etape),1);
+  supprEtape(etape) {
+    this.recette.etapes.splice(this.recette.etapes.indexOf(etape), 1);
 
-    for(let i=0;i<this.recette.etapes.length;i++){
-      this.recette.etapes[i].numero=i+1;
+    for (let i = 0; i < this.recette.etapes.length; i++) {
+      this.recette.etapes[i].numero = i + 1;
     }
   }
+  onClickStar(n: number) {
+    this.recette.difficulte = n;
+  }
+
 }

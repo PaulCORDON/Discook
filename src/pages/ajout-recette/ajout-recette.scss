@@ -22,6 +22,7 @@ page-ajout-recette {
         font-size: 1.5em;
   
     }
+<<<<<<< HEAD
 
     .toolbar-title-md {
         font-size: 20pt;
@@ -35,4 +36,23 @@ page-ajout-recette {
     }
 
 
+=======
+    .selectedStar{
+        color:  #F59821;
+    }
+    .notselectedStar{
+        color: #39393B;
+    }
+
+    .centrer
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ion-icon {
+        display: inline-block;
+        font-size: 1.0em;
+    }
+>>>>>>> master
 }
