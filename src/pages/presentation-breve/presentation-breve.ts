@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
+import { Recette } from '../../metier/recette';
 
 /**
  * Generated class for the PresentationBrevePage page.
@@ -16,7 +17,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 })
 export class PresentationBrevePage {
 
-  recette;
+  recette : Recette;
   constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
 this.recette = this.navParams.get("recette");
   }
