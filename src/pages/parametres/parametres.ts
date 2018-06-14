@@ -30,4 +30,8 @@ export class ParametresPage {
     this.navCtrl.push(`AjoutRecettePage`);
    
   }
+
+  onClickInformations(){
+    this.navCtrl.push(`CreditPage`);
+  }
 }
