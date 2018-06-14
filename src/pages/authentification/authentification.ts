@@ -31,7 +31,8 @@ export class AuthentificationPage {
 
   }
 
-  inscription(){
+  inscription()
+  {
 
     this.navCtrl.push("InscriptionPage");
 

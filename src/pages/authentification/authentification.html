@@ -10,10 +10,11 @@
 <ion-row>
     <img class="center" width="100" height="100" src="assets/imgs/logo.png">
 </ion-row>
+
     <ion-card>
         
         <ion-card-header>
-        Connexion
+        Se connecter à Discook
         </ion-card-header>
 
         <ion-card-content>
@@ -25,7 +26,7 @@
                     
                         <ion-item>
                             <ion-label floating>Mot de passe</ion-label>
-                            <ion-input [(ngModel)]="prenom" type="text"></ion-input>
+                            <ion-input [(ngModel)]="prenom" type="password"></ion-input>
                         </ion-item>
 
 
@@ -38,6 +39,6 @@
             <button ion-button large round block color = "secondary" (tap) = "connexion()">Se connecter</button>
         </ion-card-content>
     </ion-card>
-    <button ion-button large round block color = "secondary" (tap) = "connexion()">S'inscrire</button>
+    <button ion-button large round block  (tap)= "inscription()">S'inscrire</button>
 
     </ion-content>
