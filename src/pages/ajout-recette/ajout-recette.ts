@@ -85,6 +85,9 @@ export class AjoutRecettePage {
 
   // Ajouter une recette à la BDD
   onClickAddRecette() {
+    this.recette.nbPers=this.nbPers;
+    this.recette.tpCuisson=this.tpCuis+"";
+    this.recette.duree=this.duree+"";
     console.log(JSON.stringify(this.recette));
     this.base.AddRecette(this.recette);
   }
