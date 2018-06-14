@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Recette } from '../../metier/recette';
+import { Ingredient } from '../../metier/ingredient';
 
 /**
  * Generated class for the ListeIngredientPage page.
@@ -14,8 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'liste-ingredient.html',
 })
 export class ListeIngredientPage {
+  recette : Recette;
+  listIngredients : Ingredient [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.recette = this.navParams.get("recette");
+    this.listIngredients = this.recette.ingredients;
+    console.log("ingredient :  " + this.listIngredients[0].nom);
+    
+  
+    console.log("longueur de la liste des ingédients de la recette " +this.recette.ingredients.length);
+   
   }
 
   ionViewDidLoad() {
