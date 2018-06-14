@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Recette } from '../../metier/recette';
+import { GlobalVarsProvider } from '../../providers/global-vars/global-vars';
 
 /**
  * Generated class for the PresentationBrevePage page.
@@ -19,9 +20,10 @@ export class PresentationBrevePage {
 
   recette : Recette;
   tempsTot;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
+  fav = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider, public global : GlobalVarsProvider) {
 this.recette = this.navParams.get("recette");
+
 var x = this.recette.duree;
 var y = +x;
 var q = this.recette.tpCuisson;
@@ -48,6 +50,11 @@ console.log("temps total : " + this.tempsTot)
   
   Commencer(){
     this.navCtrl.push(`ListeIngredientPage`,{recette : this.recette});
+  }
+
+  addFav(){
+    this.fav = ! this.fav;
+    //this.global.getCompte().addFavoris(this.recette.id);
   }
 
 }
