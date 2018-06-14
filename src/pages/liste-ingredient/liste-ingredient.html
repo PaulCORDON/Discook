@@ -22,8 +22,8 @@
 
 <ion-content padding>
   
-<ion-list>
-  <ion-item *ng for  = "let ingredient  of listIngredients | async "   > 
+<ion-list *ngFor  = "let ingredient  of listIngredients  " >
+  <ion-item   > 
     <ion-thumbnail item-start>
     <img src="img"> <!--Mettre l'image correspondant à l'ingredient-->
     </ion-thumbnail>
