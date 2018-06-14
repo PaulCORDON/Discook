@@ -10,7 +10,9 @@ page-ajout-recette {
     }
     .titra
     {
-        font-size: 1.5em;
+        font-size: 14pt;
+        background-color: #39393B;
+        color:#F59821;
     }
 
     .ingredient
@@ -20,6 +22,19 @@ page-ajout-recette {
         font-size: 1.5em;
   
     }
+
+    .toolbar-title-md {
+        font-size: 20pt;
+    }
+
+    .button-md
+    {
+    background-color: #39393B;
+    color: #F59821;
+    font-family: "Roboto", sans-serif;
+    }
+
+
     .selectedStar{
         color:  #F59821;
     }
