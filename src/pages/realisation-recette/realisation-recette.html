@@ -7,7 +7,7 @@
 <ion-content padding>
 
   <ion-card>
-    <h5>Etape {{etape.numero}}</h5>
+    <h5>Etape {{etape.numero}}/{{this.recette.etapes.length}}</h5>
     <p>{{etape.texte}}</p>
     <h5>Annotation</h5>
     <p *ngIf="etape.annotations[0]!=undefined">{{etape.annotations[0].com}}</p>
