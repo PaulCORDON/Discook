@@ -28,7 +28,7 @@ export class AjoutRecettePage {
   constructor(public navCtrl: NavController, public base: DatabaseProvider, public navParams: NavParams, private camera: Camera, private crop: Crop, private base64: Base64, public varGlob: GlobalVarsProvider) {
 
     this.recette = this.navParams.get('recette');
-    if(this.recette==undefined) this.recette = new Recette([], "", "", "", 0, "", "", 0, [], []);
+    if(this.recette==undefined) this.recette = new Recette([], "", "", "", 0, "", "", 0, [], [],"");
 
     /* Récupèration des valeurs dans BDD */
     const item: firebase.database.Reference = firebase.database().ref("Recette/1");

@@ -54,7 +54,8 @@ export class DatabaseProvider {
                   item.child('duree_cuisson').val(),
                   item.child('nb_personnes').val(),
                   etapes,
-                  ingredients
+                  ingredients,
+                  item.key
                 );
                 listeRecette.push(recette);
               })

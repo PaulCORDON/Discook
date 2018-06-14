@@ -25,9 +25,12 @@ export class AnnotationRecettePage {
   poster(etape : string, com : string){
     let pseudo = this.global.getCompte().pseudo
     console.log("poster " + com + " par " + pseudo + " pour l'étape " + etape);
-    new Annotation(pseudo,etape,com, null);
+    new Annotation(pseudo,etape,com, this.GetTime());
   }
 
+  GetTime():string{
+    return (new Date).toLocaleString();
+}
 
   onClickParametre(){
 
