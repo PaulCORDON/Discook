@@ -6,13 +6,27 @@
 
 <ion-content padding>
 
-  <ion-card>
-    <h5>Etape {{etape.numero}}</h5>
-    <p>{{etape.texte}}</p>
-    <h5>Annotation</h5>
-    <p *ngIf="etape.annotations[0]!=undefined">{{etape.annotations[0].com}}</p>
-  </ion-card>
-
+  <div *ngIf='!debut'>
+    <ion-card>
+      <h5>Etape {{etape.numero}}</h5>
+      <p>{{etape.texte}}</p>
+      <h5>Annotation</h5>
+      <p *ngIf="etape.annotations[0]!=undefined">{{etape.annotations[0].com}}</p>
+    </ion-card>
+  </div>
+  <div *ngIf='debut'>
+    <ion-list *ngFor="let ing of recette.ingredients">
+      <ion-row>
+        <ion-col col-4>
+          <img src="{{ing.image}}">
+        </ion-col>
+        <ion-col>
+          <div class="ingredient">{{ing.nom}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+  
   <ion-fab left bottom>
       <button (click)="onClickEtapePrecedente()" ion-fab color="dark"><ion-icon name="arrow-dropleft"></ion-icon></button>       
     </ion-fab>

@@ -15,7 +15,7 @@
 
 <ion-content>
   
-  <img class="imageCard"   src={{recette.image}}/>
+  <img class="imageCard"   [src]="recette.image | safe:'url'"/>
 
   <h1>
     {{recette.nom}}
