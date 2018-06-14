@@ -23,7 +23,7 @@ export class ListeIngredientPage {
     this.recette = this.navParams.get("recette");
     this.listIngredients = this.recette.ingredients;
     console.log("ingredient :  " + this.listIngredients[0].nom);
-    console.log("texte de la premiere étapes" + this.recette.etapes.length);
+    console.log("texte de la premiere étapes" + this.recette.etapes[0].texte);
     
     
     

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { DatabaseProvider } from '../../providers/database/database';
+import { utilisateur } from '../../metier/utilisateur';
 
 /**
  * Generated class for the InscriptionPage page.
@@ -16,7 +18,10 @@ import { HomePage } from '../home/home';
 })
 export class InscriptionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pseudo : string
+  motDePasse : string
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
   }
 
   ionViewDidLoad() {
@@ -25,8 +30,8 @@ export class InscriptionPage {
 
   connexion(){
 
-    this.navCtrl.setRoot(HomePage);
-
+    this.base.PutUtilisateur(new utilisateur(this.pseudo,this.motDePasse,[]))
+    this.navCtrl.pop()
 
   }
 
