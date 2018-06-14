@@ -32,12 +32,12 @@
   <ion-row class="centrer">
     <ion-col col-6>
       <button ion-button>
-        <ion-icon name="aperture" block (click)="openPhoto()"> Prendre une photo</ion-icon>
+        <ion-icon name="aperture" block (click)="openPhoto()"></ion-icon> Prendre une photo
       </button>
     </ion-col>
     <ion-col col-6>
       <button ion-button>
-        <ion-icon md="md-download" (click)="openGallery()"> Importer une photo</ion-icon>
+        <ion-icon md="md-download" (click)="openGallery()"></ion-icon> Importer une photo
       </button>
     </ion-col>
 
@@ -77,18 +77,19 @@
     </button>
   </ion-card>
 
+
+
   <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div> Nombre de personnes</div>
-        </ion-col>
-        <ion-icon md="ios-remove-circle" (click)="onClickAddPers(-1)"></ion-icon>
-        <ion-input type="number" name="Nombre de personne" min=0 [(ngModel)]="nbPers"></ion-input>
-        <ion-icon md="ios-add-circle" (click)="onClickAddPers(1)"></ion-icon>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+      <ion-grid>
+        <ion-row>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Nombre de personnes</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddPers(-1)">-</button>
+          <ion-input type="tel" name="Nombre de personnes" min=0 [(ngModel)]="nbPers"></ion-input>
+          <button class="but" round ion-button  (click)="onClickAddPers(1)">+</button>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
 
   <ion-card>
     <ion-grid>
@@ -119,40 +120,28 @@
   </ion-card>
 
 
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>Temps de préparation (min)</div>
-        </ion-col>
-        <ion-icon md="ios-remove-circle" (click)="onClickAddDuree(-1)"></ion-icon>
-        <ion-input type="number" name="Temps de Préparation" min=0 max=500 [(ngModel)]="duree"></ion-input>
-        <ion-icon md="ios-add-circle" (click)="onClickAddDuree(1)"></ion-icon>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Temps de cuisson</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddTempsCuisson(-1)">-</button>
+          <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
+          <button class="but" round ion-button  (click)="onClickAddTempsCuisson(1)">+</button>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label>Présentation</ion-label>
+        <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
+      </ion-item>
+    </ion-card>
 
 
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <div>Temps de cuisson</div>
-        </ion-col>
-        <ion-icon md="ios-remove-circle" (click)="onClickAddTempsCuisson(-1)"></ion-icon>
-        <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
-        <ion-icon md="ios-add-circle" (click)="onClickAddTempsCuisson(1)"></ion-icon>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
 
-  <ion-card>
-    <ion-item>
-      <ion-label>Présentation</ion-label>
-      <ion-input type="text" name="Présentation" [(ngModel)]="recette.preparation"></ion-input>
-    </ion-item>
-  </ion-card>
-  
+ 
   <ion-card>
     <div class="titra">Liste des étapes</div>
     <button ion-button (click)='OnClickAddEtape()'>

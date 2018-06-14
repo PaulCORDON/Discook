@@ -32,6 +32,7 @@ page-ajout-recette {
     background-color: #39393B;
     color: #F59821;
     font-family: "Roboto", sans-serif;
+    font-size: 8pt;
     }
 
 
@@ -62,5 +63,17 @@ page-ajout-recette {
         white-space: nowrap;
         overflow-x: hidden;
         overflow-y: hidden;
+        
+    }
+
+    .pose
+    {
+        position: absolute;
+        top:30%;
+    }
+
+    .but{
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
     }
 }
