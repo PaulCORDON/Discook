@@ -6,14 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <button ion-button light>
-      <ion-icon medium name="arrow-dropleft"></ion-icon>
-    </button>
-    <ion-title>Annoter la recette</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-navbar>
+      <ion-title>Les ingrédients</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="onClickParametre()">
+          <ion-icon name="settings"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
 
 
 <ion-content padding>

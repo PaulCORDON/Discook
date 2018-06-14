@@ -13,50 +13,39 @@
         </button>
       </ion-buttons>
     </ion-col>
-
   </ion-row>
 
-
-
-  <ion-searchbar [(ngModel)]="myInput" (keyup.enter)="onSearch($event)">
-  </ion-searchbar>
-
-
+  <ion-searchbar [(ngModel)]="myInput" (keyup.enter)="onSearch($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
-
-
   <div *ngIf="recherche==false">
-    <div *ngFor="let item of listRecette; let i = index; let even = even;">
-      <span *ngIf="even">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-card (tap)="onClickRecette(listRecette[i])">
-                <ion-row class="imageCard">
-                  <img src="{{listRecette[i].image}}">
-                </ion-row>
-                <ion-row class="textCard">
-                  {{ listRecette[i].nom }}
-                </ion-row>
-              </ion-card>
+    <div *ngFor="let item of listRecette">
+      <ion-grid>
+        <ion-row *ngIf="listRecette.indexOf(item)%2 == 0">
+          <ion-col col-6>
+            <ion-card (tap)="onClickRecette(item)">
+              <ion-row class="imageCard">
+                <img src="{{item.image}}">
+              </ion-row>
+              <ion-row class="textCard">
+                {{item.nom}}
+              </ion-row>
+            </ion-card>
+          </ion-col>
 
-            </ion-col>
-            <ion-col>
-              <ion-card (tap)="onClickRecette(listRecette[i+1])">
-                <ion-row class="imageCard">
-                  <img src="{{listRecette[i+1].image}}">
-                </ion-row>
-                <ion-row class="textCard">
-                  {{ listRecette[i+1].nom }}
-                </ion-row>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-      </span>
+          <ion-col *ngIf="listRecette.indexOf(item)+1<listRecette.length">
+            <ion-card (tap)="onClickRecette(listRecette[listRecette.indexOf(item)+1])">
+              <ion-row class="imageCard">
+                <img src="{{listRecette[listRecette.indexOf(item)+1].image}}">
+              </ion-row>
+              <ion-row class="textCard">
+                {{ listRecette[listRecette.indexOf(item)+1].nom }}
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
   </div>
 
