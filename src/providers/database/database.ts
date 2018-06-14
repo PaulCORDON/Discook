@@ -236,7 +236,7 @@ export class DatabaseProvider {
             resolve(user)
           }
         })
-        
+        reject("not found")
       })
     })
   }
