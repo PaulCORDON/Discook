@@ -12,9 +12,10 @@
 
 
 <ion-content>
-  <h1>Créer une recette</h1>
+  
 
   <ion-card>
+      <div class="titra">Titre</div>
     <ion-item>
       <ion-label>Titre</ion-label>
       <ion-input type="text" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
@@ -90,7 +91,7 @@
         <ion-row>
           <ion-col class="coloration" col-3>
 
-          <div >Difficulté</div>
+            <div>Difficulté</div>
 
           </ion-col>
           <ion-col>
@@ -121,10 +122,14 @@
     </ion-card>
 
     <ion-card>
-      <ion-item>
-        <ion-label>Temps de cuisson</ion-label>
-        <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="recette.tpCuisson"></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col><div>Temps de cuisson</div></ion-col>
+          <ion-icon md="ios-remove-circle" (click)="onClickAddTempsCuisson(-1)"></ion-icon>
+          <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
+          <ion-icon md="ios-add-circle" (click)="onClickAddTempsCuisson(1)"></ion-icon>
+        </ion-row>
+      </ion-grid>
     </ion-card>
 
     <ion-card>

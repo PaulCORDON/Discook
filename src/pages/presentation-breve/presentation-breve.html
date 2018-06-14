@@ -14,13 +14,14 @@
 
 
 <ion-content padding>
-  
-  
-
-  {{recette.presentation}}
-  
-
+   
+<ion-card>
   <ion-grid>
+    <ion-row>
+        <ion-label>
+        {{recette.presentation}}
+        </ion-label>
+    </ion-row>
     <ion-row>
       <ion-col>
         <ion-label>
@@ -48,7 +49,7 @@
     </ion-row>
     
   </ion-grid>
-
+</ion-card>
   
 
 
@@ -72,7 +73,7 @@
       </ion-row>
       <ion-row>
           
-          <button class="lancer" ion-button round (click)="Commencer()" ><ion-icon name="md-arrow-dropright-circle"></ion-icon> Commencer la préparation</button>
+          <button class="lancer" ion-button round (click)="Commencer()" ><ion-icon name="md-arrow-dropright-circle"></ion-icon> Commencer la préparation</button>
            
       </ion-row>
     </ion-grid>
