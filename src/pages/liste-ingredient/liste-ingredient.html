@@ -22,14 +22,14 @@
 
 <ion-content padding>
   
-<ion-list>
-  <ion-item *ng for  = "let ingredient  of listIngredients | async "   > 
+<ion-list *ngFor  = "let ingredient  of listIngredients  " >
+  <ion-item   > 
     <ion-thumbnail item-start>
-    <img src="img"> <!--Mettre l'image correspondant à l'ingredient-->
+    <img src={{this.ingredient.image}}> <!--Mettre l'image correspondant à l'ingredient-->
     </ion-thumbnail>
     <h2>{{this.ingredient.nom}} </h2> <!--Mettre le vrai nom récuperer dans la base de donnée-->
     <h3>quantité </h3> 
-    <p> 85 </p> <!--Mettre la quantité recupérer dans la base de donnée-->
+    <p> {{this.ingredient.quantite}} {{this.ingredient.unite}}</p> <!--Mettre la quantité recupérer dans la base de donnée-->
   </ion-item>
 </ion-list>
 <ion-row>

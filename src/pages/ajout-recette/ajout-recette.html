@@ -89,9 +89,9 @@
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col>
+          <ion-col class="coloration" col-3>
 
-            Difficulté
+            <div>Difficulté</div>
 
           </ion-col>
           <ion-col>
@@ -122,10 +122,14 @@
     </ion-card>
 
     <ion-card>
-      <ion-item>
-        <ion-label>Temps de cuisson</ion-label>
-        <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="recette.tpCuisson"></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col><div>Temps de cuisson</div></ion-col>
+          <ion-icon md="ios-remove-circle" (click)="onClickAddTempsCuisson(-1)"></ion-icon>
+          <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
+          <ion-icon md="ios-add-circle" (click)="onClickAddTempsCuisson(1)"></ion-icon>
+        </ion-row>
+      </ion-grid>
     </ion-card>
 
     <ion-card>

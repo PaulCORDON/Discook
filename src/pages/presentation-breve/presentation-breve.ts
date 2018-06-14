@@ -20,7 +20,7 @@ export class PresentationBrevePage {
   recette : Recette;
   constructor(public navCtrl: NavController, public navParams: NavParams, public base : DatabaseProvider) {
 this.recette = this.navParams.get("recette");
-  }
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PresentationBrevePage');
