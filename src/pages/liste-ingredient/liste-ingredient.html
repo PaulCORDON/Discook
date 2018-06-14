@@ -23,8 +23,9 @@
 <ion-content padding>
   
 <ion-list *ngFor  = "let ingredient  of listIngredients  " >
-  <ion-item   > 
+  <ion-item > 
     <ion-thumbnail item-start>
+      <p>{{this.ingredient.presentation}}</p>
     <img src={{this.ingredient.image}}> <!--Mettre l'image correspondant à l'ingredient-->
     </ion-thumbnail>
     <h2>{{this.ingredient.nom}} </h2> <!--Mettre le vrai nom récuperer dans la base de donnée-->
