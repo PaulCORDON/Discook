@@ -123,10 +123,11 @@
     <ion-card>
       <ion-grid>
         <ion-row>
-          <ion-col><div>Temps de cuisson</div></ion-col>
-          <ion-icon md="ios-remove-circle" (click)="onClickAddTempsCuisson(-1)"></ion-icon>
-          <ion-input type="number" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
-          <ion-icon md="ios-add-circle" (click)="onClickAddTempsCuisson(1)"></ion-icon>
+        
+          <ion-col class="coloration" col-6><div class="pose"> Temps de cuisson</div></ion-col>
+          <button round class="but" ion-button (click)="onClickAddTempsCuisson(-1)">-</button>
+          <ion-input type="tel" name="Temps de Cuisson" min=0 max=500 [(ngModel)]="tpCuis"></ion-input>
+          <button class="but" small round ion-button  (click)="onClickAddTempsCuisson(1)">+</button>
         </ion-row>
       </ion-grid>
     </ion-card>

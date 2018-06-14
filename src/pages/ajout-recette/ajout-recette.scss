@@ -47,5 +47,17 @@ page-ajout-recette {
         white-space: nowrap;
         overflow-x: hidden;
         overflow-y: hidden;
+        
+    }
+
+    .pose
+    {
+        position: absolute;
+        top:30%;
+    }
+
+    .but{
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
     }
 }
