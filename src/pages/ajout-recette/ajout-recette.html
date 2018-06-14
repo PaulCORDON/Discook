@@ -12,9 +12,10 @@
 
 
 <ion-content>
-  <h1>Créer une recette</h1>
+  
 
   <ion-card>
+      <div class="titra">Titre</div>
     <ion-item>
       <ion-label >Titre</ion-label>
       <ion-input type="text" name="Titre de la recette" [(ngModel)]="recette.nom"></ion-input>
@@ -22,12 +23,13 @@
   </ion-card>
 
   <ion-card>
+      <div class="titra">Image</div>
     <img *ngIf="recette.image!=''" [src]="recette.image | safe: 'url'" />
     <button ion-button>
-      <ion-icon md="md-download" (click)="openPhoto()"> Prendre une photo</ion-icon>
+      <ion-icon md="md-download" (click)="openPhoto()"> </ion-icon> Prendre une photo
     </button>
     <button ion-button>
-      <ion-icon md="md-download" (click)="openGallery()"> Charger une image depuis téléphone</ion-icon>
+      <ion-icon md="md-download" (click)="openGallery()"> </ion-icon> Charger une image
     </button>
   </ion-card>
 
