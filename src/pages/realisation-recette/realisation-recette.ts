@@ -17,15 +17,11 @@ import { Etape } from '../../metier/etape';
 })
 export class RealisationRecettePage {
   recette : Recette;
-  etape : Etape [];
-  i : number;
+  etape : Etape;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-
     this.recette =  this.navParams.get("recette");
-    this.etape = this.recette.etapes;
-    console.log(this.etape[0].texte);
-
+    this.etape = this.recette.etapes[0];
   }
 
   ionViewDidLoad() {
@@ -33,11 +29,12 @@ export class RealisationRecettePage {
   }
 
   onClickEtapePrecedente(){
-
+    this.etape = this.recette.etapes[this.recette.etapes.indexOf(this.etape)-1];
   }
 
   onClickEtapeSuivante(){
-    
+    let newEtape = this.recette.etapes[this.recette.etapes.indexOf(this.etape)+1];
+    if(newEtape==undefined) this.navCtrl.pop();
+    else this.etape = newEtape;
   }
-
 }

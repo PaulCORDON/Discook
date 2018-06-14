@@ -49,7 +49,7 @@ console.log("temps total : " + this.tempsTot)
   } 
   
   Commencer(){
-    this.navCtrl.push(`ListeIngredientPage`,{recette : this.recette});
+    this.navCtrl.push(`RealisationRecettePage`,{recette : this.recette});
   }
 
   addFav(){
