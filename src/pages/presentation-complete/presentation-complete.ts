@@ -32,7 +32,7 @@ export class PresentationCompletePage {
   }
 
   versEdition(){
-    this.navCtrl.push(EditionRecettePage);
+    this.navCtrl.push(`AjoutRecettePage`,{recette : this.recette});
   }
 
 }
