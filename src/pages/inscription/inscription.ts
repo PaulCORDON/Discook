@@ -30,7 +30,7 @@ export class InscriptionPage {
 
   connexion(){
 
-    this.base.PutUtilisateur(new utilisateur(this.pseudo,this.motDePasse,[]))
+    this.base.PutUtilisateur(new utilisateur(this.pseudo,this.motDePasse,[],""))
     this.navCtrl.pop()
 
   }

@@ -29,7 +29,6 @@ export class RealisationRecettePage {
   }
 
   onClickEtapePrecedente(){
-    
     this.etape = this.recette.etapes[this.recette.etapes.indexOf(this.etape)-1];
   }
 
