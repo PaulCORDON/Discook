@@ -1,6 +1,6 @@
 page-home{
-    ion-header
-    {
+    ion-navbar.toolbar {
+    
         background-color: #39393B;
         text-align: center;
     
@@ -42,5 +42,7 @@ page-home{
 	    -moz-box-shadow: none;
 	    box-shadow: none;
     }
+
+    
 
 }
