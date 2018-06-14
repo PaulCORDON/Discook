@@ -14,10 +14,11 @@ export class Recette{
     tpCuisson : string;
     etapes : Etape[] = [];
     ingredients : Ingredient[] = [];
+    id :string;
     
         
 
-    constructor(motsCles : string[], nom : string, presentation : string, image : string, difficulte : number, duree : string, tpCuisson : string, nbPers : number, etapes : Etape[], ingredients : Ingredient[]){
+    constructor(motsCles : string[], nom : string, presentation : string, image : string, difficulte : number, duree : string, tpCuisson : string, nbPers : number, etapes : Etape[], ingredients : Ingredient[], id : string){
         this.motsCles = motsCles;
         this.nom = nom;
         this.presentation = presentation;
@@ -28,7 +29,7 @@ export class Recette{
         this.tpCuisson = tpCuisson;
         this.etapes = etapes;
         this.ingredients = ingredients;
-
+        this.id = id
         //console.log("/////Création recette : " + nom + ", " + presentation + " pour " + nbPers + " personnes, difficulte : " + difficulte + ", duree de préparation : " + duree + ", temps de cuisson : " + tpCuisson);
     }
 }

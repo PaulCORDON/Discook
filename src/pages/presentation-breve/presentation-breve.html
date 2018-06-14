@@ -5,64 +5,99 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{recette.nom}}</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+      <ion-title>
+        Présentation
+      </ion-title>
+    </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-   
-<ion-card>
+  
+  <img class="imageCard"   src={{recette.image}}/>
+
+  <h1>
+    {{recette.nom}}
+    <ion-icon *ngIf="fav == false" name="star-outline" (click)="addFav()"></ion-icon>
+    <ion-icon *ngIf="fav == true" style="color: #F59821" name="star" (click)="addFav()"></ion-icon>
+  </h1>
+
+  {{recette.presentation}}
+  
+
   <ion-grid>
-      <ion-row>
-          <ion-col class="centrer">
-            <ion-label class="titre">
-                {{recette.nom}}
-            </ion-label>
-          </ion-col>
-      </ion-row>
-    <ion-row>
-        <ion-col>
-          <ion-label>
-          {{recette.presentation}}
-          </ion-label>
-        </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col>
-        <ion-label>
-          Réalisation
-        </ion-label>
+          <ion-label>
+              <h3>
+                  <ion-icon large name="ios-list"></ion-icon> 
+                  Préparation
+             </h3>
+             </ion-label>
+        <ion-grid>
+          <ion-row>
+            Difficulté :
+            </ion-row>
+            <ion-row>
+            <div class="couleur" *ngIf="recette.difficulte == '1' ">
+                <ion-icon  name="star" color ></ion-icon> 
+            </div>
+            <div class="couleur" *ngIf="recette.difficulte == '2'">
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+            </div>
+            <div class="couleur" *ngIf="recette.difficulte == '3'"> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+            </div>
+            <div class="couleur" *ngIf="recette.difficulte == '4'">
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+            </div>
+            <div class="couleur" *ngIf="recette.difficulte == '5'">
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+                <ion-icon  name="star" ></ion-icon> 
+            </div>
+          </ion-row>
+          <ion-row >
+              Nombre de personne :
+              <div>
+                {{recette.nbPers}} * <ion-icon  name="md-restaurant" ></ion-icon>
+              </div>
+              
+            
+          </ion-row>
+        </ion-grid>
       </ion-col>
       <ion-col>
-        <ion-label icon-end>
+        <ion-label>
+         <h3> 
+            <ion-icon large name="ios-timer-outline"></ion-icon>
+           Durée
+        </h3>
+        </ion-label>
           <ion-grid>
-            <ion-row>
-              Durée
-              <ion-icon name="md-time"></ion-icon>
-            </ion-row>
             <ion-row>
                 Préparation : {{recette.duree}} min
             </ion-row>
-             
+             Cuisson : {{recette.tpCuisson}} min
             <ion-row>
-                 Cuisson : {{recette.tpCuisson}} min
             </ion-row>
-            
-            <ion-row>
-              <img class="imageRecette" [src]="recette.image | safe:'url'"/>
-            </ion-row>
-            <!-- Temps total : {{recette.duree_total}} -->
+             Temps total : {{tempsTot}} min
           </ion-grid>
-        </ion-label>
+        
       </ion-col>
     </ion-row>
     
   </ion-grid>
-</ion-card>
+
   
 
 
@@ -73,20 +108,20 @@
         <ion-col col-6> <!-- bouton pour acceder à l'edition de la recette -->
             <button ion-button round block clear icon-start round   (click)="Editer()">
                 <ion-icon name="md-create"></ion-icon>
-                Éditer la recette
+                Éditer 
             </button>
         </ion-col>
 
         <ion-col col-6> <!-- boutton pour acceder à la recette complete-->
             <button ion-button block round clear icon-start round   (click)="Voir()">
-                <ion-icon name="map"></ion-icon>
-                Voir la recette
+                <ion-icon name="book"></ion-icon>
+                Détails
             </button>
         </ion-col>
       </ion-row>
       <ion-row>
           
-          <button class="lancer" ion-button round (click)="Commencer()" ><ion-icon name="md-arrow-dropright-circle"></ion-icon> Commencer la préparation</button>
+          <button class="lancer" ion-button round (click)="Commencer()" ><ion-icon name="md-arrow-dropright-circle"></ion-icon>  Commencer la préparation</button>
            
       </ion-row>
     </ion-grid>

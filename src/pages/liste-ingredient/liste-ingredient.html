@@ -25,12 +25,11 @@
 <ion-list *ngFor  = "let ingredient  of listIngredients  " >
   <ion-item > 
     <ion-thumbnail item-start>
-      <p>{{this.ingredient.presentation}}</p>
-    <img src={{this.ingredient.image}}> <!--Mettre l'image correspondant à l'ingredient-->
+    <img  class="imageCard" [src]="ingredient.image | safe:'url'"  > 
     </ion-thumbnail>
-    <h2>{{this.ingredient.nom}} </h2> <!--Mettre le vrai nom récuperer dans la base de donnée-->
+    <h2>{{ingredient.nom}} </h2>
     <h3>quantité </h3> 
-    <p> {{this.ingredient.quantite}} {{this.ingredient.unite}}</p> <!--Mettre la quantité recupérer dans la base de donnée-->
+    <p> {{ingredient.quantite}} {{ingredient.unite}} </p> 
   </ion-item>
 </ion-list>
 <ion-row>
