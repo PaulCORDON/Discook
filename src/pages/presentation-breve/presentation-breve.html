@@ -53,7 +53,7 @@
             </ion-row>
             
             <ion-row>
-              <img src={{recette.image}}/>
+              <img class="imageRecette" [src]="recette.image | safe:'url'"/>
             </ion-row>
             <!-- Temps total : {{recette.duree_total}} -->
           </ion-grid>

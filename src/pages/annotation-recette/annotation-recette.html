@@ -6,16 +6,9 @@
 -->
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Les ingrédients</ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="onClickParametre()">
-          <ion-icon name="settings"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-  
-  </ion-header>
+  <ion-navbar>
+    <ion-title>Annoter la recette</ion-title>
+  </ion-navbar>
 
 
 <ion-content padding>
@@ -31,6 +24,6 @@
       </ion-select>
     </ion-item>
     <ion-textarea #Com placeholder="commentaire"></ion-textarea>
-    <button ion-item (click)="poster(Pseudo.value, Sel.value, Com.value)">Poster</button>
+    <button ion-item (click)="poster(Sel.value, Com.value)">Poster</button>
   </ion-list>
 </ion-content>

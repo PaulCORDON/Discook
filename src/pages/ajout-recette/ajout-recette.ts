@@ -166,7 +166,10 @@ export class AjoutRecettePage {
       if(this.nbPers>=1){
         this.nbPers=this.nbPers+n;
       }
-    }    
+    }  
+    else{
+      this.nbPers=this.nbPers+n;
+    }  
   }
 
 }

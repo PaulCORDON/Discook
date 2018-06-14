@@ -26,18 +26,16 @@
           <ion-col col-6>
             <ion-card (tap)="onClickRecette(item)">
               <ion-row class="imageCard">
-                <img src="{{item.image}}">
-              </ion-row>
+                  <img class="imageRecette" [src]="item.image | safe:'url'"/>              </ion-row>
               <ion-row class="textCard">
                 {{item.nom}}
               </ion-row>
             </ion-card>
           </ion-col>
-
           <ion-col *ngIf="listRecette.indexOf(item)+1<listRecette.length">
             <ion-card (tap)="onClickRecette(listRecette[listRecette.indexOf(item)+1])">
               <ion-row class="imageCard">
-                <img src="{{listRecette[listRecette.indexOf(item)+1].image}}">
+                  <img class="imageRecette" [src]="listRecette[listRecette.indexOf(item)+1].image | safe:'url'"/>
               </ion-row>
               <ion-row class="textCard">
                 {{ listRecette[listRecette.indexOf(item)+1].nom }}
@@ -58,7 +56,7 @@
           <ion-col col-6>
             <ion-card (tap)="onClickRecette(item)">
               <ion-row class="imageCard">
-                <img src="{{item.image}}">
+                <img src="{{item.image}} | safe:'url'">
               </ion-row>
               <ion-row class="textCard">
                 {{item.nom}}
@@ -69,7 +67,7 @@
           <ion-col *ngIf="listRecetteRecherche.indexOf(item)+1<listRecetteRecherche.length">
             <ion-card (tap)="onClickRecette(listRecetteRecherche[listRecetteRecherche.indexOf(item)+1])">
               <ion-row class="imageCard">
-                <img src="{{listRecetteRecherche[listRecetteRecherche.indexOf(item)+1].image}}">
+                <img src="{{listRecetteRecherche[listRecetteRecherche.indexOf(item)+1].image}} | safe:'url'">
               </ion-row>
               <ion-row class="textCard">
                 {{ listRecetteRecherche[listRecetteRecherche.indexOf(item)+1].nom }}
