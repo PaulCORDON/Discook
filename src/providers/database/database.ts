@@ -140,9 +140,13 @@ export class DatabaseProvider {
       let listEtapes = [];
       ref.child('etapes').on('value', res => {
         res.forEach(item => {
-          firebase.database().ref("Etape/" + item.key).on('value', eta => {
+
+          firebase.database().ref("Etape/" + item.child('ref').val()).on('value', eta => {
+            console.log(eta.val())
             this.GetAnnos(eta.ref).then(result => {
+              console.log(result)
               let etape = new Etape(eta.child('numero').val(), eta.child('texte').val(), result);
+              console.log(etape)
               listEtapes.push(etape);
             });
           })
